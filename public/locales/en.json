@@ -1,0 +1,836 @@
+{
+	"common": {
+		"appName": "Whispers",
+		"copyright": "© {year} Whispers. All rights reserved.",
+		"openSidebar": "Open sidebar",
+		"submit": "Submit",
+		"cancel": "Cancel",
+		"save": "Save",
+		"delete": "Delete",
+		"edit": "Edit",
+		"loading": "Loading...",
+		"learnMore": "Learn More",
+		"getStarted": "Get Started",
+		"signUp": "Sign Up",
+		"signIn": "Sign In",
+		"signOut": "Sign Out",
+		"profile": "Profile",
+		"settings": "Settings",
+		"post": "Post",
+		"reply": "Reply",
+		"like": "Like",
+		"close": "Close",
+		"select": "Select",
+		"search": "Search",
+		"monthly": "Monthly",
+		"month": "Month",
+		"yearly": "Yearly",
+		"year": "Year"
+	},
+	"nav": {
+		"home": "Home",
+		"explore": "Explore",
+		"feed": "Feed",
+		"howItWorks": "How It Works",
+		"privacy": "Privacy Policy",
+		"terms": "Terms of Service",
+		"creatorStudio": "Creator Studio",
+		"analytics": "Analytics",
+		"content": "Content",
+		"messages": "Messages",
+		"subscribers": "Subscribers",
+		"earnings": "Earnings",
+		"wallet": "Wallet",
+		"subscriptions": "Subscriptions",
+		"becomeCreator": "Become A Creator",
+		"user": {
+			"profile": "Your Profile",
+			"subscriptions": "Subscriptions",
+			"settings": "Settings"
+		},
+		"creator": {
+			"dashboard": "Creator Dashboard",
+			"content": "Content Manager",
+			"earnings": "Earnings"
+		}
+	},
+	"theme": {
+		"light": "Light Mode",
+		"dark": "Dark Mode"
+	},
+	"home": {
+		"hero": {
+			"title": "Connect with Your Favorite Creators",
+			"subtitle": "Join Whispers to discover exclusive content from creators you love. Subscribe to access premium content and support your favorite creators.",
+			"cta": "Get Started"
+		},
+		"featuredCreators": {
+			"title": "Featured Creators",
+			"subtitle": "Discover amazing creators from various categories"
+		},
+		"howItWorks": {
+			"title": "How Whispers Works",
+			"subtitle": "Start your journey with Whispers in three simple steps",
+			"steps": {
+				"createAccount": {
+					"title": "Create an Account",
+					"description": "Sign up for free and create your personal account to get started."
+				},
+				"discoverCreators": {
+					"title": "Discover Creators",
+					"description": "Browse and follow your favorite creators from various categories."
+				},
+				"subscribe": {
+					"title": "Subscribe & Enjoy",
+					"description": "Subscribe to unlock exclusive content and support your favorite creators."
+				}
+			}
+		},
+		"cta": {
+			"title": "Ready to start creating?",
+			"subtitle": "Join our community of creators and start sharing your content with the world.",
+			"primary": "Apply as Creator",
+			"secondary": "Learn More"
+		},
+		"sendTipTo": "Send tip to {name}",
+		"amount": "Amount (₦)",
+		"sendTip": "Send Tip",
+		"unlike": "Unlike",
+		"like": "Like",
+		"comment": "Comment",
+		"share": "Share",
+		"tipCreator": "Tip Creator",
+		"save": "Save"
+	},
+	"legal": {
+		"privacy": {
+			"title": "Privacy Policy",
+			"lastUpdated": "Last updated: April 1, 2025"
+		},
+		"terms": {
+			"title": "Terms of Service",
+			"lastUpdated": "Last updated: April 1, 2025"
+		}
+	},
+	"apply": {
+		"title": "Apply as Creator",
+		"basicInfo": {
+			"title": "Basic Information",
+			"displayName": "Display Name",
+			"displayNamePlaceholder": "How you'll appear to your subscribers",
+			"username": "Username",
+			"usernamePlaceholder": "Your unique username (e.g. johndoe)",
+			"bio": "Bio",
+			"bioPlaceholder": "Tell your future subscribers about yourself",
+			"categories": "Categories",
+			"categoriesPlaceholder": "Select at least one category",
+			"required": "Required field"
+		},
+		"social": {
+			"title": "Social Media",
+			"facebook": "Facebook Username",
+			"instagram": "Instagram Username",
+			"twitter": "Twitter Username",
+			"tiktok": "TikTok Username",
+			"usernamePlaceholder": "Your username"
+		},
+		"pricing": {
+			"title": "Pricing",
+			"monthlySubscription": "Monthly Subscription",
+			"monthlyPrice": "Monthly Price ($)",
+			"subscriptionPlans": "Subscription Plans",
+			"yearlyPlan": "Yearly Plan",
+			"yearlyDescription": "Pay for 12 months and save",
+			"totalYearlyPrice": "Total Yearly Price",
+			"discount": "Discount",
+			"totalQuarterlyPrice": "Total Quarterly Price",
+			"quarterlyPlan": "Quarterly Plan",
+			"quarterlyDescription": "Pay for 3 months and save",
+			"calculating": "Calculating..."
+		},
+		"legal": {
+			"acceptTerms": "I accept the terms and conditions",
+			"confirmAge": "I confirm I am over 18 years old"
+		},
+		"button": "Submit Application",
+		"processing": "Processing..."
+	},
+	"validation": {
+		"required": "{field} is required",
+		"minCategories": "Select at least one category",
+		"atLeastOneSocial": "Please provide at least one social media username",
+		"mustBeNumber": "Must be a number",
+		"minPrice": "Minimum price is $4.99",
+		"mustBeValidNumber": "Must be a valid number",
+		"mustAcceptTerms": "You must accept the terms",
+		"mustConfirmAge": "You must confirm your age",
+		"maxLength": "{field} must be less than {max} characters",
+		"maxFiles": "Maximum {max} files allowed",
+		"priceRange": "Price must be between $1 and $100",
+		"fixErrors": "Please fix the errors in the form",
+		"displayNameRequired": "Display name is required.",
+		"displayNameMin": "Display name must be at least 2 characters.",
+		"displayNameMax": "Display name must be at most 50 characters.",
+		"usernameRequired": "Username is required.",
+		"usernameMin": "Username must be at least 3 characters.",
+		"usernameMax": "Username must be at most 30 characters.",
+		"usernamePattern": "Username can only contain letters, numbers, underscores, and hyphens.",
+		"bioRequired": "Bio is required.",
+		"bioMin": "Bio must be at least 10 characters.",
+		"bioMax": "Bio must be at most 500 characters.",
+		"socialUsername": "Enter a valid username (letters, numbers, underscores, min 2 characters, may start with).",
+		"minLength": "{field} must be at least {min} characters",
+		"minValue": "{field} must be at least {min}",
+		"maxValue": "{field} must be less than {max}",
+		"invalidVisibility": "Invalid visibility option",
+		"futureDate": "Scheduled date must be in the future",
+		"maxMediaFiles": "Maximum 10 media files allowed",
+		"title": {
+			"required": "Title is required",
+			"minLength": "Title must be at least 3 characters",
+			"maxLength": "Title must be less than 200 characters"
+		},
+		"content": {
+			"required": "Content is required",
+			"minLength": "Content must be at least 10 characters",
+			"maxLength": "Content must be less than 5000 characters"
+		},
+		"price": {
+			"required": "Price is required for pay-to-view posts",
+			"minValue": "Price must be at least $0.01",
+			"maxValue": "Price must be less than $999.99"
+		},
+		"scheduledDate": {
+			"required": "Scheduled date is required",
+			"futureDate": "Scheduled date must be in the future"
+		}
+	},
+	"notifications": {
+		"title": "Notifications",
+		"markAllAsRead": "Mark all as read",
+		"noNotifications": "No notifications yet",
+		"viewAll": "View all notifications",
+		"view": "View",
+		"dismiss": "Dismiss",
+		"applicationSubmitted": "Creator application submitted successfully!",
+		"applicationFailed": "Failed to submit application",
+		"preferencesFailed": "Failed to fetch creator preferences",
+		"contentDeleted": "Content deleted successfully",
+		"contentDeleteFailed": "Failed to delete content. Please try again.",
+		"contentLoadFailed": "Failed to load content.",
+		"contentUpdated": "Post updated successfully",
+		"contentUpdateFailed": "Failed to update post. Please try again.",
+		"draftSaved": "Draft saved successfully",
+		"contentCreated": "Post published successfully",
+		"mediaUploaded": "media uploaded successfully",
+		"contentCreateFailed": "Failed to create post. Please try again.",
+		"mediaUploadFailed": "Failed to upload media.",
+		"draftSaveFailed": "Failed to save draft",
+		"subscription": {
+			"success": "Successfully subscribed to {name}!",
+			"error": "Failed to subscribe to creator"
+		},
+		"tip": {
+			"success": "Successfully sent tip to {name}!",
+			"error": "Failed to send tip"
+		},
+		"posts": {
+			"loadError": "Failed to load posts"
+		},
+		"settings": {
+			"saveSuccess": "Settings saved successfully",
+			"saveError": "Failed to save settings"
+		},
+		"collections": {
+			"createSuccess": "Collection created successfully",
+			"createError": "Failed to create collection",
+			"updateSuccess": "Collection updated successfully",
+			"updateError": "Failed to update collection",
+			"deleteSuccess": "Collection deleted successfully",
+			"deleteError": "Failed to delete collection"
+		}
+	},
+	"time": {
+		"minutesAgo": "{count}m ago",
+		"hoursAgo": "{count}h ago",
+		"daysAgo": "{count}d ago"
+	},
+	"auth": {
+		"signInTitle": "Sign in to your account",
+		"authenticationFailed": "Authentication failed. Please try again.",
+		"continueWithGoogle": "Continue with Google",
+		"continueWithTwitter": "Continue with Twitter",
+		"processingLogin": "Processing login...",
+		"loginFailed": "Login failed. {{error}}"
+	},
+	"content": {
+		"premium": {
+			"title": "Premium Content",
+			"description": "Subscribe to unlock this content",
+			"subscribeNow": "Subscribe Now"
+		},
+		"management": {
+			"title": "Content Management",
+			"description": "Create, edit, and manage your content.",
+			"createNew": "Create New Post",
+			"search": {
+				"placeholder": "Search content..."
+			},
+			"filters": {
+				"all": "All Content",
+				"public": "Public",
+				"private": "Private",
+				"pay-to-view": "Pay-to-view"
+			},
+			"list": {
+				"title": "Title",
+				"visibility": "Visibility",
+				"views": "Views",
+				"date": "Date",
+				"actions": "Actions",
+				"loading": "Loading content...",
+				"noContent": "No content found",
+				"edit": "Edit",
+				"delete": "Delete"
+			},
+			"delete": {
+				"title": "Delete Content",
+				"description": "Are you sure you want to delete this content? This action cannot be undone.",
+				"confirm": "Delete",
+				"cancel": "Cancel"
+			}
+		},
+		"edit": {
+			"title": "Edit Post",
+			"description": "Update your content and save changes.",
+			"loading": "Loading post..."
+		},
+		"new": {
+			"title": "Create New Post",
+			"description": "Create and share your content with your audience"
+		},
+		"form": {
+			"title": "Title",
+			"content": "Content",
+			"price": "Price"
+		},
+		"untitledDraft": "Untitled Draft",
+		"saveDraft": "Save Draft",
+		"uploadFiles": "Upload files"
+	},
+	"upload": {
+		"title": "Upload files",
+		"uploadMore": "Upload more files",
+		"dragAndDrop": "or drag and drop",
+		"imageTypes": "PNG, JPG, GIF up to {size}",
+		"videoTypes": "Video files up to {size}",
+		"fileTypes": "Files up to {size}"
+	},
+	"media": {
+		"comments": {
+			"title": "Comments",
+			"addComment": "Add a comment...",
+			"post": "Post",
+			"timeAgo": {
+				"seconds": "{count}s ago",
+				"minutes": "{count}m ago",
+				"hours": "{count}h ago",
+				"days": "{count}d ago"
+			}
+		}
+	},
+	"userDropdown": {
+		"logout": "Sign out"
+	},
+	"earnings": {
+		"title": "Earnings",
+		"description": "Track your earnings and manage payouts.",
+		"stats": {
+			"totalEarnings": "Total Earnings",
+			"subscriptionRevenue": "Subscription Revenue",
+			"tipsReceived": "Tips Received",
+			"ppvRevenue": "PPV Revenue",
+			"fromLastMonth": "from last month"
+		},
+		"overview": {
+			"title": "Earnings Overview",
+			"periods": {
+				"7d": "Last 7 days",
+				"30d": "Last 30 days",
+				"90d": "Last 90 days",
+				"1y": "Last year"
+			},
+			"chartPlaceholder": "Chart placeholder - In a real app, implement chart using a library like Chart.js"
+		},
+		"revenue": {
+			"title": "Revenue Breakdown",
+			"byType": "By Revenue Type",
+			"bySubscription": "By Subscription Type",
+			"types": {
+				"subscriptions": "Subscriptions",
+				"tips": "Tips",
+				"ppv": "Pay-to-view"
+			},
+			"subscriptionTypes": {
+				"monthly": "Monthly",
+				"yearly": "Yearly"
+			}
+		},
+		"transactions": {
+			"title": "Recent Transactions",
+			"downloadCsv": "Download CSV",
+			"headers": {
+				"date": "Date",
+				"type": "Type",
+				"customer": "Customer",
+				"amount": "Amount",
+				"status": "Status"
+			},
+			"types": {
+				"subscription": "Subscription",
+				"tip": "Tip",
+				"ppv": "PPV"
+			},
+			"status": {
+				"completed": "Completed",
+				"pending": "Pending",
+				"failed": "Failed"
+			},
+			"afterFees": "After fees: ${ amount }",
+			"pagination": {
+				"previous": "Previous",
+				"next": "Next",
+				"showing": "Showing",
+				"to": "to",
+				"of": "of",
+				"results": "results"
+			}
+		}
+	},
+	"wallet": {
+		"title": "Wallet",
+		"balance": "Wallet Balance",
+		"fund": "Fund Wallet",
+		"transactionHistory": "Transaction History",
+		"recentTransactions": "Recent Transactions",
+		"fundYourWallet": "Fund your wallet",
+		"amount": "Amount (₦)",
+		"payWithPaystack": "Pay with Paystack",
+		"payWithBani": "Pay with Bani",
+		"walletFunding": "Wallet Funding",
+		"subscriptionPayment": "Subscription Payment",
+		"creatorTip": "Creator Tip",
+		"id": "ID",
+		"walletFunded": "Wallet funded successfully!"
+	},
+	"profile": {
+		"user": "User",
+		"unknownUser": "Unknown user",
+		"editProfile": "Edit Profile",
+		"about": "About",
+		"noBio": "No bio yet.",
+		"posts": "Posts",
+		"followers": "Followers",
+		"social": "Social",
+		"joined": "Joined on",
+		"unknownDate": "Unknown date",
+		"shareWithFollowers": "Share something with your followers...",
+		"post": "Post",
+		"noPosts": "No posts yet.",
+		"follow": "Follow",
+		"unfollow": "Unfollow"
+	},
+	"subscriptions": {
+		"title": "Your Subscriptions",
+		"activeSubscriptions": "Active Subscriptions",
+		"expiredSubscriptions": "Expired Subscriptions",
+		"loading": "Loading subscriptions...",
+		"noActiveSubscriptions": {
+			"title": "No active subscriptions",
+			"description": "Explore creators and subscribe to unlock exclusive content.",
+			"cta": "Explore Creators"
+		},
+		"plan": "Plan",
+		"price": "Price",
+		"nextBillingDate": "Next billing date",
+		"autoRenew": "Auto-renew",
+		"enabled": "Enabled",
+		"disabled": "Disabled",
+		"viewProfile": "View Profile",
+		"cancel": "Cancel",
+		"expiredOn": "Subscription expired on",
+		"renewSubscription": "Renew Subscription"
+	},
+	"settings": {
+		"title": "Settings",
+		"profile": {
+			"title": "Profile Settings",
+			"displayName": "Display Name",
+			"username": "Username",
+			"bio": "Bio",
+			"profilePicture": "Profile Picture",
+			"updatePicture": "Update Profile Picture",
+			"pictureUpdated": "Profile picture updated",
+			"updateProfile": "Update Profile",
+			"profileUpdated": "Profile updated successfully",
+			"updateFailed": "Failed to update profile"
+		},
+		"notifications": {
+			"title": "Notification Settings",
+			"newSubscriber": "New Subscribers",
+			"newMessage": "Direct Messages",
+			"newComment": "Comments on Posts",
+			"newTip": "Tips and Donations",
+			"marketing": "Marketing Updates",
+			"newsletter": "Newsletter",
+			"descriptions": {
+				"newSubscriber": "Get notified when someone subscribes to your content",
+				"newMessage": "Receive notifications for new direct messages",
+				"newComment": "Get notified when someone comments on your posts",
+				"newTip": "Receive notifications for tips and donations",
+				"marketing": "Receive updates about new features and promotions",
+				"newsletter": "Subscribe to our weekly newsletter"
+			}
+		}
+	},
+	"messages": {
+		"title": "Messages",
+		"search": "Search messages...",
+		"noMessages": "No messages yet",
+		"typeMessage": "Type a message...",
+		"send": "Send",
+		"media": {
+			"title": "Media",
+			"noMedia": "No media in this chat"
+		},
+		"timeAgo": {
+			"minutes": "{count}m ago",
+			"hours": "{count}h ago",
+			"days": "{count}d ago"
+		},
+		"selectConversation": "Select a conversation to start messaging",
+		"status": {
+			"online": "Online",
+			"offline": "Offline"
+		},
+		"voiceMessage": "Voice message",
+		"photo": "Photo",
+		"video": "Video",
+		"now": "now"
+	},
+	"searchUsersOrPosts": "Search users or posts",
+	"unknownLocation": "Unknown location",
+	"subscribe": "Subscribe",
+	"likes": "likes",
+	"viewAllComments": "View all {count} comments",
+	"addAComment": "Add a comment...",
+	"post": "Post",
+	"secondsAgo": "{count}s ago",
+	"minutesAgo": "{count}m ago",
+	"hoursAgo": "{count}h ago",
+	"daysAgo": "{count}d ago",
+	"postTitle": "Post Title",
+	"enterPostTitle": "Enter post title...",
+	"postContent": "Post Content",
+	"writePostContent": "Write your post content here...",
+	"mediaFiles": "Media Files",
+	"uploadMediaHint": "Upload images or videos to share with your subscribers. Max 10 files.",
+	"visibility": "Visibility",
+	"public": "Public",
+	"publicHint": "Visible to everyone, including non-subscribers",
+	"subscribersOnly": "Subscribers Only",
+	"subscribersOnlyHint": "Only visible to your paid subscribers",
+	"payPerView": "Pay-to-view",
+	"payPerViewHint": "Users must pay a one-time fee to access",
+	"price": "Price ($)",
+	"pricePlaceholder": "4.99",
+	"scheduleForLater": "Schedule for later",
+	"scheduleHint": "Set a future date and time to publish this post",
+	"publishDate": "Publish Date",
+	"saveAsDraft": "Save as Draft",
+	"schedulePost": "Schedule Post",
+	"publishNow": "Publish Now",
+	"myCollections": "My Collections",
+	"newCollection": "New Collection",
+	"viewCollection": "View Collection",
+	"createNewCollection": "Create New Collection",
+	"collectionName": "Collection Name",
+	"posts": "Posts",
+	"manageAndCreatePosts": "Manage and create your posts",
+	"createNewPost": "Create New Post",
+	"searchPosts": "Search posts...",
+	"allVisibility": "All Visibility",
+	"newestFirst": "Newest First",
+	"oldestFirst": "Oldest First",
+	"mostPopular": "Most Popular",
+	"highestEarnings": "Highest Earnings",
+	"loadingPosts": "Loading posts...",
+	"noPostsFound": "No posts found.",
+	"tryAdjustingSearch": "Try adjusting your search or filters.",
+	"getStartedCreatePost": "Get started by creating your first post.",
+	"stats": "Stats",
+	"date": "Date",
+	"actions": "Actions",
+	"views": "views",
+	"comments": "comments",
+	"purchases": "purchases",
+	"previous": "Previous",
+	"next": "Next",
+	"showingResults": "Showing {start} to {end} of {total} results",
+	"manageSubscribers": "Manage your subscribers and view subscription analytics.",
+	"fromLastMonth": "from last month",
+	"searchSubscribers": "Search subscribers...",
+	"allPlans": "All Plans",
+	"monthly": "Monthly",
+	"yearly": "Yearly",
+	"allStatus": "All Status",
+	"active": "Active",
+	"expired": "Expired",
+	"cancelled": "Cancelled",
+	"subscriber": "Subscriber",
+	"plan": "Plan",
+	"status": "Status",
+	"revenue": "Revenue",
+	"joined": "Joined",
+	"lifetimeValue": "Lifetime value",
+	"message": "Message",
+	"block": "Block",
+	"showingSubscribers": "Showing {start} to {end} of {total} results",
+	"dashboard": "Dashboard",
+	"overviewStats": "Overview of your creator stats and recent activity.",
+	"recentSubscriptions": "Recent Subscriptions",
+	"noRecentSubscriptions": "No recent subscriptions",
+	"viewAllSubscribers": "View all subscribers",
+	"contentPerformance": "Content Performance",
+	"noContentYet": "No content yet",
+	"viewAllContent": "View all content",
+	"upcomingPayout": "Upcoming Payout",
+	"viewEarningsDetails": "View earnings details",
+	"nextPayoutOn": "Next payout on {date}",
+	"requestEarlyPayout": "Request Early Payout",
+	"payoutBreakdown": "Payout Breakdown",
+	"subscriptionRevenue": "Subscription Revenue",
+	"tips": "Tips",
+	"platformFee": "Platform Fee",
+	"walletBalance": "Wallet Balance",
+	"fundWallet": "Fund Wallet",
+	"transactionHistory": "Transaction History",
+	"recentTransactions": "Recent Transactions",
+	"fundYourWallet": "Fund Your Wallet",
+	"amountNGN": "Amount (₦)",
+	"payWithPaystack": "Pay with Paystack",
+	"payWithBani": "Pay with Bani",
+	"walletFunding": "Wallet Funding",
+	"subscriptionPayment": "Subscription Payment",
+	"creatorTip": "Creator Tip",
+	"walletFundingPaystack": "Wallet Funding via Paystack",
+	"walletFundingBani": "Wallet Funding via Bani",
+	"walletFundedSuccess": "Wallet funded successfully!",
+	"transactionId": "ID: {id}",
+	"about": "About",
+	"noBioYet": "No bio yet.",
+	"followers": "Followers",
+	"social": "Social",
+	"unknownUser": "Unknown User",
+	"unknown": "unknown",
+	"editProfile": "Edit Profile",
+	"follow": "Follow",
+	"unfollow": "Unfollow",
+	"shareWithFollowers": "Share something with your followers...",
+	"noPostsYet": "No posts yet.",
+	"suggestions": "Suggestions",
+	"sendTipTo": "Send Tip to {name}",
+	"sendTip": "Send Tip",
+	"analytics": {
+		"title": "Analytics",
+		"overview": "Overview of your creator stats and recent activity.",
+		"recentActivity": "Recent Activity",
+		"followers": "Followers",
+		"earnings": "Earnings",
+		"views": "Views",
+		"subscribers": "Subscribers",
+		"posts": "Posts",
+		"engagement": "Engagement",
+		"growth": "Growth",
+		"noData": "No analytics data available.",
+		"from_last_month": "from last month",
+		"no_recent_subscriptions": "No recent subscriptions",
+		"view_all_subscribers": "View all subscribers",
+		"no_content_yet": "No content yet",
+		"view_all_content": "View all content",
+		"view_earnings_details": "View earnings details",
+		"next_payout_on": "Next payout on",
+		"request_early_payout": "Request Early Payout",
+		"payout_breakdown": "Payout Breakdown",
+		"subscription_revenue": "Subscription Revenue",
+		"tips": "Tips",
+		"pay_per_view": "Pay-to-view",
+		"platform_fee": "Platform Fee",
+		"content-view": "Content Views",
+		"revenue": "Revenue This Month",
+		"total-posts": "Total Posts"
+	},
+	"subscribers": {
+		"title": "Subscribers",
+		"manage": "Manage your subscribers and view subscription analytics.",
+		"searchPlaceholder": "Search subscribers...",
+		"name": "Name",
+		"email": "Email",
+		"joined": "Joined",
+		"status": "Status",
+		"active": "Active",
+		"cancelled": "Cancelled",
+		"noSubscribers": "No subscribers yet.",
+		"blockTitle": "Block Subscriber",
+		"blockConfirmation": "Are you sure you want to block this subscriber? They will no longer be able to view your content or message you.",
+		"block": "Block",
+		"blocking": "Blocking...",
+		"cancel": "Cancel",
+		"stats": {
+			"totalSubscribers": "Total Subscribers",
+			"activeSubscribers": "Active Subscribers",
+			"monthlyRevenue": "Monthly Revenue",
+			"churnRate": "Churn Rate",
+			"totalRevenue": "Total Revenue",
+			"fromLastMonth": "from last month"
+		},
+		"filters": {
+			"search": "Search subscribers...",
+			"allPlans": "All Plans",
+			"monthly": "Monthly",
+			"yearly": "Yearly",
+			"allStatus": "All Status",
+			"active": "Active",
+			"expired": "Expired",
+			"cancelled": "Cancelled"
+		},
+		"table": {
+			"subscriber": "Subscriber",
+			"plan": "Plan",
+			"status": "Status",
+			"revenue": "Revenue",
+			"joined": "Joined",
+			"actions": "Actions",
+			"lifetimeValue": "Lifetime value"
+		},
+		"pagination": {
+			"previous": "Previous",
+			"next": "Next",
+			"showing": "Showing",
+			"to": "to",
+			"of": "of",
+			"results": "results"
+		},
+		"actions": {
+			"message": "Message subscriber",
+			"block": "Block subscriber"
+		}
+	},
+	"categories": {
+		"art": "Art",
+		"music": "Music",
+		"photography": "Photography",
+		"writing": "Writing",
+		"technology": "Technology",
+		"education": "Education",
+		"entertainment": "Entertainment",
+		"lifestyle": "Lifestyle",
+		"sports": "Sports",
+		"gaming": "Gaming"
+	},
+	"mediaLibrary": {
+		"title": "Media Library",
+		"header": { "subtitle": "Upload and manage your content" },
+		"search": { "placeholder": "Search your media..." },
+		"empty": { "title": "No media found", "subtitle": "Try adjusting your search or upload some content" },
+		"device": {
+			"dropHere": "Drop your files here",
+			"browse": "or click to browse from your device",
+			"chooseFiles": "Choose Files",
+			"maxFiles": "Maximum {maxFiles} files • Images and videos supported",
+			"maxSize": "Up to 100MB per file"
+		},
+		"preview": {
+			"emptyTitle": "No media selected",
+			"emptySubtitle": "Add some files to get started"
+		},
+		"footer": {
+			"uploading": "Uploading...",
+			"ready": "Ready to proceed",
+			"processing": "Processing...",
+			"continue": "Continue"
+		},
+		"tabs": {
+			"uploadNew": "Upload New",
+			"mediaLibrary": "Media Library"
+		}
+	},
+	"postForm": {
+		"title": "Title",
+		"content": "Content",
+		"visibility": "Visibility",
+		"price": "Price",
+		"media": "Media",
+		"addMedia": "Add Media",
+		"remove": "Remove",
+		"next": "Next",
+		"back": "Back",
+		"cancel": "Cancel",
+		"save": "Save",
+		"submit": "Submit",
+		"draft": "Save as Draft",
+		"schedule": "Schedule",
+		"scheduledDate": "Scheduled Date",
+		"public": "Public",
+		"private": "Subscribers only",
+		"premium": "Pay to view",
+		"uploadLimit": "You can upload up to {max} files.",
+		"uploadTypes": "Accepted file types: {types}",
+		"uploadSize": "Max file size: {size}",
+		"uploading": "Uploading...",
+		"uploadFailed": "Upload failed",
+		"uploadSuccess": "Upload successful",
+		"updatePost": "Update Post"
+	},
+	"mediaGallery": {
+		"title": "Media Library",
+		"tabLibrary": "Media Library",
+		"tabDevice": "From Device",
+		"search": "Search media...",
+		"noMedia": "No media found.",
+		"next": "Next",
+		"remove": "Remove",
+		"select": "Select",
+		"upload": "Upload",
+		"dragAndDrop": "or drag and drop",
+		"uploadMore": "Upload more",
+		"fromDevice": "From Device",
+		"selectFromDevice": "Select from device"
+	},
+	"mediaPreview": {
+		"edit": "Edit",
+		"coverPhoto": "Cover Photo",
+		"selectFromComputer": "Select from computer",
+		"selectThumbnailToCover": "Select a thumbnail to use as cover photo",
+		"clearCover": "Clear cover photo",
+		"trim": "Trim",
+		"soundOn": "Sound On",
+		"comments": "Comments",
+		"addComment": "Add a comment...",
+		"post": "Post",
+		"loading": "Loading...",
+		"delete": "Delete",
+		"confirmDelete": "Are you sure you want to delete this media?",
+		"cancel": "Cancel",
+		"save": "Save",
+		"uploadCustomCover": "Upload custom cover"
+	},
+	"addMore": "Add More",
+	"deletePost": "Delete Post",
+	"areYouSureYouWantToDeleteThisPost": "Are you sure you want to delete this post?",
+	"deleting": "Deleting...",
+	"showing": "Showing",
+	"to": "to",
+	"of": "of",
+	"results": "results"
+}

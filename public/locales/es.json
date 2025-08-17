@@ -1,0 +1,829 @@
+{
+	"common": {
+		"appName": "Whispers",
+		"copyright": "© {year} Whispers. Todos los derechos reservados.",
+		"openSidebar": "Abrir barra lateral",
+		"submit": "Enviar",
+		"cancel": "Cancelar",
+		"save": "Guardar",
+		"delete": "Eliminar",
+		"edit": "Editar",
+		"loading": "Cargando...",
+		"learnMore": "Aprender más",
+		"getStarted": "Comenzar",
+		"signUp": "Registrarse",
+		"signIn": "Iniciar sesión",
+		"signOut": "Cerrar sesión",
+		"profile": "Perfil",
+		"settings": "Configuración",
+		"post": "Publicar",
+		"reply": "Responder",
+		"like": "Me gusta",
+		"close": "Cerrar",
+		"select": "Seleccionar",
+		"monthly": "Mensual",
+		"month": "Mes",
+		"yearly": "Anual",
+		"year": "Año"
+	},
+	"nav": {
+		"home": "Inicio",
+		"explore": "Explorar",
+		"feed": "Feed",
+		"howItWorks": "Cómo funciona",
+		"privacy": "Política de privacidad",
+		"terms": "Términos de servicio",
+		"creatorStudio": "Estudio del creador",
+		"analytics": "Analíticas",
+		"content": "Contenido",
+		"messages": "Mensajes",
+		"subscribers": "Suscriptores",
+		"earnings": "Ganancias",
+		"wallet": "Monedero",
+		"subscriptions": "Suscripciones",
+		"becomeCreator": "Convertirse en creador",
+		"user": {
+			"profile": "Tu perfil",
+			"subscriptions": "Suscripciones",
+			"settings": "Configuración"
+		},
+		"creator": {
+			"dashboard": "Panel del creador",
+			"content": "Gestor de contenido",
+			"earnings": "Ganancias"
+		}
+	},
+	"theme": {
+		"light": "Modo claro",
+		"dark": "Modo oscuro"
+	},
+	"home": {
+		"hero": {
+			"title": "Conéctate con tus creadores favoritos",
+			"subtitle": "Únete a Whispers para descubrir contenido exclusivo de los creadores que amas. Suscríbete para acceder a contenido premium y apoyar a tus creadores favoritos.",
+			"cta": "Comenzar"
+		},
+		"featuredCreators": {
+			"title": "Creadores destacados",
+			"subtitle": "Descubre increíbles creadores de diversas categorías"
+		},
+		"howItWorks": {
+			"title": "Cómo funciona Whispers",
+			"subtitle": "Comienza tu viaje con Whispers en tres simples pasos",
+			"steps": {
+				"createAccount": {
+					"title": "Crea una cuenta",
+					"description": "Regístrate gratis y crea tu cuenta personal para comenzar."
+				},
+				"discoverCreators": {
+					"title": "Descubre creadores",
+					"description": "Busca y sigue a tus creadores favoritos de diversas categorías."
+				},
+				"subscribe": {
+					"title": "Suscríbete y disfruta",
+					"description": "Suscríbete para desbloquear contenido exclusivo y apoyar a tus creadores favoritos."
+				}
+			}
+		},
+		"cta": {
+			"title": "¿Listo para empezar a crear?",
+			"subtitle": "Únete a nuestra comunidad de creadores y comparte tu contenido con el mundo.",
+			"primary": "Solicitar como creador",
+			"secondary": "Aprender más"
+		},
+		"sendTipTo": "Enviar propina a {name}",
+		"amount": "Cantidad (₦)",
+		"sendTip": "Enviar propina",
+		"unlike": "No me gusta",
+		"like": "Me gusta",
+		"comment": "Comentar",
+		"share": "Compartir",
+		"tipCreator": "Propina al creador",
+		"save": "Guardar"
+	},
+	"legal": {
+		"privacy": {
+			"title": "Política de privacidad",
+			"lastUpdated": "Última actualización: 1 de abril de 2025"
+		},
+		"terms": {
+			"title": "Términos de servicio",
+			"lastUpdated": "Última actualización: 1 de abril de 2025"
+		}
+	},
+	"apply": {
+		"title": "Solicitar como creador",
+		"basicInfo": {
+			"title": "Información básica",
+			"displayName": "Nombre público",
+			"displayNamePlaceholder": "Cómo aparecerás ante tus suscriptores",
+			"username": "Nombre de usuario",
+			"usernamePlaceholder": "Tu nombre de usuario único (ej. johndoe)",
+			"bio": "Biografía",
+			"bioPlaceholder": "Cuéntale a tus futuros suscriptores sobre ti",
+			"categories": "Categorías",
+			"categoriesPlaceholder": "Selecciona al menos una categoría",
+			"required": "Campo requerido"
+		},
+		"social": {
+			"title": "Redes sociales",
+			"facebook": "Usuario de Facebook",
+			"instagram": "Usuario de Instagram",
+			"twitter": "Usuario de Twitter",
+			"tiktok": "Usuario de TikTok",
+			"usernamePlaceholder": "Tu nombre de usuario"
+		},
+		"pricing": {
+			"title": "Precios",
+			"monthlySubscription": "Suscripción mensual",
+			"monthlyPrice": "Precio mensual ($)",
+			"subscriptionPlans": "Planes de suscripción",
+			"yearlyPlan": "Plan anual",
+			"yearlyDescription": "Paga por 12 meses y ahorra",
+			"totalYearlyPrice": "Precio total anual",
+			"discount": "Descuento",
+			"totalQuarterlyPrice": "Precio total trimestral",
+			"quarterlyPlan": "Plan trimestral",
+			"quarterlyDescription": "Paga por 3 meses y ahorra",
+			"calculating": "Calculando..."
+		},
+		"legal": {
+			"acceptTerms": "Acepto los términos y condiciones",
+			"confirmAge": "Confirmo que soy mayor de 18 años"
+		},
+		"button": "Enviar solicitud",
+		"processing": "Procesando..."
+	},
+	"validation": {
+		"required": "{field} es requerido",
+		"minCategories": "Selecciona al menos una categoría",
+		"atLeastOneSocial": "Proporciona al menos un nombre de usuario de redes sociales",
+		"mustBeNumber": "Debe ser un número",
+		"minPrice": "El precio mínimo es $4.99",
+		"mustBeValidNumber": "Debe ser un número válido",
+		"mustAcceptTerms": "Debes aceptar los términos",
+		"mustConfirmAge": "Debes confirmar tu edad",
+		"maxLength": "{field} debe tener menos de {max} caracteres",
+		"maxFiles": "Máximo {max} archivos permitidos",
+		"priceRange": "El precio debe estar entre $1 y $100",
+		"fixErrors": "Por favor corrige los errores en el formulario",
+		"displayNameRequired": "El nombre público es requerido.",
+		"displayNameMin": "El nombre público debe tener al menos 2 caracteres.",
+		"displayNameMax": "El nombre público debe tener máximo 50 caracteres.",
+		"usernameRequired": "El nombre de usuario es requerido.",
+		"usernameMin": "El nombre de usuario debe tener al menos 3 caracteres.",
+		"usernameMax": "El nombre de usuario debe tener máximo 30 caracteres.",
+		"usernamePattern": "El nombre de usuario solo puede contener letras, números, guiones bajos y guiones.",
+		"bioRequired": "La biografía es requerida.",
+		"bioMin": "La biografía debe tener al menos 10 caracteres.",
+		"bioMax": "La biografía debe tener máximo 500 caracteres.",
+		"socialUsername": "Ingresa un nombre de usuario válido (letras, números, guiones bajos, mínimo 2 caracteres, puede comenzar con).",
+		"minLength": "{field} debe tener al menos {min} caracteres",
+		"minValue": "{field} debe ser al menos {min}",
+		"maxValue": "{field} debe ser menor que {max}",
+		"invalidVisibility": "Opción de visibilidad no válida",
+		"futureDate": "La fecha programada debe ser en el futuro",
+		"maxMediaFiles": "Máximo 10 archivos multimedia permitidos",
+		"title": {
+			"required": "El título es requerido",
+			"minLength": "El título debe tener al menos 3 caracteres",
+			"maxLength": "El título debe tener menos de 200 caracteres"
+		},
+		"content": {
+			"required": "El contenido es requerido",
+			"minLength": "El contenido debe tener al menos 10 caracteres",
+			"maxLength": "El contenido debe tener menos de 5000 caracteres"
+		},
+		"price": {
+			"required": "El precio es requerido para publicaciones de pago",
+			"minValue": "El precio debe ser al menos $0.01",
+			"maxValue": "El precio debe ser menor que $999.99"
+		},
+		"scheduledDate": {
+			"required": "La fecha programada es requerida",
+			"futureDate": "La fecha programada debe ser en el futuro"
+		}
+	},
+	"notifications": {
+		"title": "Notificaciones",
+		"markAllAsRead": "Marcar todas como leídas",
+		"noNotifications": "Aún no hay notificaciones",
+		"viewAll": "Ver todas las notificaciones",
+		"view": "Ver",
+		"dismiss": "Descartar",
+		"applicationSubmitted": "¡Solicitud de creador enviada con éxito!",
+		"applicationFailed": "Error al enviar la solicitud",
+		"preferencesFailed": "Error al obtener las preferencias del creador",
+		"contentDeleted": "Contenido eliminado con éxito",
+		"contentDeleteFailed": "Error al eliminar el contenido. Por favor, inténtalo de nuevo.",
+		"contentLoadFailed": "No se pudo cargar el contenido.",
+		"contentUpdated": "Publicación actualizada con éxito",
+		"contentUpdateFailed": "Error al actualizar la publicación. Por favor, inténtalo de nuevo.",
+		"draftSaved": "Borrador guardado con éxito",
+		"contentCreated": "Publicación creada con éxito",
+		"contentCreateFailed": "Error al crear la publicación. Por favor, inténtalo de nuevo.",
+		"mediaUploadFailed": "No se pudo subir el medio.",
+		"draftSaveFailed": "Error al guardar el borrador",
+		"subscription": {
+			"success": "¡Suscripción exitosa a {name}!",
+			"error": "No se pudo suscribir al creador"
+		},
+		"tip": {
+			"success": "¡Propina enviada con éxito a {name}!",
+			"error": "No se pudo enviar la propina"
+		},
+		"posts": {
+			"loadError": "No se pudieron cargar las publicaciones"
+		},
+		"settings": {
+			"saveSuccess": "Configuración guardada con éxito",
+			"saveError": "No se pudo guardar la configuración"
+		},
+		"collections": {
+			"createSuccess": "Colección creada con éxito",
+			"createError": "No se pudo crear la colección",
+			"updateSuccess": "Colección actualizada con éxito",
+			"updateError": "No se pudo actualizar la colección",
+			"deleteSuccess": "Colección eliminada con éxito",
+			"deleteError": "No se pudo eliminar la colección"
+		}
+	},
+	"time": {
+		"minutesAgo": "hace {count} min",
+		"hoursAgo": "hace {count} h",
+		"daysAgo": "hace {count} d"
+	},
+	"auth": {
+		"signInTitle": "Inicia sesión en tu cuenta",
+		"authenticationFailed": "Error de autenticación. Por favor, inténtalo de nuevo.",
+		"continueWithGoogle": "Continuar con Google",
+		"continueWithTwitter": "Continuar con Twitter",
+		"processingLogin": "Procesando inicio de sesión...",
+		"loginFailed": "Error de inicio de sesión. {{error}}"
+	},
+	"content": {
+		"premium": {
+			"title": "Contenido Premium",
+			"description": "Suscríbete para desbloquear este contenido",
+			"subscribeNow": "Suscríbete ahora"
+		},
+		"management": {
+			"title": "Gestión de contenido",
+			"description": "Crea, edita y gestiona tu contenido.",
+			"createNew": "Crear nueva publicación",
+			"search": {
+				"placeholder": "Buscar contenido..."
+			},
+			"filters": {
+				"all": "Todo el contenido",
+				"public": "Público",
+				"private": "Privado",
+				"pay-to-view": "De pago"
+			},
+			"list": {
+				"title": "Título",
+				"visibility": "Visibilidad",
+				"views": "Vistas",
+				"date": "Fecha",
+				"actions": "Acciones",
+				"loading": "Cargando contenido...",
+				"noContent": "No se encontró contenido",
+				"edit": "Editar",
+				"delete": "Eliminar"
+			},
+			"delete": {
+				"title": "Eliminar contenido",
+				"description": "¿Estás seguro de que quieres eliminar este contenido? Esta acción no se puede deshacer.",
+				"confirm": "Eliminar",
+				"cancel": "Cancelar"
+			}
+		},
+		"edit": {
+			"title": "Editar publicación",
+			"description": "Actualiza tu contenido y guarda los cambios.",
+			"loading": "Cargando publicación..."
+		},
+		"new": {
+			"title": "Crear nueva publicación",
+			"description": "Crea y comparte tu contenido con tu audiencia"
+		},
+		"form": {
+			"title": "Título",
+			"content": "Contenido",
+			"price": "Precio"
+		},
+		"untitledDraft": "Borrador sin título",
+		"saveDraft": "Guardar borrador",
+		"uploadFiles": "Subir archivos"
+	},
+	"upload": {
+		"title": "Subir archivos",
+		"uploadMore": "Subir más archivos",
+		"dragAndDrop": "o arrastra y suelta",
+		"imageTypes": "PNG, JPG, GIF hasta {size}",
+		"videoTypes": "Archivos de video hasta {size}",
+		"fileTypes": "Archivos hasta {size}"
+	},
+	"media": {
+		"comments": {
+			"title": "Comentarios",
+			"addComment": "Añadir un comentario...",
+			"post": "Publicar",
+			"timeAgo": {
+				"seconds": "hace {count} s",
+				"minutes": "hace {count} min",
+				"hours": "hace {count} h",
+				"days": "hace {count} d"
+			}
+		}
+	},
+	"userDropdown": {
+		"logout": "Cerrar sesión"
+	},
+	"earnings": {
+		"title": "Ganancias",
+		"description": "Sigue tus ganancias y gestiona los pagos.",
+		"stats": {
+			"totalEarnings": "Ganancias totales",
+			"subscriptionRevenue": "Ingresos por suscripción",
+			"tipsReceived": "Propinas recibidas",
+			"ppvRevenue": "Ingresos por PPV",
+			"fromLastMonth": "del mes pasado"
+		},
+		"overview": {
+			"title": "Resumen de ganancias",
+			"periods": {
+				"7d": "Últimos 7 días",
+				"30d": "Últimos 30 días",
+				"90d": "Últimos 90 días",
+				"1y": "Último año"
+			},
+			"chartPlaceholder": "Gráfico de ejemplo - En una aplicación real, implementa el gráfico usando una biblioteca como Chart.js"
+		},
+		"revenue": {
+			"title": "Desglose de ingresos",
+			"byType": "Por tipo de ingreso",
+			"bySubscription": "Por tipo de suscripción",
+			"types": {
+				"subscriptions": "Suscripciones",
+				"tips": "Propinas",
+				"ppv": "Pago por ver"
+			},
+			"subscriptionTypes": {
+				"monthly": "Mensual",
+				"yearly": "Anual"
+			}
+		},
+		"transactions": {
+			"title": "Transacciones recientes",
+			"downloadCsv": "Descargar CSV",
+			"headers": {
+				"date": "Fecha",
+				"type": "Tipo",
+				"customer": "Cliente",
+				"amount": "Cantidad",
+				"status": "Estado"
+			},
+			"types": {
+				"subscription": "Suscripción",
+				"tip": "Propina",
+				"ppv": "PPV"
+			},
+			"status": {
+				"completed": "Completado",
+				"pending": "Pendiente",
+				"failed": "Fallido"
+			},
+			"afterFees": "Después de tarifas: ${ amount }",
+			"pagination": {
+				"previous": "Anterior",
+				"next": "Siguiente",
+				"showing": "Mostrando",
+				"to": "a",
+				"of": "de",
+				"results": "resultados"
+			}
+		}
+	},
+	"wallet": {
+		"title": "Monedero",
+		"balance": "Saldo del monedero",
+		"fund": "Fondear monedero",
+		"transactionHistory": "Historial de transacciones",
+		"recentTransactions": "Transacciones recientes",
+		"fundYourWallet": "Fondear tu monedero",
+		"amount": "Cantidad (₦)",
+		"payWithPaystack": "Pagar con Paystack",
+		"payWithBani": "Pagar con Bani",
+		"walletFunding": "Fondeo de monedero",
+		"subscriptionPayment": "Pago de suscripción",
+		"creatorTip": "Propina al creador",
+		"id": "ID",
+		"walletFunded": "¡Monedero fondeado con éxito!"
+	},
+	"profile": {
+		"user": "Usuario",
+		"unknownUser": "Usuario desconocido",
+		"editProfile": "Editar perfil",
+		"about": "Acerca de",
+		"noBio": "Aún no hay biografía.",
+		"posts": "Publicaciones",
+		"followers": "Seguidores",
+		"social": "Social",
+		"joined": "Se unió el",
+		"unknownDate": "Fecha desconocida",
+		"shareWithFollowers": "Comparte algo con tus seguidores...",
+		"post": "Publicar",
+		"noPosts": "Aún no hay publicaciones.",
+		"follow": "Seguir",
+		"unfollow": "Dejar de seguir"
+	},
+	"subscriptions": {
+		"title": "Tus suscripciones",
+		"activeSubscriptions": "Suscripciones activas",
+		"expiredSubscriptions": "Suscripciones expiradas",
+		"loading": "Cargando suscripciones...",
+		"noActiveSubscriptions": {
+			"title": "No hay suscripciones activas",
+			"description": "Explora creadores y suscríbete para desbloquear contenido exclusivo.",
+			"cta": "Explorar creadores"
+		},
+		"plan": "Plan",
+		"price": "Precio",
+		"nextBillingDate": "Próxima fecha de facturación",
+		"autoRenew": "Renovación automática",
+		"enabled": "Habilitado",
+		"disabled": "Deshabilitado",
+		"viewProfile": "Ver perfil",
+		"cancel": "Cancelar",
+		"expiredOn": "Suscripción expirada el",
+		"renewSubscription": "Renovar suscripción"
+	},
+	"settings": {
+		"title": "Configuración",
+		"profile": {
+			"title": "Configuración de perfil",
+			"displayName": "Nombre público",
+			"username": "Nombre de usuario",
+			"bio": "Biografía",
+			"profilePicture": "Foto de perfil",
+			"updatePicture": "Actualizar foto de perfil",
+			"pictureUpdated": "Foto de perfil actualizada",
+			"updateProfile": "Actualizar perfil",
+			"profileUpdated": "Perfil actualizado con éxito",
+			"updateFailed": "Error al actualizar el perfil"
+		},
+		"notifications": {
+			"title": "Configuración de notificaciones",
+			"newSubscriber": "Nuevos suscriptores",
+			"newMessage": "Mensajes directos",
+			"newComment": "Comentarios en publicaciones",
+			"newTip": "Propinas y donaciones",
+			"marketing": "Actualizaciones de marketing",
+			"newsletter": "Boletín informativo",
+			"descriptions": {
+				"newSubscriber": "Recibe notificaciones cuando alguien se suscriba a tu contenido",
+				"newMessage": "Recibe notificaciones de nuevos mensajes directos",
+				"newComment": "Recibe notificaciones cuando alguien comente tus publicaciones",
+				"newTip": "Recibe notificaciones de propinas y donaciones",
+				"marketing": "Recibe actualizaciones sobre nuevas funciones y promociones",
+				"newsletter": "Suscríbete a nuestro boletín semanal"
+			}
+		}
+	},
+	"messages": {
+		"title": "Mensajes",
+		"search": "Buscar mensajes...",
+		"noMessages": "Aún no hay mensajes",
+		"typeMessage": "Escribe un mensaje...",
+		"send": "Enviar",
+		"media": {
+			"title": "Multimedia",
+			"noMedia": "No hay multimedia en este chat"
+		},
+		"timeAgo": {
+			"minutes": "hace {count} min",
+			"hours": "hace {count} h",
+			"days": "hace {count} d"
+		},
+		"selectConversation": "Selecciona una conversación para comenzar a chatear",
+		"status": {
+			"online": "En línea",
+			"offline": "Desconectado"
+		},
+		"voiceMessage": "Mensaje de voz",
+		"photo": "Foto",
+		"video": "Vídeo",
+		"now": "ahora"
+	},
+	"searchUsersOrPosts": "Buscar usuarios o publicaciones...",
+	"unknownLocation": "Ubicación desconocida",
+	"subscribe": "Suscribirse",
+	"likes": "me gusta",
+	"viewAllComments": "Ver todos los {count} comentarios",
+	"addAComment": "Añadir un comentario...",
+	"post": "Publicar",
+	"secondsAgo": "hace {count} s",
+	"minutesAgo": "hace {count} min",
+	"hoursAgo": "hace {count} h",
+	"daysAgo": "hace {count} d",
+	"postTitle": "Título de la publicación",
+	"enterPostTitle": "Ingresa el título de la publicación...",
+	"postContent": "Contenido de la publicación",
+	"writePostContent": "Escribe el contenido de tu publicación aquí...",
+	"mediaFiles": "Archivos multimedia",
+	"uploadMediaHint": "Sube imágenes o videos para compartir con tus suscriptores. Máx. 10 archivos.",
+	"visibility": "Visibilidad",
+	"public": "Público",
+	"publicHint": "Visible para todos, incluidos no suscriptores",
+	"subscribersOnly": "Solo suscriptores",
+	"subscribersOnlyHint": "Solo visible para tus suscriptores pagos",
+	"payPerView": "Pago por ver",
+	"payPerViewHint": "Los usuarios deben pagar una tarifa única para acceder",
+	"price": "Precio ($)",
+	"pricePlaceholder": "4.99",
+	"scheduleForLater": "Programar para después",
+	"scheduleHint": "Establece una fecha y hora futura para publicar esta publicación",
+	"publishDate": "Fecha de publicación",
+	"saveAsDraft": "Guardar como borrador",
+	"schedulePost": "Programar publicación",
+	"publishNow": "Publicar ahora",
+	"myCollections": "Mis colecciones",
+	"newCollection": "Nueva colección",
+	"posts": "Publicaciones",
+	"manageAndCreatePosts": "Gestiona y crea tus publicaciones",
+	"createNewPost": "Crear nueva publicación",
+	"searchPosts": "Buscar publicaciones...",
+	"allVisibility": "Toda visibilidad",
+	"newestFirst": "Más nuevos primero",
+	"oldestFirst": "Más antiguos primero",
+	"mostPopular": "Más populares",
+	"highestEarnings": "Mayores ganancias",
+	"loadingPosts": "Cargando publicaciones...",
+	"noPostsFound": "No se encontraron publicaciones.",
+	"tryAdjustingSearch": "Intenta ajustar tu búsqueda o filtros.",
+	"getStartedCreatePost": "Comienza creando tu primera publicación.",
+	"stats": "Estadísticas",
+	"date": "Fecha",
+	"actions": "Acciones",
+	"views": "vistas",
+	"comments": "comentarios",
+	"purchases": "compras",
+	"previous": "Anterior",
+	"next": "Siguiente",
+	"showingResults": "Mostrando {start} a {end} de {total} resultados",
+	"manageSubscribers": "Gestiona tus suscriptores y visualiza analíticas de suscripción.",
+	"fromLastMonth": "del mes pasado",
+	"searchSubscribers": "Buscar suscriptores...",
+	"allPlans": "Todos los planes",
+	"allStatus": "Todos los estados",
+	"active": "Activo",
+	"expired": "Expirado",
+	"cancelled": "Cancelado",
+	"subscriber": "Suscriptor",
+	"plan": "Plan",
+	"status": "Estado",
+	"revenue": "Ingresos",
+	"joined": "Se unió",
+	"lifetimeValue": "Valor de por vida",
+	"message": "Mensaje",
+	"block": "Bloquear",
+	"showingSubscribers": "Mostrando {start} a {end} de {total} resultados",
+	"dashboard": "Panel",
+	"overviewStats": "Resumen de tus estadísticas como creador y actividad reciente.",
+	"recentSubscriptions": "Suscripciones recientes",
+	"noRecentSubscriptions": "No hay suscripciones recientes",
+	"viewAllSubscribers": "Ver todos los suscriptores",
+	"contentPerformance": "Rendimiento del contenido",
+	"noContentYet": "Aún no hay contenido",
+	"viewAllContent": "Ver todo el contenido",
+	"upcomingPayout": "Pago próximo",
+	"viewEarningsDetails": "Ver detalles de ganancias",
+	"nextPayoutOn": "Próximo pago el {date}",
+	"requestEarlyPayout": "Solicitar pago anticipado",
+	"payoutBreakdown": "Desglose de pagos",
+	"subscriptionRevenue": "Ingresos por suscripción",
+	"tips": "Propinas",
+	"platformFee": "Tarifa de la plataforma",
+	"walletBalance": "Saldo del monedero",
+	"fundWallet": "Fondear monedero",
+	"transactionHistory": "Historial de transacciones",
+	"recentTransactions": "Transacciones recientes",
+	"fundYourWallet": "Fondear tu monedero",
+	"amountNGN": "Cantidad (₦)",
+	"payWithPaystack": "Pagar con Paystack",
+	"payWithBani": "Pagar con Bani",
+	"walletFunding": "Fondeo de monedero",
+	"subscriptionPayment": "Pago de suscripción",
+	"creatorTip": "Propina al creador",
+	"walletFundingPaystack": "Fondeo de monedero vía Paystack",
+	"walletFundingBani": "Fondeo de monedero vía Bani",
+	"walletFundedSuccess": "¡Monedero fondeado con éxito!",
+	"transactionId": "ID: {id}",
+	"about": "Acerca de",
+	"noBioYet": "Aún no hay biografía.",
+	"followers": "Seguidores",
+	"social": "Social",
+	"unknownUser": "Usuario desconocido",
+	"unknown": "desconocido",
+	"editProfile": "Editar perfil",
+	"follow": "Seguir",
+	"unfollow": "Dejar de seguir",
+	"shareWithFollowers": "Comparte algo con tus seguidores...",
+	"noPostsYet": "Aún no hay publicaciones.",
+	"suggestions": "Sugerencias",
+	"sendTipTo": "Enviar propina a {name}",
+	"sendTip": "Enviar propina",
+	"analytics": {
+		"title": "Analíticas",
+		"overview": "Resumen de tus estadísticas como creador y actividad reciente.",
+		"recentActivity": "Actividad reciente",
+		"followers": "Seguidores",
+		"earnings": "Ganancias",
+		"views": "Vistas",
+		"subscribers": "Suscriptores",
+		"posts": "Publicaciones",
+		"engagement": "Compromiso",
+		"growth": "Crecimiento",
+		"noData": "No hay datos de analíticas disponibles.",
+		"from_last_month": "del mes pasado",
+		"no_recent_subscriptions": "No hay suscripciones recientes",
+		"view_all_subscribers": "Ver todos los suscriptores",
+		"no_content_yet": "Aún no hay contenido",
+		"view_all_content": "Ver todo el contenido",
+		"view_earnings_details": "Ver detalles de ganancias",
+		"next_payout_on": "Próximo pago el",
+		"request_early_payout": "Solicitar pago anticipado",
+		"payout_breakdown": "Desglose de pagos",
+		"subscription_revenue": "Ingresos por suscripción",
+		"tips": "Propinas",
+		"pay_per_view": "Pago por ver",
+		"platform_fee": "Tarifa de la plataforma",
+		"content-view": "Vistas de contenido",
+		"revenue": "Ingresos este mes",
+		"total-posts": "Publicaciones totales"
+	},
+	"subscribers": {
+		"title": "Suscriptores",
+		"manage": "Gestiona tus suscriptores y visualiza analíticas de suscripción.",
+		"searchPlaceholder": "Buscar suscriptores...",
+		"name": "Nombre",
+		"email": "Correo electrónico",
+		"joined": "Se unió",
+		"status": "Estado",
+		"active": "Activo",
+		"cancelled": "Cancelado",
+		"noSubscribers": "Aún no hay suscriptores.",
+		"blockTitle": "Bloquear Suscriptor",
+		"blockConfirmation": "¿Estás seguro de que quieres bloquear a este suscriptor? Ya no podrá ver tu contenido ni enviarte mensajes.",
+		"block": "Bloquear",
+		"blocking": "Bloqueando...",
+		"cancel": "Cancelar",
+		"stats": {
+			"totalSubscribers": "Total de suscriptores",
+			"activeSubscribers": "Suscriptores activos",
+			"monthlyRevenue": "Ingresos mensuales",
+			"churnRate": "Tasa de abandono",
+			"totalRevenue": "Ingresos totales",
+			"fromLastMonth": "del mes pasado"
+		},
+		"filters": {
+			"search": "Buscar suscriptores...",
+			"allPlans": "Todos los planes",
+			"monthly": "Mensual",
+			"yearly": "Anual",
+			"allStatus": "Todos los estados",
+			"active": "Activo",
+			"expired": "Expirado",
+			"cancelled": "Cancelado"
+		},
+		"table": {
+			"subscriber": "Suscriptor",
+			"plan": "Plan",
+			"status": "Estado",
+			"revenue": "Ingresos",
+			"joined": "Se unió",
+			"actions": "Acciones",
+			"lifetimeValue": "Valor de por vida"
+		},
+		"pagination": {
+			"previous": "Anterior",
+			"next": "Siguiente",
+			"showing": "Mostrando",
+			"to": "a",
+			"of": "de",
+			"results": "resultados"
+		},
+		"actions": {
+			"message": "Mensaje al suscriptor",
+			"block": "Bloquear suscriptor"
+		}
+	},
+	"categories": {
+		"art": "Arte",
+		"music": "Música",
+		"photography": "Fotografía",
+		"writing": "Escritura",
+		"technology": "Tecnología",
+		"education": "Educación",
+		"entertainment": "Entretenimiento",
+		"lifestyle": "Estilo de vida",
+		"sports": "Deportes",
+		"gaming": "Juegos"
+	},
+	"mediaLibrary": {
+		"title": "Biblioteca",
+		"header": { "subtitle": "Sube y gestiona tu contenido" },
+		"search": { "placeholder": "Busca en tus medios..." },
+		"empty": { "title": "No se encontraron medios", "subtitle": "Intenta ajustar tu búsqueda o sube contenido" },
+		"device": {
+			"dropHere": "Suelta tus archivos aquí",
+			"browse": "o haz clic para buscar desde tu dispositivo",
+			"chooseFiles": "Elegir archivos",
+			"maxFiles": "Máximo {maxFiles} archivos • Imágenes y videos soportados",
+			"maxSize": "Hasta 100MB por archivo"
+		},
+		"preview": {
+			"emptyTitle": "Ningún medio seleccionado",
+			"emptySubtitle": "Agrega archivos para comenzar"
+		},
+		"footer": {
+			"uploading": "Subiendo...",
+			"ready": "Listo para continuar",
+			"processing": "Procesando...",
+			"continue": "Continuar"
+		},
+		"tabs": {
+			"uploadNew": "Subir nuevo",
+			"mediaLibrary": "Biblioteca"
+		}
+	},
+	"postForm": {
+		"title": "Título",
+		"content": "Contenido",
+		"visibility": "Visibilidad",
+		"price": "Precio",
+		"media": "Multimedia",
+		"addMedia": "Añadir multimedia",
+		"remove": "Eliminar",
+		"next": "Siguiente",
+		"back": "Atrás",
+		"cancel": "Cancelar",
+		"save": "Guardar",
+		"submit": "Enviar",
+		"draft": "Guardar como borrador",
+		"schedule": "Programar",
+		"scheduledDate": "Fecha programada",
+		"public": "Público",
+		"private": "Solo suscriptores",
+		"premium": "Pago por ver",
+		"uploadLimit": "Puedes subir hasta {max} archivos.",
+		"uploadTypes": "Tipos de archivo aceptados: {types}",
+		"uploadSize": "Tamaño máximo: {size}",
+		"uploading": "Subiendo...",
+		"uploadFailed": "Error al subir",
+		"uploadSuccess": "Subida exitosa",
+		"updatePost": "Actualizar publicación | Update Post"
+	},
+	"mediaGallery": {
+		"title": "Biblioteca multimedia",
+		"tabLibrary": "Biblioteca multimedia",
+		"tabDevice": "Desde dispositivo",
+		"search": "Buscar multimedia...",
+		"noMedia": "No se encontró multimedia.",
+		"next": "Siguiente",
+		"remove": "Eliminar",
+		"select": "Seleccionar",
+		"upload": "Subir",
+		"dragAndDrop": "o arrastra y suelta",
+		"uploadMore": "Subir más",
+		"fromDevice": "Desde dispositivo",
+		"selectFromDevice": "Seleccionar desde dispositivo"
+	},
+	"mediaPreview": {
+		"edit": "Editar",
+		"coverPhoto": "Foto de portada",
+		"selectFromComputer": "Seleccionar desde computadora",
+		"selectThumbnailToCover": "Seleccionar una miniatura como foto de portada",
+		"clearCover": "Limpiar foto de portada",
+		"trim": "Recortar",
+		"soundOn": "Sonido encendido",
+		"comments": "Comentarios",
+		"addComment": "Añadir un comentario...",
+		"post": "Publicar",
+		"loading": "Cargando...",
+		"delete": "Eliminar",
+		"confirmDelete": "¿Estás seguro de que quieres eliminar este multimedia?",
+		"cancel": "Cancelar",
+		"save": "Guardar",
+		"uploadCustomCover": "Subir portada personalizada"
+	},
+	"addMore": "Añadir Más",
+	"deletePost": "Eliminar publicación",
+	"areYouSureYouWantToDeleteThisPost": "¿Estás seguro de que deseas eliminar esta publicación?",
+	"deleting": "Eliminando...",
+	"showing": "Mostrando",
+	"to": "a",
+	"of": "de",
+	"results": "resultados"
+}
