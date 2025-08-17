@@ -12,6 +12,7 @@ import {
 import {
   useCreateCreator,
   useCreatorPreferences,
+  useSubmitApplication,
 } from "@/lib/creator/creator-hooks";
 import { X } from "lucide-react";
 
@@ -71,7 +72,7 @@ export default function ApplyCreatorForm() {
 
   // Only run the query on the client side
   // const { data: preferencesData, isLoading: isLoadingPreferences } = useCreatorPreferences()
-  const createCreatorMutation = useCreateCreator();
+  const submitApplicationMutation = useSubmitApplication();
 
   // Use empty array during SSR to prevent build issues
   const pricingPreferences: any[] = [];
@@ -86,13 +87,13 @@ export default function ApplyCreatorForm() {
     return grouped;
   }, [pricingPreferences]);
 
-  const form = useForm<ApplyFormValues>({
+  const form = useForm({
     defaultValues: initialFormValues,
     onSubmit: async ({ value }) => {
       setFormError(null);
       setFormSuccess(null);
 
-      if (createCreatorMutation.isPending) {
+      if (submitApplicationMutation.isPending) {
         return;
       }
 
@@ -117,40 +118,60 @@ export default function ApplyCreatorForm() {
         };
 
         const payload = {
-          displayName: validatedData.displayName,
-          username: validatedData.username,
-          bio: validatedData.bio,
-          categories: validatedData.categories,
-          socialMedia: Object.entries(validatedData.social)
-            .filter(
-              ([platform, username]) =>
-                allowedPlatforms.includes(platform as any) &&
-                username &&
-                username.trim()
-            )
-            .map(([platform, username]) => ({
-              platform: platform as (typeof allowedPlatforms)[number],
-              url: socialUrlMap[platform as keyof typeof socialUrlMap](
-                username
-              ),
-            })),
-          pricing: {
-            amount: validatedData.monthlyPrice,
-            models: Object.keys(preferencesByCycle).map((cycle) => {
-              return (
-                validatedData.discounts?.[cycle] ||
-                preferencesByCycle[cycle][0]?._id
-              );
-            }),
+          personalInfo: {
+            fullName: validatedData.displayName,
+            email: "", // This should come from user context
+            phone: "",
+            dateOfBirth: "",
+            nationality: "",
+            address: {
+              street: "",
+              city: "",
+              state: "",
+              zipCode: "",
+              country: "",
+            },
+          },
+          creatorInfo: {
+            displayName: validatedData.displayName,
+            username: validatedData.username,
+            bio: validatedData.bio,
+            categories: validatedData.categories,
+            experience: "",
+            portfolio: [],
+            socialMedia: Object.entries(validatedData.social)
+              .filter(
+                ([platform, username]) =>
+                  allowedPlatforms.includes(platform as any) &&
+                  username &&
+                  username.trim()
+              )
+              .map(([platform, username]) => ({
+                platform: platform as (typeof allowedPlatforms)[number],
+                username: username,
+                followers: 0,
+              })),
+          },
+          preferences: {
+            pricing: [],
+            availability: {
+              timezone: "",
+              workingHours: {
+                start: "",
+                end: "",
+              },
+              workingDays: [],
+            },
           },
           legal: {
-            termsOfService: validatedData.acceptTerms,
-            legallyAnAdult: validatedData.confirmAge,
-            contentGuidelines: validatedData.acceptTerms,
+            termsAccepted: validatedData.acceptTerms,
+            privacyAccepted: validatedData.acceptTerms,
+            ageVerified: validatedData.confirmAge,
+            backgroundCheck: false,
           },
         };
 
-        await createCreatorMutation.mutateAsync(payload);
+        await submitApplicationMutation.mutateAsync(payload);
         setFormSuccess(
           t("apply.success", "Application submitted successfully!")
         );
@@ -686,11 +707,11 @@ export default function ApplyCreatorForm() {
             <Button
               type="submit"
               disabled={
-                createCreatorMutation.isPending || !form.state.canSubmit
+                submitApplicationMutation.isPending || !form.state.canSubmit
               }
               className="w-full sm:w-auto px-6 py-3 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-500 focus:ring-offset-2 transition-colors flex items-center justify-center gap-2"
             >
-              {createCreatorMutation.isPending ? (
+              {submitApplicationMutation.isPending ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
                   <span>{t("apply.processing", "Processing...")}</span>
