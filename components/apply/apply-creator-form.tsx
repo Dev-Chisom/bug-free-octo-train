@@ -461,8 +461,6 @@ export default function ApplyCreatorForm() {
                           value={field.state.value || ""}
                           onBlur={(e) => {
                             field.handleBlur();
-                            // Mark social as touched when any social field is blurred
-                            form.setFieldValue("socialTouched", true);
                           }}
                           onChange={(e) => field.handleChange(e.target.value)}
                           placeholder={t(
@@ -516,7 +514,7 @@ export default function ApplyCreatorForm() {
                           field.handleChange(value);
                           calculatePeriodPrices(
                             value,
-                            form.getFieldValue("discounts") || {}
+                            (form.getFieldValue("discounts") as Record<string, string>) || {}
                           );
                         }}
                         placeholder="4.99"
@@ -563,7 +561,7 @@ export default function ApplyCreatorForm() {
                               onValueChange={(value) => {
                                 field.handleChange(value);
                                 const currentDiscounts = {
-                                  ...form.getFieldValue("discounts"),
+                                  ...(form.getFieldValue("discounts") as Record<string, string> || {}),
                                   [cycle]: value,
                                 };
                                 calculatePeriodPrices(
@@ -602,7 +600,7 @@ export default function ApplyCreatorForm() {
                         </Label>
                         <Input
                           value={
-                            periodPrices[cycle]?.toFixed(2) ||
+                            (periodPrices[cycle] !== undefined ? periodPrices[cycle].toFixed(2) : "") ||
                             t("apply.pricing.calculating", "Calculating...")
                           }
                           readOnly
