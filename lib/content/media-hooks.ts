@@ -43,13 +43,12 @@ export function useMediaFiles(params?: {
     queryFn: async () => {
       const response = await creatorApi.getMediaFiles(params)
       
-      // Handle both wrapped and unwrapped responses
-      const responseData = response.data || response
-      const mediaFiles = (responseData.mediaFiles || []).map(transformMediaFile)
+      // The response should be MediaFilesResponse directly
+      const mediaFiles = (response.mediaFiles || []).map(transformMediaFile)
       
       return {
         mediaFiles,
-        pagination: responseData.pagination || { page: 1, limit: 12, total: 0, pages: 1 }
+        pagination: response.pagination || { page: 1, limit: 12, total: 0, pages: 1 }
       }
     },
     enabled: isAuthenticated && typeof window !== "undefined" && typeof document !== "undefined",
@@ -73,7 +72,7 @@ export function useUploadMediaFiles() {
   return useMutation({
     mutationFn: async (payload: { files: Array<{ uuid: string; fileName: string; fileType: string; size: number; coverName?: string }> }) => {
       const response = await creatorApi.uploadMediaFile(payload)
-      return response.data || response
+      return response
     },
     onSuccess: () => {
       // Invalidate all media queries to refetch
@@ -91,7 +90,7 @@ export function useDeleteMediaFile() {
 
   return useMutation({
     mutationFn: async (id: string) => {
-      const response = await creatorApi.deleteMedia(id)
+      const response = await creatorApi.deleteMedia(id) as any
       if (response.success) {
         return { success: true }
       }

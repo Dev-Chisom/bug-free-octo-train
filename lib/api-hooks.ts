@@ -32,7 +32,15 @@ export const useLogin = () => {
     mutationFn: (credentials: LoginCredentials) => authApi.login(credentials),
     onSuccess: (response) => {
       const { user, accessToken, refreshToken } = response.data
-      setAuth(accessToken, refreshToken, user)
+      const authUser = {
+        success: true,
+        data: {
+          ...user,
+          __v: 0
+        },
+        message: "Login successful"
+      }
+      setAuth(accessToken, refreshToken, authUser as any)
       
       // Set query data to prevent immediate refetch
       queryClient.setQueryData(authKeys.profile, user)
@@ -55,7 +63,15 @@ export const useRegister = () => {
     mutationFn: (data: RegisterData) => authApi.register(data),
     onSuccess: (response) => {
       const { user, accessToken, refreshToken } = response.data
-      setAuth(accessToken, refreshToken, user)
+      const authUser = {
+        success: true,
+        data: {
+          ...user,
+          __v: 0
+        },
+        message: "Registration successful"
+      }
+      setAuth(accessToken, refreshToken, authUser as any)
       
       // Set query data to prevent immediate refetch
       queryClient.setQueryData(authKeys.profile, user)
@@ -98,7 +114,12 @@ export const useUpdateProfile = () => {
     mutationFn: authApi.updateProfile,
     onSuccess: (updatedUser) => {
       // Update both store and query cache
-      setUser(updatedUser)
+      const authUser = {
+        success: true,
+        data: updatedUser,
+        message: "Profile updated successfully"
+      }
+      setUser(authUser as any)
       queryClient.setQueryData(authKeys.profile, updatedUser)
       
       toast.success("Profile updated successfully!")
@@ -117,7 +138,7 @@ export const useOAuthRedirect = () => {
     redirectToOAuth: useCallback(async (provider: "google" | "x") => {
       try {
         const response = await authApi.getOAuthUrl(provider)
-        window.location.href = response.data.url || response.data
+        window.location.href = response.url
       } catch (error) {
         console.error(`Failed to get ${provider} OAuth URL:`, error)
         throw error
@@ -131,7 +152,7 @@ export const useAuthStatus = () => {
   const store = useAuthStore()
   
   return {
-    isAuthenticated: store.isAuthenticated(),
+    isAuthenticated: store.isAuthenticated,
     user: store.user,
     loading: false, // Since we're not making API calls here
   }

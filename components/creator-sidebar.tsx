@@ -53,8 +53,8 @@ export default function CreatorSidebar({ isMobileOpen, onClose }: CreatorSidebar
     // Base navigation items for all users
     const baseItems: NavigationItem[] = [
       {
-        name: t("nav.dashboard") || "Dashboard",
-        href: "/dashboard",
+        name: t("nav.home") || "Home",
+        href: "/",
         icon: Home,
       },
       {

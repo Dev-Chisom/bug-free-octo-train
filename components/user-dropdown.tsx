@@ -87,11 +87,11 @@ export default function UserDropdown() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="flex items-center space-x-2">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.data?.creatorProfile?.profilePicture || "/placeholder.svg"} alt={user?.name} />
+            <AvatarImage src={user?.data?.creatorProfile?.profilePicture || "/placeholder.svg"} alt={user?.data?.name || "User"} />
             <AvatarFallback>{userInitials}</AvatarFallback>
           </Avatar>
           <span className="hidden md:block text-sm font-medium text-gray-900 dark:text-gray-100">
-            {user?.name || "Account"}
+            {user?.data?.name || "Account"}
           </span>
           <ChevronDown className="h-4 w-4 text-gray-500 dark:text-gray-400" />
         </Button>
@@ -113,7 +113,7 @@ export default function UserDropdown() {
           {theme === "dark" ? "Light Mode" : "Dark Mode"}
         </DropdownMenuItem>
 
-        {Boolean(user?.creatorProfile) && (
+        {Boolean(user?.data?.creatorProfile) && (
           <>
             <DropdownMenuSeparator />
             {creatorLinks.map((item) => (

@@ -557,7 +557,7 @@ export default function ApplyCreatorForm() {
                           name={`discounts.${cycle}`}
                           children={(field) => (
                             <Select
-                              value={field.state.value || ""}
+                              value={typeof field.state.value === 'string' ? field.state.value : ""}
                               onValueChange={(value) => {
                                 field.handleChange(value);
                                 const currentDiscounts = {

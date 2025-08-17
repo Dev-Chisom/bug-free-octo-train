@@ -13,9 +13,13 @@ export interface RegisterData {
   displayName?: string
 }
 
+export interface OAuthUrlResponse {
+  url: string
+}
+
 export const authApi = {
   // OAuth flow - get redirect URL for provider
-  getOAuthUrl: (provider: "google" | "x") => api.post(`/auth/${provider}`),
+  getOAuthUrl: (provider: "google" | "x") => api.post<OAuthUrlResponse>(`/auth/${provider}`),
 
   // Traditional auth
   login: (credentials: LoginCredentials) => api.post<AuthResponse>("/auth/login", credentials),

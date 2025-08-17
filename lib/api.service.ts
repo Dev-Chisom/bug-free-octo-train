@@ -73,7 +73,10 @@ export function createApiService(
             const newRefreshToken = refreshResponse.data.refreshToken || refreshToken
 
             // Update auth store with new tokens
-            useAuthStore.getState().setAuth(newToken, newRefreshToken)
+            const currentUser = useAuthStore.getState().user
+            if (currentUser) {
+              useAuthStore.getState().setAuth(newToken, newRefreshToken, currentUser)
+            }
 
             if (onTokenRefresh) onTokenRefresh(newToken)
 

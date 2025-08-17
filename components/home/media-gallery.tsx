@@ -312,7 +312,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 				url: URL.createObjectURL(file),
 				name: file.name || (file as any)?.fileName,
 				type: file.type.startsWith('image/') ? 'image' : 'video',
-				size: file.size,
+				size: file.size || 0,
 				file,
 				tempId,
 			}
@@ -370,9 +370,9 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 					id: r.mediaFileId,
 					name: original?.name,
 					type: original?.type,
-					url: r.fileUrl || r.url,
-					thumbnailUrl: original?.type === 'image' ? r.fileUrl || r.url : undefined,
-					coverUrl: original?.type === 'video' ? r.coverUrl : undefined,
+					                                        url: r.fileUrl,
+					                                        thumbnailUrl: original?.type === 'image' ? r.fileUrl : undefined,
+					                                        coverUrl: original?.type === 'video' ? r.coverUploadUrl : undefined,
 				}
 			})
 
@@ -399,7 +399,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 		if (!canProceed) return
 
 		if (activeTab === 'library') {
-			const selected = mediaFiles.filter((m) => selectedIds.includes(m.id))
+			const selected = mediaFiles.filter((m: any) => selectedIds.includes(m.id))
 			onSelect(selected)
 		} else {
 			if (selectedFiles.length === 0) {
@@ -450,7 +450,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 					{/* Main Content */}
 					<div className="flex flex-col h-[600px]">
 						{/* Tab Navigation */}
-						<MediaTabs activeTab={activeTab} tabs={tabs} onUpdateActiveTab={setActiveTab} />
+						<MediaTabs activeTab={activeTab} tabs={tabs} onUpdateActiveTab={(tab: string) => setActiveTab(tab as "device" | "library")} />
 
 						{/* Content Area */}
 						<div className="flex-1 overflow-hidden">
@@ -465,7 +465,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 									totalPages={totalPages}
 									totalItems={totalItems}
 									activeMediaTab={activeMediaTab}
-									onUpdateActiveMediaTab={setActiveMediaTab}
+									onUpdateActiveMediaTab={(tab: string) => setActiveMediaTab(tab as "all" | "videos" | "images")}
 									onUpdateCurrentPage={setCurrentPage}
 									onUpdatePerPage={setPerPage}
 									onToggleSelect={toggleSelect}

@@ -57,7 +57,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null)
   const apiVideoRef = useRef<ApiVideoPlayerRef>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const controlsTimeoutRef = useRef<NodeJS.Timeout>()
+  const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   // Check if this is an api.video video
   const isApiVideo = videoId || src.includes('api.video')

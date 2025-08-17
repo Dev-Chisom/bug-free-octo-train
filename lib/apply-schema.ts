@@ -51,9 +51,9 @@ export const applyFormSchema = z.object({
   categories: z.array(z.string()).min(1, t("apply.basicInfo.required", "Please select at least one category")),
   social: socialLinksSchema,
   monthlyPrice: z.coerce
-    .number({ invalid_type_error: t("validation.priceRequired", "Monthly price is required") })
+    .number()
     .min(4.99, t("validation.priceMin", "Monthly price must be at least $4.99")),
-  discounts: z.record(z.string().optional()), // cycle: preferenceId
+  discounts: z.record(z.string(), z.string().optional()), // cycle: preferenceId
   acceptTerms: z.boolean().refine((val) => val === true, {
     message: t("apply.legal.acceptTermsRequired", "You must accept the terms and conditions"),
   }),

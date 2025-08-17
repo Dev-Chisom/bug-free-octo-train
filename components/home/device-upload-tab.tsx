@@ -6,17 +6,18 @@ import { UploadCloud, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import SelectedFileItem from "./selected-file-item"
 
-interface SelectedFile {
+interface MediaItem {
   id: string
   name: string
-  size: number
+  size?: number
   type: string
-  file: File
+  file?: File
   url?: string
+  tempId?: string
 }
 
 interface DeviceUploadTabProps {
-  selectedFiles: SelectedFile[]
+  selectedFiles: MediaItem[]
   maxFiles: number
   onFilesSelected: (files: File[]) => void
   onRemoveFile: (index: number) => void

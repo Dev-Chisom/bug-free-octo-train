@@ -5,9 +5,9 @@ import { Video, X } from "lucide-react"
 interface SelectedFile {
   id: string
   name: string
-  size: number
+  size?: number
   type: string
-  file: File
+  file?: File
   url?: string
 }
 
@@ -41,7 +41,7 @@ export default function SelectedFileItem({ file, onRemove }: SelectedFileItemPro
       {/* File Info */}
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{file.name}</p>
-        <p className="text-xs text-gray-500 dark:text-gray-400">{formatFileSize(file.size)}</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">{file.size ? formatFileSize(file.size) : 'Unknown size'}</p>
       </div>
 
       {/* Remove Button */}

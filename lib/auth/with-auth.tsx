@@ -14,7 +14,7 @@ export function withAuth<P extends object>(Component: ComponentType<P>, options:
 
   return function AuthenticatedComponent(props: P) {
     return (
-      <AuthGuard requiresAuth={requiresAuth} requiresCreator={requiresCreator} redirectTo={redirectTo}>
+      <AuthGuard requireAuth={requiresAuth} requireCreator={requiresCreator} redirectTo={redirectTo}>
         <Component {...props} />
       </AuthGuard>
     )

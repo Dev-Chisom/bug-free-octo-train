@@ -9,8 +9,8 @@ import { getRouteConfig } from "../route-config";
 
 interface AuthGuardProps {
   children: React.ReactNode;
-  requiresAuth?: boolean;
-  requiresCreator?: boolean;
+  requireAuth?: boolean;
+  requireCreator?: boolean;
   redirectTo?: string;
 }
 

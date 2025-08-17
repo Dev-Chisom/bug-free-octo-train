@@ -32,9 +32,9 @@ export function useApiVideoStatus(videoId: string) {
     queryKey: apiVideoKeys.status(videoId),
     queryFn: () => apiVideoService.getVideoStatus(videoId),
     enabled: !!videoId,
-    refetchInterval: (data) => {
+    refetchInterval: (query) => {
       // Refetch every 2 seconds if video is still processing
-      if (data?.status === 'uploading' || data?.status === 'processing') {
+      if (query.state.data?.status === 'uploading' || query.state.data?.status === 'processing') {
         return 2000
       }
       return false

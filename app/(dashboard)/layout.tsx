@@ -11,7 +11,7 @@ export default function DashboardLayout({
 }) {
   return (
     // AuthGuard protects the entire dashboard section
-    <AuthGuard requiresAuth={true}>
+    <AuthGuard requireAuth={true}>
       <DashboardLayoutComponent>{children}</DashboardLayoutComponent>
     </AuthGuard>
   )

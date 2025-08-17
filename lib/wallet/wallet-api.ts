@@ -6,10 +6,13 @@ function getApiService() {
   const { accessToken, refreshToken, setAuth, logout } = useAuthStore.getState()
 
   return createApiService(
-    accessToken,
-    refreshToken,
+    accessToken || undefined,
+    refreshToken || undefined,
     (newToken) => {
-      setAuth(newToken, refreshToken)
+      const currentUser = useAuthStore.getState().user
+      if (currentUser && refreshToken) {
+        setAuth(newToken, refreshToken, currentUser)
+      }
     },
     () => {
       logout()

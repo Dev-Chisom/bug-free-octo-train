@@ -7,6 +7,8 @@ interface CreatorProfile {
   username: string
   bio: string
   status: string
+  profilePicture?: string
+  bannerImage?: string
   socialMedia?: Array<{
     platform: string
     url: string
@@ -141,7 +143,7 @@ const isTokenValid = (token: string | null): boolean => {
   try {
     const decoded = jwtDecode<JWTPayload>(token)
     const currentTime = Math.floor(Date.now() / 1000)
-    const isValid = decoded && decoded.exp && decoded.exp > currentTime
+    const isValid = Boolean(decoded && decoded.exp && decoded.exp > currentTime)
 
     return isValid
   } catch (error) {

@@ -140,17 +140,12 @@ export class ApiVideoService {
       return { status: 'ready' }
     }
 
-    // Check if video has upload token (still uploading)
-    if (video.uploadToken) {
-      return { status: 'uploading' }
-    }
-
-    // Check if video is processing
-    if (video.status === 'processing') {
+    // If video exists but no HLS/DASH, assume it's still processing
+    if (video.videoId) {
       return { status: 'processing' }
     }
 
-    return { status: 'failed', error: 'Video processing failed' }
+    return { status: 'failed', error: 'Video not found or processing failed' }
   }
 
   // Delete video
@@ -201,4 +196,4 @@ export const apiVideoService = typeof window !== 'undefined' ? new ApiVideoServi
   getVideoPosterUrl: () => '',
   getVideoPlayerUrl: () => '',
   getVideoThumbnailUrl: () => '',
-} as ApiVideoService 
+} as unknown as ApiVideoService 

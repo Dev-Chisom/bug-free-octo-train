@@ -15,10 +15,10 @@ export interface ApiVideoPlayerProps {
   width?: string | number
   height?: string | number
   className?: string
-  onLoad?: () => void
-  onPlay?: () => void
-  onPause?: () => void
-  onEnded?: () => void
+  onLoad?: (event?: any) => void
+  onPlay?: (event?: any) => void
+  onPause?: (event?: any) => void
+  onEnded?: (event?: any) => void
   onTimeUpdate?: (currentTime: number) => void
   onProgress?: (loaded: number, total: number) => void
   onError?: (error: any) => void
@@ -34,27 +34,7 @@ export interface ApiVideoPlayerRef {
   getVolume: () => number
 }
 
-// Declare the api-video-player web component
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'api-video-player': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & {
-          'video-id': string
-          'autoplay'?: boolean
-          'muted'?: boolean
-          'controls'?: boolean
-          'loop'?: boolean
-          'preload'?: string
-          'poster'?: string
-          'width'?: string | number
-          'height'?: string | number
-        },
-        HTMLElement
-      >
-    }
-  }
-}
+
 
 export const ApiVideoPlayer = forwardRef<ApiVideoPlayerRef, ApiVideoPlayerProps>(
   (
@@ -79,8 +59,8 @@ export const ApiVideoPlayer = forwardRef<ApiVideoPlayerRef, ApiVideoPlayerProps>
     },
     ref
   ) => {
-    const playerRef = useRef<HTMLElement>(null)
-    const eventListenersRef = useRef<Map<string, () => void>>(new Map())
+    const playerRef = useRef<HTMLDivElement>(null)
+    const eventListenersRef = useRef<Map<string, (event?: any) => void>>(new Map())
     const [isClient, setIsClient] = useState(false)
 
     // Prevent hydration issues
@@ -156,15 +136,17 @@ export const ApiVideoPlayer = forwardRef<ApiVideoPlayerRef, ApiVideoPlayerProps>
         { name: 'pause', handler: onPause },
         { name: 'ended', handler: onEnded },
         { name: 'error', handler: onError },
-      ]
+      ].filter(({ handler }) => handler !== undefined)
 
       // Add event listeners
       events.forEach(({ name, handler }) => {
-        if (handler) {
-          const eventHandler = () => handler()
-          player.addEventListener(name, eventHandler)
-          eventListenersRef.current.set(name, eventHandler)
+        const eventHandler = (event: any) => {
+          if (handler) {
+            handler()
+          }
         }
+        player.addEventListener(name, eventHandler)
+        eventListenersRef.current.set(name, eventHandler)
       })
 
       // Add timeupdate listener
@@ -214,17 +196,17 @@ export const ApiVideoPlayer = forwardRef<ApiVideoPlayerRef, ApiVideoPlayerProps>
 
     return (
       <div className={`api-video-player-container ${className}`} style={{ width, height }}>
-        <api-video-player
+        <div
           ref={playerRef}
-          video-id={videoId}
-          autoplay={autoplay}
-          muted={muted}
-          controls={controls}
-          loop={loop}
-          preload={preload}
-          poster={posterUrl}
-          width={width}
-          height={height}
+          data-video-id={videoId}
+          data-autoplay={autoplay}
+          data-muted={muted}
+          data-controls={controls}
+          data-loop={loop}
+          data-preload={preload}
+          data-poster={posterUrl}
+          style={{ width, height }}
+          className="api-video-player"
         />
       </div>
     )

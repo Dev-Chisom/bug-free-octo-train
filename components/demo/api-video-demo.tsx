@@ -175,6 +175,7 @@ export const ApiVideoDemo: React.FC = () => {
           
           <div className="aspect-video rounded-lg overflow-hidden">
             <VideoPlayer
+              src=""
               videoId={uploadedVideoId}
               controls={true}
               autoplay={false}

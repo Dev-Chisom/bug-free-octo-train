@@ -150,7 +150,7 @@ export default function EditContentPage() {
       ? contentData?.mediaFiles.map((fileId: string) => ({
           id: fileId,
           url: "",
-          type: "image",
+          type: "image" as const,
           name: "",
           thumbnailUrl: "",
           cover: "",

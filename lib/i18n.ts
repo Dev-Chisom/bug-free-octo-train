@@ -8,7 +8,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    lng: "en",
     debug: process.env.NODE_ENV === "development",
 
     // Supported languages - only these will be used
@@ -52,6 +52,6 @@ i18n
     // Use single namespace since we have one file per language
     defaultNS: "translation",
     ns: ["translation"],
-  })
+  } as any)
 
 export default i18n

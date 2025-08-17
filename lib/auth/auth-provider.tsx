@@ -50,7 +50,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     if (profileQuery.isSuccess && profileQuery.data) {
-      setUser(profileQuery.data)
+      const authUser = {
+        success: true,
+        data: profileQuery.data,
+        message: "Profile loaded successfully"
+      }
+      setUser(authUser as any)
     }
 
     if (profileQuery.isError) {

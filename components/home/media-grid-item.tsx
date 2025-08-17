@@ -62,15 +62,15 @@ export default function MediaGridItem({ media, selected, onToggleSelect }: Media
         ) : (
           <div className="relative w-full h-full">
             {/* Check if this is an api.video video for viewing */}
-            {isClient && media?.apiVideoId ? (
+            {isClient && (media as any)?.apiVideoId ? (
               <ApiVideoPlayer
-                videoId={media.apiVideoId}
+                videoId={(media as any).apiVideoId}
                 autoplay={false}
                 muted={true}
                 controls={false}
                 loop={false}
                 preload="metadata"
-                poster={media.coverUrl || media.thumbnailUrl}
+                poster={(media as any).coverUrl || (media as any).thumbnailUrl}
                 width="100%"
                 height="100%"
                 className="w-full h-full object-cover"
@@ -83,9 +83,9 @@ export default function MediaGridItem({ media, selected, onToggleSelect }: Media
             <div
               className={cn(
                 "absolute inset-0 flex items-center justify-center",
-                media?.coverUrl || media?.thumbnailUrl ? "bg-cover bg-center" : "bg-black/20",
+                (media as any)?.coverUrl || (media as any)?.thumbnailUrl ? "bg-cover bg-center" : "bg-black/20",
               )}
-              style={media?.coverUrl || media?.thumbnailUrl ? { backgroundImage: `url('${media.coverUrl || media.thumbnailUrl}')` } : undefined}
+              style={(media as any)?.coverUrl || (media as any)?.thumbnailUrl ? { backgroundImage: `url('${(media as any).coverUrl || (media as any).thumbnailUrl}')` } : undefined}
             >
               <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition-transform">
                 <Play className="w-6 h-6 text-gray-800" />

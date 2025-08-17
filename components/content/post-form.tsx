@@ -8,16 +8,14 @@ import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
 import { useTranslation } from 'react-i18next'
 import { useForm } from '@tanstack/react-form'
-import { zodValidator } from '@tanstack/zod-form-adapter'
 import { Upload, Play, X, Loader2 } from 'lucide-react'
-import * as z from 'zod'
 import MediaGallery from '../home/media-gallery'
 import MediaPreviewModal from '../home/media-preview-modal'
 
 export type MediaFile = {
 	id?: string
 	url: string
-	type: string
+	type: "image" | "video" | "audio" | "document"
 	name: string
 	size?: number
 	cover?: string
@@ -52,25 +50,7 @@ interface PostFormProps {
 	onCancel: () => void
 }
 
-// Updated schema with conditional validation
-const createPostFormSchema = (isScheduled: boolean) =>
-	z.object({
-		title: z.string().min(3, 'Title must be at least 3 characters').max(200, 'Title must be less than 200 characters'),
-		content: z
-			.string()
-			.min(10, 'Content must be at least 10 characters')
-			.max(5000, 'Content must be less than 5000 characters'),
-		visibility: z.enum(['public', 'subscribers', 'pay-to-view']),
-		price: z
-			.number()
-			.min(0.01, 'Price must be at least $0.01')
-			.max(999.99, 'Price must be less than $999.99')
-			.optional(),
-		scheduledDate: isScheduled
-			? z.string().min(1, 'Scheduled date is required when scheduling is enabled')
-			: z.string().optional(),
-		mediaFiles: z.array(z.string()).max(10, 'Maximum 10 media files allowed'),
-	})
+
 
 export function PostForm({
 	initialValues = {
@@ -101,12 +81,24 @@ export function PostForm({
 		currentIndex: 0,
 	})
 
+	// Convert MediaFile to MediaItem for the modal
+	const convertToMediaItems = useCallback((files: MediaFile[]) => {
+		return files
+			.filter(file => file.type === 'image' || file.type === 'video')
+			.map(file => ({
+				url: file.url,
+				type: file.type as "image" | "video",
+				id: file.id,
+				name: file.name,
+			}))
+	}, [])
+
 	// Prevent hydration issues
 	useEffect(() => {
 		setMounted(true)
 	}, [])
 
-	const form = useForm<PostFormValues>({
+	const form = useForm({
 		defaultValues: {
 			title: initialValues.title,
 			content: initialValues.content,
@@ -114,11 +106,6 @@ export function PostForm({
 			price: initialValues.price,
 			scheduledDate: initialValues.scheduledDate || '',
 			mediaFiles: uploadedMediaFiles.map((m) => m.id).filter(Boolean) as string[],
-		},
-		validatorAdapter: zodValidator(),
-		validators: {
-			onChange: createPostFormSchema(isScheduled),
-			onBlur: createPostFormSchema(isScheduled),
 		},
 		onSubmit: async ({ value }) => {
 			const mediaFileIds = uploadedMediaFiles.filter((m) => m.id && !m.url.startsWith('blob:')).map((m) => m.id)
@@ -142,24 +129,7 @@ export function PostForm({
 		setIsScheduled(!!initialValues.scheduledDate)
 	}, [initialValues])
 
-	// Update form validation when isScheduled changes
-	useEffect(() => {
-		// Update validators
-		form.options.validators = {
-			onChange: createPostFormSchema(isScheduled),
-			onBlur: createPostFormSchema(isScheduled),
-		}
-		// Force revalidation of all fields
-		form.validateAllFields('change')
-	}, [isScheduled, form])
 
-	// Trigger initial validation on mount
-	useEffect(() => {
-		if (mounted) {
-			// Validate all fields on mount to set initial state
-			form.validateAllFields('change')
-		}
-	}, [mounted, form])
 
 	// Utility functions
 	const isBlobUrl = (url: string): boolean => {
@@ -288,13 +258,16 @@ export function PostForm({
 	}
 
 	// State to track form validation
-	const [formValidationState, setFormValidationState] = useState({
+	const [formValidationState, setFormValidationState] = useState<{
+		isValid: boolean;
+		lastCheck: number;
+	}>({
 		isValid: false,
 		lastCheck: 0,
 	})
 
 	// Improved validation function that properly checks form state
-	const checkFormValidation = useCallback(() => {
+	const checkFormValidation = useCallback((): boolean => {
 		// Get current form values
 		const values = form.state.values
 		const fieldsMeta = form.state.fieldMeta
@@ -310,9 +283,9 @@ export function PostForm({
 		const hasValidSchedule = !isScheduled || (values.scheduledDate && values.scheduledDate.length > 0)
 
 		// Check if any field has errors
-		const hasFieldErrors = Object.values(fieldsMeta).some((meta) => meta.errors && meta.errors.length > 0)
+		const hasFieldErrors = Object.values(fieldsMeta).some((meta: any) => Boolean(meta.errors && meta.errors.length > 0))
 
-		return hasValidTitle && hasValidContent && hasValidSchedule && !hasFieldErrors
+		return Boolean(hasValidTitle && hasValidContent && hasValidSchedule && !hasFieldErrors)
 	}, [form.state.values, form.state.fieldMeta, isScheduled])
 
 	// Update validation state when dependencies change
@@ -670,7 +643,7 @@ export function PostForm({
 									<Checkbox
 										id="schedule"
 										checked={isScheduled}
-										onCheckedChange={setIsScheduled}
+										                                                                                onCheckedChange={(checked) => setIsScheduled(Boolean(checked))}
 										className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
 									/>
 								</div>
@@ -740,7 +713,7 @@ export function PostForm({
 			{/* Media Preview Modal */}
 			<MediaPreviewModal
 				isOpen={previewModal.isOpen}
-				mediaItems={previewModal.items}
+				mediaItems={convertToMediaItems(previewModal.items)}
 				currentIndex={previewModal.currentIndex}
 				enableVideoEdit={true}
 				onClose={closePreview}

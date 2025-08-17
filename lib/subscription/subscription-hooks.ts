@@ -116,7 +116,10 @@ function getApiService() {
     refreshToken || undefined,
     (newToken) => {
       if (refreshToken) {
-        setAuth(newToken, refreshToken)
+        const currentUser = useAuthStore.getState().user
+        if (currentUser) {
+          setAuth(newToken, refreshToken, currentUser)
+        }
       }
     },
     () => {
