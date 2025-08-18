@@ -22,7 +22,7 @@ export function SocialLoginButtons({ loading = false }: SocialLoginButtonsProps)
         const response = await authApi.getOAuthUrl('google');
         window.location.href = response.url;
       } catch (error) {
-        console.error('Failed to get Google OAuth URL:', error);
+        // Failed to get Google OAuth URL
         setGoogleLoading(false);
       }
     }
@@ -35,7 +35,7 @@ export function SocialLoginButtons({ loading = false }: SocialLoginButtonsProps)
         const response = await authApi.getOAuthUrl('x');
         window.location.href = response.url;
       } catch (error) {
-        console.error('Failed to get Twitter OAuth URL:', error);
+        // Failed to get Twitter OAuth URL
         setTwitterLoading(false);
       }
     }

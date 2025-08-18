@@ -95,7 +95,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 	// Handle query error
 	useEffect(() => {
 		if (error && isOpen) {
-			console.error('Media files query error:', error)
+			      // Media files query error occurred
 			toast.error(t('notifications.contentLoadFailed') || 'Failed to load media files')
 		}
 	}, [error, isOpen, t])
@@ -152,7 +152,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 					mediaFileId,
 				})
 			} catch (error) {
-				console.error(`Failed to upload ${fileObj.name}:`, error)
+				        // Failed to upload file
 				// Continue with other files even if one fails
 			}
 		}
@@ -381,7 +381,7 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 			setShowPreviewModal(false)
 			toast.success(t('notifications.mediaUploadSuccess') || 'Upload completed successfully!')
 		} catch (error) {
-			console.error('Upload error:', error)
+			      // Upload error occurred
 			toast.error(t('notifications.mediaUploadFailed') || 'Upload failed. Please try again.')
 		} finally {
 			setIsUploading(false)

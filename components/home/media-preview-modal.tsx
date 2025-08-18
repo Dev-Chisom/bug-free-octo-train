@@ -180,7 +180,7 @@ export default function MediaPreviewModal({
 
       const ctx = canvas.getContext("2d")
       if (!ctx) {
-        console.error("Could not get canvas context")
+        // Could not get canvas context
         return
       }
 
@@ -222,7 +222,7 @@ export default function MediaPreviewModal({
         }),
       )
     } catch (error) {
-      console.error("Error generating thumbnails:", error)
+      // Error generating thumbnails
       setVideoStates((prev) => new Map(prev).set(index, { ...getVideoState(index), isGeneratingThumbs: false }))
     }
   }

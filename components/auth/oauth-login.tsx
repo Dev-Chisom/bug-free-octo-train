@@ -30,7 +30,7 @@ export function OAuthLogin({ onError, redirectTo = "/" }: OAuthButtonsProps) {
 
       window.location.href = oauthUrl
     } catch (error) {
-      console.error(`OAuth ${provider} error:`, error)
+      // OAuth error occurred
       const errorMessage = error instanceof Error ? error.message : `${provider} authentication failed`
       onError?.(errorMessage)
       setLoadingProvider(null)

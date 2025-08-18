@@ -79,7 +79,7 @@ export function useUploadMediaFiles() {
       queryClient.invalidateQueries({ queryKey: mediaKeys.all })
     },
     onError: (error: any) => {
-      console.error("Upload media error:", error)
+      // Upload media error occurred
     },
   })
 }
@@ -100,7 +100,7 @@ export function useDeleteMediaFile() {
       queryClient.invalidateQueries({ queryKey: mediaKeys.all })
     },
     onError: (error: any) => {
-      console.error("Delete media error:", error)
+      // Delete media error occurred
     },
   })
 } 

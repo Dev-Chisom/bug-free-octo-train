@@ -61,7 +61,7 @@ export const ApiVideoDemo: React.FC = () => {
       setUploadedVideoId(videoId)
       toast.success('Video uploaded successfully!')
     } catch (error) {
-      console.error('Upload error:', error)
+      // Upload error occurred
       toast.error('Failed to upload video')
     }
   }
@@ -187,7 +187,7 @@ export const ApiVideoDemo: React.FC = () => {
               onPause={() => {
                 // Video paused
               }}
-              onError={(error) => console.error('Video error:', error)}
+              onError={(error) => {/* Video error occurred */}}
             />
           </div>
         </div>

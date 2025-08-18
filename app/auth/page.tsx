@@ -78,7 +78,7 @@ export default function AuthPage() {
         setIsProcessing(false)
       }, 1000)
     } catch (error) {
-      console.error("OAuth callback error:", error)
+      // OAuth callback error occurred
       setError(error instanceof Error ? error.message : "Authentication failed")
       setIsProcessing(false)
     }

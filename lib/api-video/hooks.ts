@@ -68,7 +68,7 @@ export function useCreateVideoUpload() {
       queryClient.invalidateQueries({ queryKey: apiVideoKeys.video(data.videoId) })
     },
     onError: (error: any) => {
-      console.error("Create video upload error:", error)
+      // Create video upload error occurred
     },
   })
 }
@@ -94,7 +94,7 @@ export function useUploadVideoFile() {
       queryClient.invalidateQueries({ queryKey: apiVideoKeys.videos() })
     },
     onError: (error: any) => {
-      console.error("Upload video file error:", error)
+      // Upload video file error occurred
     },
   })
 }
@@ -114,7 +114,7 @@ export function useDeleteVideo() {
       queryClient.invalidateQueries({ queryKey: apiVideoKeys.videos() })
     },
     onError: (error: any) => {
-      console.error("Delete video error:", error)
+      // Delete video error occurred
     },
   })
 }

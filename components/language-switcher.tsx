@@ -66,7 +66,7 @@ export default function LanguageSwitcher() {
       localStorage.setItem("i18nextLng", normalizedCode)
       document.cookie = `i18next=${normalizedCode}; path=/; max-age=${7 * 24 * 60 * 60}`
     } catch (error) {
-      console.error("Failed to switch language:", error)
+      // Failed to switch language
     }
   }
 

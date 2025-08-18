@@ -173,7 +173,7 @@ export function useCancelSubscription() {
     onError: (error: any) => {
       const message = error?.message || t("subscriptions.cancelError")
       toast.error(message)
-      console.error("Cancel subscription error:", error)
+      // Cancel subscription error occurred
     },
   })
 }
@@ -218,7 +218,7 @@ export function useSubscribeToCreator() {
     onError: (error: any) => {
       const message = error?.message || t("subscriptions.subscribeError")
       toast.error(message)
-      console.error("Subscribe error:", error)
+      // Subscribe error occurred
     },
   })
 }
@@ -255,7 +255,7 @@ export function useRenewSubscription() {
     onError: (error: any) => {
       const message = error?.message || t("subscriptions.renewError")
       toast.error(message)
-      console.error("Renew subscription error:", error)
+      // Renew subscription error occurred
     },
   })
 }

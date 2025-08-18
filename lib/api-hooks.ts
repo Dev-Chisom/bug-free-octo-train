@@ -50,7 +50,7 @@ export const useLogin = () => {
     onError: (error: any) => {
       const message = error?.message || "Login failed"
       toast.error(message)
-      console.error("Login error:", error)
+      // Login error occurred
     },
   })
 }
@@ -81,7 +81,7 @@ export const useRegister = () => {
     onError: (error: any) => {
       const message = error?.message || "Registration failed"
       toast.error(message)
-      console.error("Register error:", error)
+      // Register error occurred
     },
   })
 }
@@ -101,7 +101,7 @@ export const useLogout = () => {
       // Still clear auth even if logout fails
       clearAuth()
       queryClient.clear()
-      console.error("Logout error:", error)
+      // Logout error occurred
     },
   })
 }
@@ -127,7 +127,7 @@ export const useUpdateProfile = () => {
     onError: (error: any) => {
       const message = error?.message || "Failed to update profile"
       toast.error(message)
-      console.error("Update profile error:", error)
+      // Update profile error occurred
     },
   })
 }
@@ -140,7 +140,7 @@ export const useOAuthRedirect = () => {
         const response = await authApi.getOAuthUrl(provider)
         window.location.href = response.url
       } catch (error) {
-        console.error(`Failed to get ${provider} OAuth URL:`, error)
+        // Failed to get OAuth URL
         throw error
       }
     }, []),

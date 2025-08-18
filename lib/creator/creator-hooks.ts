@@ -74,7 +74,7 @@ export const useUpdateCreator = () => {
     },
     onError: (error) => {
       toast.error("Failed to update creator")
-      console.error("Update creator error:", error)
+      // Update creator error occurred
     },
   })
 }
@@ -90,7 +90,7 @@ export const useUpdateCreatorPreferences = () => {
     },
     onError: (error) => {
       toast.error("Failed to update preferences")
-      console.error("Update preferences error:", error)
+      // Update preferences error occurred
     },
   })
 }
@@ -106,7 +106,7 @@ export const useSubmitApplication = () => {
     },
     onError: (error) => {
       toast.error("Failed to submit application")
-      console.error("Submit application error:", error)
+      // Submit application error occurred
     },
   })
 }
@@ -122,7 +122,7 @@ export const useUploadMedia = () => {
     },
     onError: (error) => {
       toast.error("Failed to upload media")
-      console.error("Upload media error:", error)
+      // Upload media error occurred
     },
   })
 }
@@ -138,7 +138,7 @@ export const useDeleteCreator = () => {
     },
     onError: (error) => {
       toast.error("Failed to delete creator")
-      console.error("Delete creator error:", error)
+      // Delete creator error occurred
     },
   })
 }
@@ -154,7 +154,7 @@ export const useCreateCreator = () => {
     },
     onError: (error) => {
       toast.error("Failed to create creator");
-      console.error("Create creator error:", error);
+      // Create creator error occurred
     },
   });
 };

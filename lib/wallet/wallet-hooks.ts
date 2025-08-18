@@ -194,7 +194,7 @@ export function useFundWallet() {
     onError: (error: any) => {
       const message = error?.message || t("wallet.fundingFailed")
       toast.error(message)
-      console.error("Fund wallet error:", error)
+      // Fund wallet error occurred
     },
   })
 }
@@ -226,7 +226,7 @@ export function usePaystackPayment() {
     onError: (error: any) => {
       const message = error?.message || t("wallet.paystackFailed")
       toast.error(message)
-      console.error("Paystack payment error:", error)
+      // Paystack payment error occurred
     },
   })
 }
@@ -264,7 +264,7 @@ export function useBaniPayment() {
     onError: (error: any) => {
       const message = error?.message || t("wallet.baniFailed")
       toast.error(message)
-      console.error("Bani payment error:", error)
+      // Bani payment error occurred
     },
   })
 }
@@ -294,7 +294,7 @@ export function useVerifyPayment() {
     onError: (error: any) => {
       const message = error?.message || t("wallet.verificationFailed")
       toast.error(message)
-      console.error("Payment verification error:", error)
+      // Payment verification error occurred
     },
   })
 }

@@ -137,7 +137,7 @@ export function useCreateContent() {
       queryClient.invalidateQueries({ queryKey: contentKeys.all })
     },
     onError: (error: any) => {
-      console.error("Create content error:", error)
+      // Create content error occurred
     },
   })
 }
@@ -198,7 +198,7 @@ export function useUpdateContent() {
       queryClient.invalidateQueries({ queryKey: contentKeys.detail(variables.id) })
     },
     onError: (error: any) => {
-      console.error("Update content error:", error)
+      // Update content error occurred
     },
   })
 }
@@ -220,7 +220,7 @@ export function useDeleteContent() {
       queryClient.invalidateQueries({ queryKey: contentKeys.all })
     },
     onError: (error: any) => {
-      console.error("Delete content error:", error)
+      // Delete content error occurred
     },
   })
 }
