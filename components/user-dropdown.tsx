@@ -75,7 +75,8 @@ export default function UserDropdown() {
   }
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+    const newTheme = theme === "dark" ? "light" : "dark"
+    setTheme(newTheme)
   }
 
   if (!mounted) {
@@ -90,10 +91,10 @@ export default function UserDropdown() {
             <AvatarImage src={user?.data?.creatorProfile?.profilePicture || "/placeholder.svg"} alt={user?.data?.name || "User"} />
             <AvatarFallback>{userInitials}</AvatarFallback>
           </Avatar>
-          <span className="hidden md:block text-sm font-medium text-gray-900 dark:text-gray-100">
+          <span className="hidden md:block text-sm font-medium text-foreground">
             {user?.data?.name || "Account"}
           </span>
-          <ChevronDown className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+          <ChevronDown className="h-4 w-4 text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">

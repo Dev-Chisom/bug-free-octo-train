@@ -188,7 +188,7 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-800 mb-8 overflow-hidden">
+      <div className="bg-card rounded-xl shadow-md border border-border mb-8 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center">
@@ -198,32 +198,32 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
                 alt={post.creator.name}
                 width={32}
                 height={32}
-                className="w-8 h-8 rounded-full object-cover border border-gray-200 dark:border-gray-700"
+                className="w-8 h-8 rounded-full object-cover border border-border"
               />
             </Link>
 
             <div className="ml-3">
               <Link href="/@user">
-                <h3 className="font-semibold text-sm text-gray-900 dark:text-white hover:underline">
+                <h3 className="font-semibold text-sm text-foreground hover:underline">
                   {post.creator.name}
                 </h3>
               </Link>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 {(post as any).location || t("unknownLocation") || "Unknown location"}
               </p>
             </div>
           </div>
 
-          <button className="text-gray-500 dark:text-gray-400">
+          <button className="text-muted-foreground">
             <MoreVertical className="w-5 h-5" />
           </button>
         </div>
 
         {/* Media Content */}
-        <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
+        <div className="relative aspect-video w-full bg-muted overflow-hidden">
           {post.isPremium && !isSubscribed ? (
             <>
-              <div className="absolute inset-0 z-10 flex flex-col justify-center items-center bg-white/70 dark:bg-gray-900/70">
+              <div className="absolute inset-0 z-10 flex flex-col justify-center items-center bg-background/70">
                 <Button
                   onClick={() => onSubscribe(post.creator.id)}
                   className="max-w-md rounded-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-4 px-6 text-lg transition-all"
@@ -251,7 +251,7 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
                 disabled={post.isPremium && !isSubscribed}
                 className={cn(
                   post.isPremium && !isSubscribed ? "opacity-50 cursor-not-allowed" : "",
-                  "text-gray-900 dark:text-white",
+                  "text-foreground",
                 )}
                 onClick={handleLike}
                 title={isLiked ? t("home.unlike") || "Unlike" : t("home.like") || "Like"}
@@ -263,7 +263,7 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
                 disabled={post.isPremium && !isSubscribed}
                 className={cn(
                   post.isPremium && !isSubscribed ? "opacity-50 cursor-not-allowed" : "",
-                  "text-gray-900 dark:text-white",
+                  "text-foreground",
                 )}
                 onClick={handleComment}
                 title={t("home.comment") || "Comment"}
@@ -275,7 +275,7 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
                 disabled={post.isPremium && !isSubscribed}
                 className={cn(
                   post.isPremium && !isSubscribed ? "opacity-50 cursor-not-allowed" : "",
-                  "text-gray-900 dark:text-white",
+                  "text-foreground",
                 )}
                 onClick={handleShare}
                 title={t("home.share") || "Share"}
@@ -287,7 +287,7 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
                 disabled={post.isPremium && !isSubscribed}
                 className={cn(
                   post.isPremium && !isSubscribed ? "opacity-50 cursor-not-allowed" : "",
-                  "text-gray-900 dark:text-white",
+                  "text-foreground",
                 )}
                 onClick={handleTip}
                 title={t("home.tipCreator") || "Tip Creator"}
@@ -300,7 +300,7 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
               disabled={post.isPremium && !isSubscribed}
               className={cn(
                 post.isPremium && !isSubscribed ? "opacity-50 cursor-not-allowed" : "",
-                "text-gray-900 dark:text-white",
+                "text-foreground",
               )}
               onClick={handleBookmark}
               title={t("home.save") || "Save"}
@@ -309,16 +309,16 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
             </button>
           </div>
 
-          <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+          <p className="text-sm font-semibold text-foreground mb-1">
             {formatNumber(likesCount)} {t("likes") || "likes"}
           </p>
 
-          <p className="text-sm text-gray-900 dark:text-white mb-1">
+          <p className="text-sm text-foreground mb-1">
             <span className="font-semibold">{post.creator.name}</span> {post.content}
           </p>
 
           {(post.comments.length > 0 || localComments.length > 0) && !(post.isPremium && !isSubscribed) && (
-            <button className="text-sm text-gray-500 dark:text-gray-400 mb-1" onClick={() => openModal(0, true)}>
+            <button className="text-sm text-muted-foreground mb-1" onClick={() => openModal(0, true)}>
               {t("viewAllComments", { count: post.comments.length + localComments.length }) ||
                 `View all ${post.comments.length + localComments.length} comments`}
             </button>
@@ -328,26 +328,26 @@ export default function PostCard({ post, isSubscribed, onSubscribe, onTip, onAdd
             <div>
               {localComments.map((comment, index) => (
                 <div key={`local-${index}`} className="mb-1">
-                  <p className="text-sm text-gray-900 dark:text-white">
-                    <span className="font-semibold">{currentUser.name}</span> {comment}
-                  </p>
+                                  <p className="text-sm text-foreground">
+                  <span className="font-semibold">{currentUser.name}</span> {comment}
+                </p>
                 </div>
               ))}
             </div>
           )}
 
-          <p className="text-xs text-gray-400 dark:text-gray-500 uppercase mt-2">{formatTimeAgo(post.createdAt)}</p>
+          <p className="text-xs text-muted-foreground uppercase mt-2">{formatTimeAgo(post.createdAt)}</p>
         </div>
 
         {/* Comment Input */}
         {!(post.isPremium && !isSubscribed) && (
-          <div className="px-4 py-3 border-t border-gray-100 dark:border-gray-800 flex items-center">
+          <div className="px-4 py-3 border-t border-border flex items-center">
             <Input
               value={quickComment}
               onChange={(e) => setQuickComment(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder={t("addAComment") || "Add a comment..."}
-              className="flex-1 bg-transparent border-none text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:ring-0 p-0"
+              className="flex-1 bg-transparent border-none text-sm text-foreground placeholder-muted-foreground focus:ring-0 p-0"
             />
             <button
               className="text-primary-600 dark:text-primary-400 font-semibold text-sm disabled:opacity-50 ml-2"

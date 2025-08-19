@@ -69,8 +69,8 @@ export default function NotificationItem({ notification, onRead }: NotificationI
   return (
     <div
       className={cn(
-        "px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-start space-x-3 cursor-pointer",
-        !notification.isRead && "bg-primary-50 dark:bg-primary-900",
+        "px-4 py-3 hover:bg-accent flex items-start space-x-3 cursor-pointer",
+        !notification.isRead && "bg-accent",
       )}
       onClick={handleClick}
     >
@@ -84,18 +84,18 @@ export default function NotificationItem({ notification, onRead }: NotificationI
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="h-full w-full flex items-center justify-center bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-400">
+          <div className="h-full w-full flex items-center justify-center bg-muted text-muted-foreground">
             <IconComponent className="h-5 w-5" />
           </div>
         )}
       </div>
 
       <div className="flex-1 min-w-0">
-        <p className={cn("text-sm text-gray-900 dark:text-gray-100", !notification.isRead && "font-semibold")}>
+        <p className={cn("text-sm text-popover-foreground", !notification.isRead && "font-semibold")}>
           {notification.content}
         </p>
 
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{formatTime(notification.createdAt)}</p>
+        <p className="text-xs text-muted-foreground mt-1">{formatTime(notification.createdAt)}</p>
       </div>
 
       {!notification.isRead && (

@@ -113,22 +113,22 @@ export default function CreatorSidebar({ isMobileOpen, onClose }: CreatorSidebar
       {isMobileOpen && (
         <div className="fixed inset-0 lg:hidden z-[400]" role="dialog" aria-modal="true">
           <div
-            className="fixed inset-0 bg-gray-600 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-80"
+            className="fixed inset-0 bg-black/50"
             onClick={onClose}
           />
 
-          <div className="fixed inset-y-0 left-0 flex max-w-xs w-full bg-white dark:bg-gray-800 shadow-lg">
+          <div className="fixed inset-y-0 left-0 flex max-w-xs w-full bg-white shadow-lg">
             <div className="flex flex-col w-full">
-              <div className="px-4 py-6 bg-primary-700 dark:bg-primary-900 sm:px-6">
+              <div className="px-4 py-6 bg-primary-700 sm:px-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Image src="/logo-white.svg" alt="Logo" width={38} height={38} className="h-8 w-auto mb-2" />
-                    <span className="text-xl font-bold text-white dark:text-gray-100">{t("nav.creatorStudio")}</span>
+                    <span className="text-xl font-bold text-primary-foreground">{t("nav.creatorStudio")}</span>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-white hover:text-gray-200 dark:text-gray-100 dark:hover:text-gray-200"
+                    className="text-primary-foreground hover:text-primary-foreground/80"
                     onClick={onClose}
                   >
                     <span className="sr-only">{t("common.close")}</span>
@@ -148,13 +148,13 @@ export default function CreatorSidebar({ isMobileOpen, onClose }: CreatorSidebar
       )}
 
       {/* Desktop Sidebar */}
-      <div className="sticky bottom-0 top-0 hidden lg:flex lg:flex-shrink-0 bg-white dark:bg-gray-900 dark:bg-gray-800 h-screen">
+      <div className="sticky bottom-0 top-0 hidden lg:flex lg:flex-shrink-0 bg-white h-screen">
         <div className="flex flex-col w-64">
           <div className="flex flex-col h-0 flex-1">
-            <div className="px-4 py-6 bg-primary-700 dark:bg-primary-900 flex items-center">
+            <div className="px-4 py-6 bg-primary-700 flex items-center">
               <div className="flex items-center space-x-2">
                 <Image src="/logo-white.svg" alt="Logo" width={38} height={38} />
-                <span className="text-xl font-bold text-white dark:text-gray-100">{t("nav.creatorStudio")}</span>
+                <span className="text-xl font-bold text-primary-foreground">{t("nav.creatorStudio")}</span>
               </div>
             </div>
 

@@ -77,7 +77,7 @@ export default function NotificationBell() {
       <Button
         variant="ghost"
         size="sm"
-        className="p-2 rounded-full text-gray-500 dark:text-gray-200 hover:text-gray-700 hover:bg-gray-100 dark:hover:text-gray-200 dark:hover:bg-gray-800 relative"
+        className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent relative"
         onClick={showContent}
       >
         <Bell className="w-5 h-5" />
@@ -89,9 +89,9 @@ export default function NotificationBell() {
       </Button>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
-          <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+        <div className="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-popover ring-1 ring-border z-50">
+          <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+            <h3 className="text-sm font-semibold text-popover-foreground">Notifications</h3>
             {notifications.length > 0 && (
               <Button
                 variant="ghost"

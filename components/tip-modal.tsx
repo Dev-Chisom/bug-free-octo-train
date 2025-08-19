@@ -53,20 +53,20 @@ export default function TipModal({ isOpen, onClose, post, onSendTip }: TipModalP
         {post && (
           <div className="space-y-6">
             {/* Creator Info */}
-            <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div className="flex items-center space-x-3 p-3 bg-muted rounded-lg">
               <Avatar>
                 <AvatarImage src={post.creator.avatar || "/placeholder.svg"} alt={post.creator.name} />
                 <AvatarFallback>{post.creator.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>
-                <h4 className="font-medium text-gray-900 dark:text-gray-100">{post.creator.name}</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Content Creator</p>
+                <h4 className="font-medium text-foreground">{post.creator.name}</h4>
+                <p className="text-sm text-muted-foreground">Content Creator</p>
               </div>
             </div>
 
             {/* Quick Amount Buttons */}
             <div>
-              <Label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 block">Quick amounts</Label>
+              <Label className="text-sm font-medium text-foreground mb-2 block">Quick amounts</Label>
               <div className="grid grid-cols-3 gap-2">
                 {quickAmounts.map((amount) => (
                   <Button
@@ -84,7 +84,7 @@ export default function TipModal({ isOpen, onClose, post, onSendTip }: TipModalP
 
             {/* Custom Amount */}
             <div>
-              <Label htmlFor="tip-amount" className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1 block">
+              <Label htmlFor="tip-amount" className="text-sm font-medium text-foreground mb-1 block">
                 {t("home.amount")} (cents)
               </Label>
               <Input
@@ -96,7 +96,7 @@ export default function TipModal({ isOpen, onClose, post, onSendTip }: TipModalP
                 step={100}
                 className="w-full"
               />
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Minimum: $1.00 (100 cents)</p>
+              <p className="text-xs text-muted-foreground mt-1">Minimum: $1.00 (100 cents)</p>
             </div>
 
             {/* Total Display */}

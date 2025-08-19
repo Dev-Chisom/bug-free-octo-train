@@ -38,8 +38,8 @@ export default function UserSwiperList({ users, title, usersPerSlide = 3 }: User
   if (!users || users.length === 0) {
     return (
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">{title}</h3>
-        <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+        <h3 className="text-sm font-semibold text-foreground mb-3">{title}</h3>
+        <div className="text-center py-8 text-muted-foreground">
           <p className="text-sm">No users to show</p>
         </div>
       </div>
@@ -60,26 +60,26 @@ export default function UserSwiperList({ users, title, usersPerSlide = 3 }: User
   return (
     <div className="mb-6">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200">{title}</h3>
+        <h3 className="text-sm font-semibold text-foreground">{title}</h3>
         {showNavigation && (
           <div className="flex items-center gap-2">
             <button
               disabled={isBeginning}
-              className={`p-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition ${
+              className={`p-1 rounded-full bg-muted hover:bg-accent transition ${
                 isBeginning ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               onClick={() => swiper?.slidePrev()}
             >
-              <ChevronLeft className="h-5 w-5 text-gray-500 dark:text-gray-300" />
+              <ChevronLeft className="h-5 w-5 text-muted-foreground" />
             </button>
             <button
               disabled={isEnd}
-              className={`p-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition ${
+              className={`p-1 rounded-full bg-muted hover:bg-accent transition ${
                 isEnd ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               onClick={() => swiper?.slideNext()}
             >
-              <ChevronRight className="h-5 w-5 text-gray-500 dark:text-gray-300" />
+              <ChevronRight className="h-5 w-5 text-muted-foreground" />
             </button>
           </div>
         )}

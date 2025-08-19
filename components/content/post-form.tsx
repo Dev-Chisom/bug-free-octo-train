@@ -587,11 +587,11 @@ export function PostForm({
 												<div className="ml-3 text-sm">
 													<Label
 														htmlFor="visibility-pay-to-view"
-														className="font-medium text-gray-700 dark:text-gray-200"
+														className="font-medium text-foreground"
 													>
 														{t('payPerView') || 'Pay-to-view'}
 													</Label>
-													<p className="text-gray-500 dark:text-gray-400">
+													<p className="text-muted-foreground">
 														{t('payPerViewHint') || 'Users must pay a one-time fee to access'}
 													</p>
 												</div>
@@ -648,10 +648,10 @@ export function PostForm({
 									/>
 								</div>
 								<div className="ml-3 text-sm">
-									<Label htmlFor="schedule" className="font-medium text-gray-700 dark:text-gray-200">
+									<Label htmlFor="schedule" className="font-medium text-foreground">
 										{t('scheduleForLater') || 'Schedule for later'}
 									</Label>
-									<p className="text-gray-500 dark:text-gray-400">
+									<p className="text-muted-foreground">
 										{t('scheduleHint') || 'Set a future date and time to publish this post'}
 									</p>
 								</div>
@@ -664,7 +664,7 @@ export function PostForm({
 										children={(field) => (
 											<div>
 												<Label htmlFor={field.name}>
-													{t('publishDate') || 'Publish Date'} <span className="text-red-500 ml-1">*</span>
+													{t('publishDate') || 'Publish Date'} <span className="text-destructive ml-1">*</span>
 												</Label>
 												<Input
 													id={field.name}

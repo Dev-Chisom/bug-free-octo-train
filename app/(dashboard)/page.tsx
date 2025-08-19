@@ -203,10 +203,10 @@ export default function HomePage() {
         {/* Suggestions Panel */}
         <div className="hidden lg:block col-span-2">
           <div className="sticky top-4 z-10 h-[calc(100vh-2rem)] overflow-y-auto pb-4">
-            <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-800 p-4 w-full max-w-xl mx-auto">
+            <div className="bg-card rounded-xl shadow-md border border-border p-4 w-full max-w-xl mx-auto">
               {/* Search Bar */}
               <div className="mb-4 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   type="text"
                   placeholder={t("home.searchUsersOrPosts")}

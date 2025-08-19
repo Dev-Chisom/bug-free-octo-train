@@ -47,7 +47,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider 
+        attribute="class" 
+        defaultTheme="system" 
+        enableSystem 
+        disableTransitionOnChange
+        storageKey="whispers-theme"
+      >
         <I18nProvider>
           {children}
           <ReactQueryDevtools initialIsOpen={false} />

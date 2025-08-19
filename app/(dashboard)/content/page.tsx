@@ -228,10 +228,10 @@ export default function ContentManagementPage() {
       {/* Header Section */}
       <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 mb-6">
         <div className="flex-1 min-w-0">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 truncate">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground truncate">
             {t("content.management.title")}
           </h1>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("content.management.description")}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{t("content.management.description")}</p>
         </div>
         <div className="flex-shrink-0">
           <Link href="/content/new">
@@ -275,9 +275,9 @@ export default function ContentManagementPage() {
           <CardContent className="p-0">
             {paginatedContent.length === 0 ? (
               <div className="text-center py-12">
-                <Icons.fileText className="h-12 w-12 mx-auto text-gray-400" />
-                <h3 className="mt-2 text-lg font-medium text-gray-900 dark:text-gray-100">No content found</h3>
-                <p className="mt-1 text-gray-500 dark:text-gray-400">
+                <Icons.fileText className="h-12 w-12 mx-auto text-muted-foreground" />
+                <h3 className="mt-2 text-lg font-medium text-foreground">No content found</h3>
+                <p className="mt-1 text-muted-foreground">
                   {search || visibilityFilter !== "all"
                     ? "Try adjusting your filters"
                     : "Get started by creating your first post"}
@@ -290,29 +290,29 @@ export default function ContentManagementPage() {
               </div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className="bg-gray-50 dark:bg-gray-800">
+                <table className="min-w-full divide-y divide-border">
+                  <thead className="bg-muted">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Content
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Visibility
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Status
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Date
                       </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Actions
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                  <tbody className="bg-card divide-y divide-border">
                     {paginatedContent.map((item) => (
-                      <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <tr key={item.id} className="hover:bg-muted/50">
                         <td className="px-6 py-4">
                           <div className="flex items-center">
                             <div className="flex-shrink-0 h-10 w-10">
@@ -323,17 +323,17 @@ export default function ContentManagementPage() {
                                   alt={item.title}
                                 />
                               ) : (
-                                <div className="h-10 w-10 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                  <Icons.fileText className="h-5 w-5 text-gray-400" />
+                                <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center">
+                                  <Icons.fileText className="h-5 w-5 text-muted-foreground" />
                                 </div>
                               )}
                             </div>
                             <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate max-w-xs">
+                              <div className="text-sm font-medium text-foreground truncate max-w-xs">
                                 {item.title}
                               </div>
                               {item.body && (
-                                <div className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-xs">
+                                <div className="text-sm text-muted-foreground truncate max-w-xs">
                                   {item.body}
                                 </div>
                               )}
@@ -343,13 +343,13 @@ export default function ContentManagementPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             {getVisibilityIcon(item.visibility)}
-                            <span className="ml-2 text-sm text-gray-900 dark:text-gray-100 capitalize">
+                            <span className="ml-2 text-sm text-foreground capitalize">
                               {item.visibility === "premium" ? `$${item.price}` : item.visibility}
                             </span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(item.status)}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                           {formatDate(item.createdAt)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -361,7 +361,7 @@ export default function ContentManagementPage() {
                               variant="ghost"
                               size="sm"
                               onClick={() => handleDelete(item)}
-                              className="text-red-600 hover:text-red-700"
+                              className="text-destructive hover:text-destructive/80"
                             >
                               <Icons.trash className="h-4 w-4" />
                             </Button>
@@ -385,7 +385,7 @@ export default function ContentManagementPage() {
               <Icons.chevronLeft className="h-4 w-4" />
               Previous
             </Button>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
+            <span className="text-sm text-muted-foreground">
               Page {page} of {pagination.pages}
             </span>
             <Button
@@ -399,7 +399,7 @@ export default function ContentManagementPage() {
             </Button>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-700 dark:text-gray-300">Show:</span>
+            <span className="text-sm text-muted-foreground">Show:</span>
             <Select value={limit.toString()} onValueChange={(value) => setLimit(Number(value))}>
               <SelectTrigger className="w-20">
                 <SelectValue />
@@ -422,7 +422,7 @@ export default function ContentManagementPage() {
             <DialogTitle>Delete Content</DialogTitle>
           </DialogHeader>
           <div className="py-4">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-muted-foreground">
               Are you sure you want to delete &quot;{contentToDelete?.title}&quot;? This action cannot be undone.
             </p>
           </div>

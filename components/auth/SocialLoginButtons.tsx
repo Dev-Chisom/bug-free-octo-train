@@ -45,7 +45,7 @@ export function SocialLoginButtons({ loading = false }: SocialLoginButtonsProps)
     <div className="space-y-4">
       <Button
         variant="outline"
-        className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+        className="w-full flex items-center justify-center px-4 py-2 border border-border rounded-md shadow-sm bg-background text-foreground font-medium hover:bg-accent transition"
         disabled={loading || googleLoading}
         onClick={handleGoogleLogin}
       >
@@ -80,7 +80,7 @@ export function SocialLoginButtons({ loading = false }: SocialLoginButtonsProps)
 
       <Button
         variant="outline"
-        className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+        className="w-full flex items-center justify-center px-4 py-2 border border-border rounded-md shadow-sm bg-background text-foreground font-medium hover:bg-accent transition"
         disabled={loading || twitterLoading}
         onClick={handleTwitterLogin}
       >
