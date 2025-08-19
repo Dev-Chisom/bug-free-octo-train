@@ -139,8 +139,8 @@ export default function CreatorAnalyticsPage() {
     return (
       <div className="max-w-6xl mx-auto p-6">
         <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-          <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div className="h-8 bg-muted rounded w-1/4"></div>
+          <div className="h-64 bg-muted rounded"></div>
         </div>
       </div>
     )
@@ -153,8 +153,8 @@ export default function CreatorAnalyticsPage() {
   return (
     <div className="p-6">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t("analytics.title")}</h1>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("analytics.overview")}</p>
+        <h1 className="text-2xl font-bold text-foreground">{t("analytics.title")}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{t("analytics.overview")}</p>
       </div>
 
       {/* Stats cards */}

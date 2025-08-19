@@ -98,9 +98,9 @@ export default function UserDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
-        <div className="px-2 py-2 text-sm text-gray-900 dark:text-gray-100 border-b border-gray-100 dark:border-gray-700">
+        <div className="px-2 py-2 text-sm text-popover-foreground border-b border-border">
           <p className="font-medium">{user?.data?.name || "User"}</p>
-          <p className="text-gray-500 dark:text-gray-400 truncate">{user?.data?.email || "user@example.com"}</p>
+          <p className="text-muted-foreground truncate">{user?.data?.email || "user@example.com"}</p>
         </div>
 
         {userLinks.map((item) => (

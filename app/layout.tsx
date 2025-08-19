@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-background text-foreground`}>
         <Providers>
           {/* AuthProvider initializes auth state globally */}
           <AuthProvider>{children}</AuthProvider>

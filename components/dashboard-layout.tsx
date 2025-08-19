@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Top Bar (sticky) */}
       <div className="fixed left-0 top-0 bg-background border-b border-border shadow-sm z-50 w-full" style={{ height: "64px" }}>
         <div className="flex items-center justify-between lg:justify-end px-4 py-3 sm:px-6 lg:px-8 container max-w-[1200px] mx-auto">
@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
           {/* Main Content */}
           <div className="flex-1 flex flex-col" style={{ marginBlockStart: "64px", minHeight: "calc(100vh - 64px)" }}>
-            <main className="flex-1 bg-gray-50 p-4 lg:p-6">
+            <main className="flex-1 bg-background p-4 lg:p-6">
               <div className="max-w-[1200px] mx-auto">{children}</div>
             </main>
           </div>

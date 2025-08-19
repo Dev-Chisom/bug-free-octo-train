@@ -49,25 +49,26 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    /* Dark blue color scheme matching the second screenshot */
+    --background: 210 100% 6%;        /* Very dark navy blue */
+    --foreground: 210 40% 92%;        /* Light blue-white text */
+    --card: 210 50% 10%;              /* Dark blue cards */
+    --card-foreground: 210 40% 92%;   /* Light text on cards */
+    --popover: 210 50% 12%;           /* Slightly lighter blue for popovers */
+    --popover-foreground: 210 40% 92%; /* Light text on popovers */
+    --primary: 217 91% 60%;           /* Bright blue accent */
+    --primary-foreground: 210 40% 98%; /* White text on primary */
+    --secondary: 210 30% 18%;         /* Medium dark blue */
+    --secondary-foreground: 210 40% 92%; /* Light text on secondary */
+    --muted: 210 30% 15%;             /* Muted dark blue */
+    --muted-foreground: 210 20% 65%;  /* Muted light blue text */
+    --accent: 210 30% 18%;            /* Accent blue */
+    --accent-foreground: 210 40% 92%; /* Light text on accent */
+    --destructive: 0 75% 60%;         /* Red for destructive actions */
+    --destructive-foreground: 210 40% 98%; /* White text on destructive */
+    --border: 210 30% 18%;            /* Border blue */
+    --input: 210 50% 12%;             /* Input background */
+    --ring: 217 91% 60%;              /* Focus ring blue */
   }
 }
 
@@ -85,6 +86,67 @@
   /* Ensure proper dark mode transitions */
   * {
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Force CSS variables to take precedence over hardcoded classes */
+  .dark * {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .dark .bg-card {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  .dark .bg-muted {
+    background-color: hsl(var(--muted)) !important;
+  }
+
+  .dark .bg-accent {
+    background-color: hsl(var(--accent)) !important;
+  }
+
+  .dark .bg-popover {
+    background-color: hsl(var(--popover)) !important;
+  }
+
+  .dark .text-foreground {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .dark .text-muted-foreground {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  .dark .border-border {
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Override hardcoded gray backgrounds in dark mode */
+  .dark [class*="bg-gray-"] {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  .dark [class*="text-gray-"] {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .dark [class*="border-gray-"] {
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Ensure dropdown menu items have proper cursor */
+  [data-radix-dropdown-menu-item] {
+    cursor: pointer !important;
+  }
+
+  [data-radix-dropdown-menu-item] a {
+    cursor: pointer !important;
+  }
+
+  /* Ensure all interactive elements have proper cursor */
+  button, a, [role="button"], [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
   }
 
   /* Modal and dropdown backdrop improvements */
@@ -177,7 +239,7 @@
   }
 
   .dark .gradient-bg {
-    background: linear-gradient(to bottom right, rgb(17 24 39), rgb(31 41 55));
+    background: linear-gradient(to bottom right, hsl(210 100% 6%), hsl(210 50% 10%));
   }
 
   .glass-effect {

@@ -102,7 +102,7 @@ export function AnalyticsStats({ stats }: AnalyticsStatsProps) {
         const textColorClass = getColorClasses(stat.color, "text")
 
         return (
-          <Card key={index} className="bg-gray-50 dark:bg-gray-900">
+          <Card key={index}>
             <CardContent className="px-4 py-5 sm:p-6">
               <div className="flex items-center">
                 <div className={`${bgColorClass} rounded-md p-3`}>
@@ -110,9 +110,9 @@ export function AnalyticsStats({ stats }: AnalyticsStatsProps) {
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
-                    <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">{t(stat.name)}</dt>
+                    <dt className="text-sm font-medium text-muted-foreground truncate">{t(stat.name)}</dt>
                     <dd>
-                      <div className="text-lg font-medium text-gray-900 dark:text-gray-100">{stat.value}</div>
+                      <div className="text-lg font-medium text-foreground">{stat.value}</div>
                     </dd>
                   </dl>
                 </div>
@@ -125,11 +125,11 @@ export function AnalyticsStats({ stats }: AnalyticsStatsProps) {
                     <TrendingDown className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-500" />
                   )}
                   <div
-                    className={stat.trend > 0 ? "text-green-700 dark:text-green-400" : "text-red-700 dark:text-red-400"}
+                    className={stat.trend > 0 ? "text-green-600" : "text-red-600"}
                   >
                     {Math.abs(stat.trend)}%
                   </div>
-                  <div className="ml-1 text-gray-500 dark:text-gray-400">{t("analytics.from_last_month")}</div>
+                  <div className="ml-1 text-muted-foreground">{t("analytics.from_last_month")}</div>
                 </div>
               </div>
             </CardContent>

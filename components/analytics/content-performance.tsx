@@ -40,14 +40,14 @@ export function ContentPerformance({ posts }: ContentPerformanceProps) {
   }
 
   return (
-    <Card className="bg-gray-50 dark:bg-gray-900">
-      <CardHeader className="border-b border-gray-200 dark:border-gray-700">
-        <CardTitle className="text-lg font-medium text-gray-900 dark:text-gray-100">
+    <Card>
+      <CardHeader className="border-b border-border">
+        <CardTitle className="text-lg font-medium text-foreground">
           {t("contentPerformance")}
         </CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+        <ul className="divide-y divide-border">
           {posts.map((post) => (
             <li key={post.id} className="px-3 py-4 sm:px-6">
               <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
@@ -61,41 +61,41 @@ export function ContentPerformance({ posts }: ContentPerformanceProps) {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate pr-2">
+                    <p className="text-sm font-medium text-foreground truncate pr-2">
                       {post.title}
                     </p>
                     {/* Date on mobile - positioned under title */}
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 sm:hidden">
+                    <p className="text-xs text-muted-foreground mt-1 sm:hidden">
                       {formatDate(post.date)}
                     </p>
                   </div>
                 </div>
                 
                 {/* Metrics Row */}
-                <div className="flex items-center justify-between sm:justify-start sm:space-x-4 pl-15 sm:pl-0">
-                  <div className="flex items-center space-x-3 sm:space-x-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                    <div className="flex items-center">
-                      <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                      <span className="hidden xs:inline">{formatNumber(post.views)}</span>
-                      <span className="xs:hidden">{formatNumber(post.views)}</span>
-                      <span className="hidden sm:inline ml-1">{t("views")}</span>
+                                  <div className="flex items-center justify-between sm:justify-start sm:space-x-4 pl-15 sm:pl-0">
+                    <div className="flex items-center space-x-3 sm:space-x-4 text-xs sm:text-sm text-muted-foreground">
+                      <div className="flex items-center">
+                        <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                        <span className="hidden xs:inline">{formatNumber(post.views)}</span>
+                        <span className="xs:hidden">{formatNumber(post.views)}</span>
+                        <span className="hidden sm:inline ml-1">{t("views")}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Heart className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                        <span>{formatNumber(post.likes)}</span>
+                        <span className="hidden sm:inline ml-1">{t("likes")}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                        <span>{formatNumber(post.comments)}</span>
+                        <span className="hidden sm:inline ml-1">{t("comments")}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <Heart className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                      <span>{formatNumber(post.likes)}</span>
-                      <span className="hidden sm:inline ml-1">{t("likes")}</span>
+                    
+                    {/* Date on desktop */}
+                    <div className="hidden sm:block text-sm text-muted-foreground whitespace-nowrap">
+                      {formatDate(post.date)}
                     </div>
-                    <div className="flex items-center">
-                      <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                      <span>{formatNumber(post.comments)}</span>
-                      <span className="hidden sm:inline ml-1">{t("comments")}</span>
-                    </div>
-                  </div>
-                  
-                  {/* Date on desktop */}
-                  <div className="hidden sm:block text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                    {formatDate(post.date)}
-                  </div>
                 </div>
               </div>
             </li>
