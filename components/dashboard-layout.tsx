@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
           {/* Main Content */}
           <div className="flex-1 flex flex-col" style={{ marginBlockStart: "64px", minHeight: "calc(100vh - 64px)" }}>
-            <main className="flex-1 bg-background p-4 lg:p-6">
+            <main className="flex-1 bg-card p-4 lg:p-6">
               <div className="max-w-[1200px] mx-auto">{children}</div>
             </main>
           </div>

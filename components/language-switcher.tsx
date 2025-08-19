@@ -23,6 +23,7 @@ const normalizeLanguage = (lang: string): string => {
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation()
   const [currentLocale, setCurrentLocale] = useState("en")
+  const [isChanging, setIsChanging] = useState(false)
 
   const availableLocales: Locale[] = [
     { code: "en", name: "English", flag: "🇺🇸" },
@@ -34,19 +35,15 @@ export default function LanguageSwitcher() {
   const currentLocaleFlag = availableLocales.find((l) => l.code === currentLocale)?.flag || "🇺🇸"
 
   useEffect(() => {
-    const handleLanguageChange = (lng: string) => {
-      const normalizedLng = lng === "en" ? "en-US" : lng
-      i18n.changeLanguage(normalizedLng)
-      setCurrentLocale(normalizedLng)
-    }
-
-    // Set initial normalized language
+    // Set initial language from i18n
     const initialLang = normalizeLanguage(i18n.language || "en")
     setCurrentLocale(initialLang)
 
-    // Ensure i18n is using the normalized language
-    if (i18n.language !== initialLang) {
-      i18n.changeLanguage(initialLang)
+    // Listen for language changes
+    const handleLanguageChange = (lng: string) => {
+      const normalizedLng = normalizeLanguage(lng)
+      setCurrentLocale(normalizedLng)
+      setIsChanging(false)
     }
 
     i18n.on("languageChanged", handleLanguageChange)
@@ -56,28 +53,37 @@ export default function LanguageSwitcher() {
   }, [i18n])
 
   const switchLanguage = async (code: string) => {
+    if (isChanging || code === currentLocale) return
+    
     try {
+      setIsChanging(true)
       const normalizedCode = normalizeLanguage(code)
 
+      // Change language in i18n
       await i18n.changeLanguage(normalizedCode)
+      
+      // Store in localStorage and cookie for persistence
+      if (typeof window !== "undefined") {
+        localStorage.setItem("i18nextLng", normalizedCode)
+        document.cookie = `i18next=${normalizedCode}; path=/; max-age=${7 * 24 * 60 * 60}`
+      }
+      
       setCurrentLocale(normalizedCode)
-
-      // Store normalized language
-      localStorage.setItem("i18nextLng", normalizedCode)
-      document.cookie = `i18next=${normalizedCode}; path=/; max-age=${7 * 24 * 60 * 60}`
     } catch (error) {
-      // Failed to switch language
+      console.error("Failed to switch language:", error)
+    } finally {
+      setIsChanging(false)
     }
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+        <Button variant="ghost" size="sm" className="flex items-center space-x-2" disabled={isChanging}>
           <Languages className="w-4 h-4" />
           <span className="hidden sm:inline text-sm font-medium flex items-center gap-1">
             <span>{currentLocaleFlag}</span>
-            <span>{currentLocaleName}</span>
+            <span>{isChanging ? "Changing..." : currentLocaleName}</span>
           </span>
           <ChevronDown className="w-4 h-4" />
         </Button>

@@ -4,9 +4,9 @@
   --radius: 0.5rem;
   
   /* Light mode colors */
-  --color-background: 0 0% 100%;
+  --color-background: 0 0% 98%;       /* Very light grey - general background */
   --color-foreground: 222.2 84% 4.9%;
-  --color-card: 0 0% 100%;
+  --color-card: 0 0% 100%;            /* Pure white - main content */
   --color-card-foreground: 222.2 84% 4.9%;
   --color-popover: 0 0% 100%;
   --color-popover-foreground: 222.2 84% 4.9%;
@@ -50,9 +50,9 @@
 
   .dark {
     /* Dark blue color scheme matching the second screenshot */
-    --background: 210 100% 6%;        /* Very dark navy blue */
+    --background: 210 100% 6%;        /* Very dark navy blue - general background */
     --foreground: 210 40% 92%;        /* Light blue-white text */
-    --card: 210 50% 10%;              /* Dark blue cards */
+    --card: 210 100% 8%;              /* Slightly lighter dark navy blue - main content */
     --card-foreground: 210 40% 92%;   /* Light text on cards */
     --popover: 210 50% 12%;           /* Slightly lighter blue for popovers */
     --popover-foreground: 210 40% 92%; /* Light text on popovers */

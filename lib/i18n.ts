@@ -9,6 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     lng: "en",
+    fallbackLng: "en",
     debug: process.env.NODE_ENV === "development",
 
     // Supported languages - only these will be used
@@ -19,7 +20,7 @@ i18n
     cleanCode: true,
 
     // Normalize language codes
-    nonExplicitSupportedLngs: true,
+    nonExplicitSupportedLngs: false,
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
@@ -32,6 +33,8 @@ i18n
       requestOptions: {
         cache: "default",
       },
+      // Add retry logic for failed requests
+      addPath: "/locales/{{lng}}.json",
     },
 
     detection: {
@@ -46,12 +49,15 @@ i18n
 
       // Cookie settings for persistence - only set on client side
       cookieMinutes: 10080, // 7 days
-      cookieDomain: undefined, // Will be set dynamically on client side
+      cookieDomain: typeof window !== "undefined" ? window.location.hostname : undefined,
     },
 
     // Use single namespace since we have one file per language
     defaultNS: "translation",
     ns: ["translation"],
+    
+    // Ensure resources are loaded before initialization completes
+    initImmediate: false,
   } as any)
 
 export default i18n
