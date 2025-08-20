@@ -129,9 +129,9 @@ export default function CreatorSubscribersPage() {
   if (!isClient) {
     return (
       <div className="max-w-6xl mx-auto p-6">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-          <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        <div className="space-y-6">
+          <div className="h-8 bg-muted rounded w-1/4 animate-pulse"></div>
+          <div className="h-64 bg-muted rounded animate-pulse"></div>
         </div>
       </div>
     )
@@ -222,19 +222,19 @@ export default function CreatorSubscribersPage() {
     return (
       <div className="p-6">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-bold text-foreground">
             {t("subscribers.title")}
           </h1>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-1 text-sm text-muted-foreground">
             {t("subscribers.manage")}
           </p>
         </div>
         <div className="animate-pulse">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-white dark:bg-gray-900 rounded-lg p-5">
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+              <div key={i} className="bg-card rounded-lg p-5 border border-border">
+                <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+                <div className="h-6 bg-muted rounded w-1/2"></div>
               </div>
             ))}
           </div>
@@ -246,10 +246,10 @@ export default function CreatorSubscribersPage() {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="text-2xl font-bold text-foreground">
           {t("subscribers.title")}
         </h1>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mt-1 text-sm text-muted-foreground">
           {t("subscribers.manage")}
         </p>
       </div>
@@ -260,7 +260,7 @@ export default function CreatorSubscribersPage() {
       </div>
 
       {/* Subscribers list */}
-      <div className="bg-white dark:bg-gray-900 shadow-sm rounded-lg">
+      <div className="bg-card shadow-sm rounded-lg border border-border">
         <div className="px-4 py-5 sm:p-6">
           {/* Filters */}
           <div className="mb-6">
@@ -297,7 +297,7 @@ export default function CreatorSubscribersPage() {
 
             <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="text-sm text-muted-foreground">
                   {t("subscribers.pagination.showing")} <span className="font-medium">{startIndex + 1}</span>
                   {t("subscribers.pagination.to")}
                   <span className="font-medium">{endIndex}</span>
@@ -310,7 +310,7 @@ export default function CreatorSubscribersPage() {
               <div>
                 <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
                   <button
-                    className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white dark:bg-gray-900 text-sm font-medium text-gray-500 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-border bg-card text-sm font-medium text-muted-foreground hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage(currentPage - 1)}
                   >
@@ -323,8 +323,8 @@ export default function CreatorSubscribersPage() {
                       key={page}
                       className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                         page === currentPage
-                          ? "z-10 bg-primary-50 border-primary-500 text-primary-600"
-                          : "border-gray-300 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                          ? "z-10 bg-primary/10 border-primary text-primary"
+                          : "border-border bg-card text-muted-foreground hover:bg-muted"
                       }`}
                       onClick={() => setCurrentPage(page)}
                     >
@@ -332,7 +332,7 @@ export default function CreatorSubscribersPage() {
                     </button>
                   ))}
                   <button
-                    className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white dark:bg-gray-900 text-sm font-medium text-gray-500 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-border bg-card text-sm font-medium text-muted-foreground hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage(currentPage + 1)}
                   >

@@ -42,9 +42,7 @@ export default function SidebarNavigationItem({ item, onClick }: SidebarNavigati
         <IconComponent
           className={cn(
             "mr-4 flex-shrink-0 h-6 w-6",
-            isActive
-              ? "text-accent-foreground"
-              : "text-muted-foreground group-hover:text-foreground",
+            isActive ? "text-accent-foreground" : "text-muted-foreground group-hover:text-foreground",
           )}
         />
         {item.name}

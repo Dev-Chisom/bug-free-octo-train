@@ -66,32 +66,32 @@ export function SubscribersTable({
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead className="bg-gray-50 dark:bg-gray-800">
+      <table className="min-w-full divide-y divide-border">
+        <thead className="bg-muted">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
               {t("subscribers.table.subscriber")}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
               {t("subscribers.table.plan")}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
               {t("subscribers.table.status")}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
               {t("subscribers.table.revenue")}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
               {t("subscribers.table.joined")}
             </th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+            <th className="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider">
               {t("subscribers.table.actions")}
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody className="bg-card divide-y divide-border">
           {subscribers.map((subscriber) => (
-            <tr key={subscriber.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+            <tr key={subscriber.id} className="hover:bg-muted">
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <Avatar className="h-10 w-10">
@@ -99,18 +99,18 @@ export function SubscribersTable({
                     <AvatarFallback>{subscriber.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    <div className="text-sm font-medium text-foreground">
                       {subscriber.name}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">{subscriber.email}</div>
+                    <div className="text-sm text-muted-foreground">{subscriber.email}</div>
                   </div>
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900 dark:text-gray-100">
+                <div className="text-sm text-foreground">
                   {t(`subscribers.filters.${subscriber.plan}`)}
                 </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">
+                <div className="text-sm text-muted-foreground">
                   ${subscriber.plan === "monthly" ? "9.99" : "99.99"}
                 </div>
               </td>
@@ -123,14 +123,14 @@ export function SubscribersTable({
                 </Badge>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900 dark:text-gray-100">
+                <div className="text-sm text-foreground">
                   ${subscriber.totalRevenue.toFixed(2)}
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
+                <div className="text-xs text-muted-foreground">
                   {t("subscribers.table.lifetimeValue")}
                 </div>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                 {formatDate(subscriber.joinedAt)}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

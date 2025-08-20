@@ -410,7 +410,7 @@ export function PostForm({
 										{uploadedMediaFiles.map((media, index) => (
 											<div
 												key={media.id || media.url || index}
-												className="relative group overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 aspect-square cursor-pointer"
+												className="relative group overflow-hidden rounded-lg bg-muted border border-border aspect-square cursor-pointer"
 												onClick={() => openMediaPreview(index)}
 											>
 												{/* Image Display */}
@@ -437,8 +437,8 @@ export function PostForm({
 
 														{/* Play Overlay */}
 														<div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-															<div className="bg-white/90 dark:bg-gray-900/90 rounded-full p-3">
-																<Play className="w-5 h-5 text-gray-900 dark:text-white" />
+															<div className="bg-card/90 rounded-full p-3">
+																                <Play className="w-5 h-5 text-foreground" />
 															</div>
 														</div>
 
@@ -484,7 +484,7 @@ export function PostForm({
 										))}
 									</div>
 
-									<div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+									<div className="flex items-center justify-between text-sm text-muted-foreground">
 										<span>
 											{uploadedMediaFiles.length} {uploadedMediaFiles.length === 1 ? 'file' : 'files'} uploaded
 										</span>
@@ -495,16 +495,16 @@ export function PostForm({
 								</div>
 							) : (
 								<div
-									className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 px-6 py-10 text-center cursor-pointer hover:border-primary-400 transition-colors"
+									className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border px-6 py-10 text-center cursor-pointer hover:border-primary transition-colors"
 									onClick={() => setShowMediaGallery(true)}
 								>
-									<Upload className="mx-auto h-12 w-12 text-gray-400" />
-									<div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
-										<span className="font-medium text-primary-600 dark:text-primary-400">
+									<Upload className="mx-auto h-12 w-12 text-muted-foreground" />
+									<div className="mt-4 text-sm text-muted-foreground">
+										<span className="font-medium text-primary">
 											{t('content.uploadFiles')}
 										</span>
 									</div>
-									<p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+									<p className="text-xs text-muted-foreground mt-2">
 										Images and videos up to 10 MB, max 10 files
 									</p>
 								</div>
@@ -514,8 +514,8 @@ export function PostForm({
 				</section>
 
 				{/* Post Settings */}
-				<section className="pt-4 border-t border-gray-100 dark:border-gray-700">
-					<h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
+				<section className="pt-4 border-t border-border">
+					<h2 className="text-xl font-semibold mb-6 text-foreground">
 						{t('visibility') || 'Post Settings'}
 					</h2>
 
@@ -536,14 +536,14 @@ export function PostForm({
 														value="public"
 														checked={field.state.value === 'public'}
 														onChange={(e) => field.handleChange(e.target.value as any)}
-														className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-500"
+														className="h-4 w-4 border-border text-primary focus:ring-primary"
 													/>
 												</div>
 												<div className="ml-3 text-sm">
-													<Label htmlFor="visibility-public" className="font-medium text-gray-700 dark:text-gray-200">
+													<Label htmlFor="visibility-public" className="font-medium text-foreground">
 														{t('public') || 'Public'}
 													</Label>
-													<p className="text-gray-500 dark:text-gray-400">
+													<p className="text-muted-foreground">
 														{t('publicHint') || 'Visible to everyone, including non-subscribers'}
 													</p>
 												</div>
@@ -557,17 +557,17 @@ export function PostForm({
 														value="subscribers"
 														checked={field.state.value === 'subscribers'}
 														onChange={(e) => field.handleChange(e.target.value as any)}
-														className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-500"
+														className="h-4 w-4 border-border text-primary focus:ring-primary"
 													/>
 												</div>
 												<div className="ml-3 text-sm">
 													<Label
 														htmlFor="visibility-subscribers"
-														className="font-medium text-gray-700 dark:text-gray-200"
+														className="font-medium text-foreground"
 													>
 														{t('subscribersOnly') || 'Subscribers Only'}
 													</Label>
-													<p className="text-gray-500 dark:text-gray-400">
+													<p className="text-muted-foreground">
 														{t('subscribersOnlyHint') || 'Only visible to your paid subscribers'}
 													</p>
 												</div>
@@ -581,7 +581,7 @@ export function PostForm({
 														value="pay-to-view"
 														checked={field.state.value === 'pay-to-view'}
 														onChange={(e) => field.handleChange(e.target.value as any)}
-														className="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-500"
+														className="h-4 w-4 border-border text-primary focus:ring-primary"
 													/>
 												</div>
 												<div className="ml-3 text-sm">
@@ -643,8 +643,8 @@ export function PostForm({
 									<Checkbox
 										id="schedule"
 										checked={isScheduled}
-										                                                                                onCheckedChange={(checked) => setIsScheduled(Boolean(checked))}
-										className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+										onCheckedChange={(checked) => setIsScheduled(Boolean(checked))}
+										className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
 									/>
 								</div>
 								<div className="ml-3 text-sm">
@@ -687,7 +687,7 @@ export function PostForm({
 				</section>
 
 				{/* Form Actions */}
-				<div className="bg-gray-50 dark:bg-gray-800 py-3 flex justify-end gap-3 px-6 -mx-6 -mb-6">
+				<div className="bg-muted py-3 flex justify-end gap-3 px-6 -mx-6 -mb-6">
 					<Button type="button" variant="outline" onClick={onCancel}>
 						Cancel
 					</Button>

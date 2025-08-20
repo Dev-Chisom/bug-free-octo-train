@@ -75,16 +75,16 @@ export default function MediaLibraryTab({
           {/* Add video play icon overlay to some items */}
           {index % 3 === 0 && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="bg-gray-800/50 rounded-full p-3">
-                <div className="w-6 h-6 bg-white/80 rounded-full" />
+              <div className="bg-black/50 dark:bg-white/20 rounded-full p-3">
+                <div className="w-6 h-6 bg-white/80 dark:bg-gray-800 rounded-full" />
               </div>
             </div>
           )}
 
           {/* Add selection indicator to some items */}
           {index % 5 === 0 && (
-            <div className="absolute top-3 left-3 bg-primary-500 text-white rounded-full p-1">
-              <div className="w-4 h-4 bg-white rounded-full" />
+            <div className="absolute top-3 left-3 bg-primary text-primary-foreground rounded-full p-1">
+              <div className="w-4 h-4 bg-primary-foreground rounded-full" />
             </div>
           )}
 

@@ -22,18 +22,18 @@ export default function ApplyPage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
           <div>
             <div className="text-left mb-8">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h1 className="text-2xl font-bold text-foreground">
                 Become a Creator
               </h1>
             </div>
-            <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm overflow-hidden">
+            <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
               <div className="p-6 sm:p-8">
                 <div className="flex items-center justify-center py-12">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-gray-100"></div>
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
                 </div>
               </div>
             </div>
@@ -44,11 +44,11 @@ export default function ApplyPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div>
           <div className="text-left mb-8">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="text-2xl font-bold text-foreground">
               {t("nav.becomeCreator", "Become a Creator")}
             </h1>
           </div>

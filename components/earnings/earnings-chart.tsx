@@ -10,8 +10,8 @@ export function EarningsChart({ period }: EarningsChartProps) {
   const { t } = useTranslation()
 
   return (
-    <div className="h-72 bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-      <p className="text-gray-500 dark:text-gray-400">
+    <div className="h-72 bg-muted rounded-lg flex items-center justify-center">
+      <p className="text-muted-foreground">
         {t("earnings.overview.chartPlaceholder")}
       </p>
     </div>

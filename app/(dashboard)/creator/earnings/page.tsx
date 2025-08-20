@@ -181,9 +181,9 @@ export default function CreatorEarningsPage() {
   if (!isClient) {
     return (
       <div className="max-w-6xl mx-auto p-6">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-          <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        <div className="space-y-6">
+          <div className="h-8 bg-muted rounded w-1/4 animate-pulse"></div>
+          <div className="h-64 bg-muted rounded animate-pulse"></div>
         </div>
       </div>
     )
@@ -234,10 +234,10 @@ export default function CreatorEarningsPage() {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="text-2xl font-bold text-foreground">
           {t("earnings.title")}
         </h1>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mt-1 text-sm text-muted-foreground">
           {t("earnings.description")}
         </p>
       </div>
@@ -248,10 +248,10 @@ export default function CreatorEarningsPage() {
       </div>
 
       {/* Earnings chart */}
-      <div className="bg-white dark:bg-gray-900 shadow-sm rounded-lg mb-8">
+      <div className="bg-card shadow-sm rounded-lg mb-8 border border-border">
         <div className="p-6">
           <div className="sm:flex sm:items-center sm:justify-between mb-6">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 className="text-lg font-medium text-foreground">
               {t("earnings.overview.title")}
             </h2>
 
@@ -276,9 +276,9 @@ export default function CreatorEarningsPage() {
       </div>
 
       {/* Revenue breakdown */}
-      <div className="bg-white dark:bg-gray-900 shadow-sm rounded-lg mb-8">
+      <div className="bg-card shadow-sm rounded-lg mb-8 border border-border">
         <div className="p-6">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-lg font-medium text-foreground mb-6">
             {t("earnings.revenue.title")}
           </h2>
 
@@ -298,10 +298,10 @@ export default function CreatorEarningsPage() {
       </div>
 
       {/* Recent transactions */}
-      <div className="bg-white dark:bg-gray-900 shadow-sm rounded-lg">
+      <div className="bg-card shadow-sm rounded-lg border border-border">
         <div className="p-6">
           <div className="sm:flex sm:items-center sm:justify-between mb-6">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 className="text-lg font-medium text-foreground">
               {t("earnings.transactions.title")}
             </h2>
 
@@ -338,7 +338,7 @@ export default function CreatorEarningsPage() {
 
             <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="text-sm text-muted-foreground">
                   {t("earnings.transactions.pagination.showing")} <span className="font-medium">{startIndex + 1}</span>
                   {t("earnings.transactions.pagination.to")}
                   <span className="font-medium">{endIndex}</span>

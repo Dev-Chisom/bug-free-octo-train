@@ -126,12 +126,15 @@ export default function AuthPage() {
   // Show loading while hydrating
   if (!isHydrated) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Card className="w-full max-w-md">
-          <CardContent className="flex flex-col items-center justify-center p-8">
-            <Icons.spinner className="h-8 w-8 animate-spin mb-4" />
-            <h2 className="text-lg font-semibold mb-2">Loading...</h2>
-            <p className="text-sm text-muted-foreground text-center">Initializing authentication...</p>
+      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background to-muted/20">
+        <Card className="w-full max-w-md shadow-xl">
+          <CardContent className="flex flex-col items-center justify-center p-12">
+            <div className="relative mb-6">
+              <div className="h-16 w-16 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+              <div className="absolute inset-0 h-16 w-16 rounded-full border-4 border-transparent border-t-primary/40 animate-ping" />
+            </div>
+            <h2 className="text-xl font-semibold mb-2 text-foreground">Initializing...</h2>
+            <p className="text-sm text-muted-foreground text-center">Setting up your authentication experience</p>
           </CardContent>
         </Card>
       </div>
@@ -140,12 +143,15 @@ export default function AuthPage() {
 
   if (isProcessing) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Card className="w-full max-w-md">
-          <CardContent className="flex flex-col items-center justify-center p-8">
-            <Icons.spinner className="h-8 w-8 animate-spin mb-4" />
-            <h2 className="text-lg font-semibold mb-2">Completing authentication...</h2>
-            <p className="text-sm text-muted-foreground text-center">Please wait while we set up your account.</p>
+      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background to-muted/20">
+        <Card className="w-full max-w-md shadow-xl">
+          <CardContent className="flex flex-col items-center justify-center p-12">
+            <div className="relative mb-6">
+              <div className="h-16 w-16 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+              <div className="absolute inset-0 h-16 w-16 rounded-full border-4 border-transparent border-t-primary/40 animate-ping" />
+            </div>
+            <h2 className="text-xl font-semibold mb-2 text-foreground">Completing authentication...</h2>
+            <p className="text-sm text-muted-foreground text-center">Please wait while we set up your account</p>
           </CardContent>
         </Card>
       </div>
@@ -153,37 +159,52 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-            <Icons.user className="h-6 w-6" />
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background to-muted/20">
+      <Card className="w-full max-w-md shadow-xl">
+        <CardHeader className="text-center pb-6">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+            <Icons.user className="h-8 w-8 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Sign in to your account</CardTitle>
-          <CardDescription>Choose your preferred authentication method to continue</CardDescription>
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            Welcome to Whispers
+          </CardTitle>
+          <CardDescription className="text-base text-muted-foreground mt-2">
+            Sign in or create your account to get started
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="border-destructive/50 bg-destructive/10">
               <Icons.alertCircle className="h-4 w-4" />
               <AlertDescription className="flex items-center justify-between">
                 <span>{error}</span>
-                <Button variant="ghost" size="sm" onClick={handleRetry} className="ml-2 h-auto p-1">
+                <Button variant="ghost" size="sm" onClick={handleRetry} className="ml-2 h-auto p-1 hover:bg-destructive/20">
                   <Icons.refresh className="h-3 w-3" />
                 </Button>
               </AlertDescription>
             </Alert>
           )}
 
-          <OAuthLogin />
+          <div className="space-y-4">
+            <OAuthLogin />
+            
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-border/50" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-card px-2 text-muted-foreground">Quick & Secure</span>
+              </div>
+            </div>
+          </div>
 
-          <div className="text-center text-sm text-muted-foreground">
+          <div className="text-center text-sm text-muted-foreground leading-relaxed">
             By continuing, you agree to our{" "}
-            <a href="/terms" className="underline hover:text-primary">
+            <a href="/terms" className="underline hover:text-primary transition-colors font-medium">
               Terms of Service
             </a>{" "}
             and{" "}
-            <a href="/privacy" className="underline hover:text-primary">
+            <a href="/privacy" className="underline hover:text-primary transition-colors font-medium">
               Privacy Policy
             </a>
           </div>

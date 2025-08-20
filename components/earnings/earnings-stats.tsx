@@ -40,13 +40,31 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   ),
 }
 
-const colorMap: Record<string, string> = {
-  primary: "text-primary-600",
-  success: "text-success-600",
-  secondary: "text-secondary-600",
-  accent: "text-accent-600",
-  warning: "text-warning-600",
-  error: "text-error-600",
+const colorMap: Record<string, Record<string, string>> = {
+  primary: {
+    bg: "bg-primary/10",
+    text: "text-primary",
+  },
+  success: {
+    bg: "bg-green-100 dark:bg-green-900/20",
+    text: "text-green-600 dark:text-green-400",
+  },
+  secondary: {
+    bg: "bg-secondary/10",
+    text: "text-secondary",
+  },
+  accent: {
+    bg: "bg-accent/10",
+    text: "text-accent",
+  },
+  warning: {
+    bg: "bg-yellow-100 dark:bg-yellow-900/20",
+    text: "text-yellow-600 dark:text-yellow-400",
+  },
+  error: {
+    bg: "bg-destructive/10",
+    text: "text-destructive",
+  },
 }
 
 export function EarningsStats({ stats }: EarningsStatsProps) {
@@ -56,23 +74,26 @@ export function EarningsStats({ stats }: EarningsStatsProps) {
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat) => {
         const IconComponent = iconMap[stat.icon]
-        const colorClass = colorMap[stat.color] || "text-gray-600"
+        const bgColorClass = colorMap[stat.color]?.bg || "bg-muted/20"
+        const textColorClass = colorMap[stat.color]?.text || "text-muted-foreground"
 
         return (
           <Card key={stat.name} className="overflow-hidden">
             <CardContent className="p-5">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  {IconComponent && <IconComponent className={`h-6 w-6 ${colorClass}`} aria-hidden="true" />}
+                  <div className={`${bgColorClass} rounded-md p-3`}>
+                    {IconComponent && <IconComponent className={`h-6 w-6 ${textColorClass}`} aria-hidden="true" />}
+                  </div>
                 </div>
 
                 <div className="ml-5 w-0 flex-1">
                   <dl>
-                    <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
+                    <dt className="text-sm font-medium text-muted-foreground truncate">
                       {t(stat.name)}
                     </dt>
                     <dd>
-                      <div className="text-lg font-medium text-gray-900 dark:text-gray-100">{stat.value}</div>
+                      <div className="text-lg font-medium text-foreground">{stat.value}</div>
                     </dd>
                   </dl>
                 </div>
@@ -81,20 +102,20 @@ export function EarningsStats({ stats }: EarningsStatsProps) {
               <div className="mt-4">
                 <div className="flex items-center text-sm">
                   {stat.trend >= 0 ? (
-                    <TrendingUp className="flex-shrink-0 self-center h-5 w-5 text-success-500" aria-hidden="true" />
+                    <TrendingUp className="flex-shrink-0 self-center h-5 w-5 text-green-600 dark:text-green-400" aria-hidden="true" />
                   ) : (
-                    <TrendingDown className="flex-shrink-0 self-center h-5 w-5 text-error-500" aria-hidden="true" />
+                    <TrendingDown className="flex-shrink-0 self-center h-5 w-5 text-red-600 dark:text-red-400" aria-hidden="true" />
                   )}
                   <span
                     className={
                       stat.trend >= 0
-                        ? "text-success-700 dark:text-success-400"
-                        : "text-error-700 dark:text-error-400"
+                        ? "text-green-700 dark:text-green-400"
+                        : "text-red-700 dark:text-red-400"
                     }
                   >
                     {Math.abs(stat.trend)}%
                   </span>
-                  <span className="ml-2 text-gray-500 dark:text-gray-400">
+                  <span className="ml-2 text-muted-foreground">
                     {t("earnings.stats.fromLastMonth")}
                   </span>
                 </div>

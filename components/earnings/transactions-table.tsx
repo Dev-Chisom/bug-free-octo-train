@@ -25,15 +25,15 @@ interface TransactionsTableProps {
 }
 
 const typeColorMap: Record<string, string> = {
-  subscription: "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300",
-  tip: "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-300",
-  ppv: "bg-accent-100 text-accent-800 dark:bg-accent-900 dark:text-accent-300",
+  subscription: "bg-primary/10 text-primary",
+  tip: "bg-secondary/10 text-secondary",
+  ppv: "bg-accent/10 text-accent",
 }
 
 const statusColorMap: Record<string, string> = {
-  completed: "bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-300",
-  pending: "bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-300",
-  failed: "bg-error-100 text-error-800 dark:bg-error-900 dark:text-error-300",
+  completed: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+  pending: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
+  failed: "bg-destructive/10 text-destructive",
 }
 
 export function TransactionsTable({ transactions, formatDate }: TransactionsTableProps) {
@@ -49,13 +49,13 @@ export function TransactionsTable({ transactions, formatDate }: TransactionsTabl
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+      <table className="min-w-full divide-y divide-border">
         <thead>
           <tr>
             {Object.entries(transactionHeaders).map(([key, label]) => (
               <th
                 key={key}
-                className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                className="px-6 py-3 bg-muted text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
               >
                 {label}
               </th>
@@ -63,10 +63,10 @@ export function TransactionsTable({ transactions, formatDate }: TransactionsTabl
           </tr>
         </thead>
 
-        <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody className="bg-card divide-y divide-border">
           {transactions.map((transaction) => (
-            <tr key={transaction.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+            <tr key={transaction.id} className="hover:bg-muted">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                 {formatDate(transaction.date)}
               </td>
 
@@ -86,10 +86,10 @@ export function TransactionsTable({ transactions, formatDate }: TransactionsTabl
                   </Avatar>
 
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    <div className="text-sm font-medium text-foreground">
                       {transaction.customer.name}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <div className="text-sm text-muted-foreground">
                       {transaction.customer.email}
                     </div>
                   </div>
@@ -97,10 +97,10 @@ export function TransactionsTable({ transactions, formatDate }: TransactionsTabl
               </td>
 
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900 dark:text-gray-100">
+                <div className="text-sm text-foreground">
                   ${transaction.amount.toFixed(2)}
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
+                <div className="text-xs text-muted-foreground">
                   {t("earnings.transactions.afterFees", { amount: (transaction.amount * 0.8).toFixed(2) })}
                 </div>
               </td>

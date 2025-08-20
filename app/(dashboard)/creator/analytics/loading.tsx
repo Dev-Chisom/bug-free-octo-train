@@ -17,7 +17,7 @@ export default function AnalyticsLoading() {
             <Card key={index}>
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <div className="bg-gray-100 dark:bg-gray-800 rounded-md p-3">
+                  <div className="bg-muted rounded-md p-3">
                     <Skeleton className="h-6 w-6" />
                   </div>
                   <div className="ml-5 flex-1">

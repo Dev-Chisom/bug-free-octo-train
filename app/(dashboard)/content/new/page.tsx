@@ -25,9 +25,9 @@ export default function NewContentPage() {
   if (!isClient) {
     return (
       <div className="max-w-6xl mx-auto p-6">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-          <div className="h-96 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        <div className="space-y-6">
+          <div className="h-8 bg-muted rounded w-1/4 animate-pulse"></div>
+          <div className="h-96 bg-muted rounded animate-pulse"></div>
         </div>
       </div>
     )
@@ -37,7 +37,7 @@ export default function NewContentPage() {
     return (
       <div className="max-w-6xl mx-auto p-6">
         <div className="text-center py-12">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-xl font-semibold text-foreground mb-4">
             Please log in to create content
           </h2>
           <Button onClick={() => (window.location.href = "/auth")}>Go to Login</Button>
@@ -109,15 +109,15 @@ export default function NewContentPage() {
     <div className="max-w-6xl mx-auto p-6">
       <div className="mb-6">
         <div className="flex items-center">
-          <Link href="/content" className="mr-2 text-gray-500 dark:text-gray-200 hover:text-gray-700">
+          <Link href="/content" className="mr-2 text-muted-foreground hover:text-foreground transition-colors">
             <Icons.arrowLeft className="h-5 w-5" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t("content.new.title")}</h1>
+          <h1 className="text-2xl font-bold text-foreground">{t("content.new.title")}</h1>
         </div>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-200">{t("content.new.description")}</p>
+        <p className="mt-1 text-sm text-muted-foreground">{t("content.new.description")}</p>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 shadow-sm rounded-lg overflow-hidden">
+      <div className="bg-card shadow-sm rounded-lg overflow-hidden border border-border">
         <PostForm
           initialValues={initialValues}
           loading={createMutation.isPending}

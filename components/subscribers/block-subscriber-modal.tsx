@@ -59,21 +59,21 @@ export function BlockSubscriberModal({
               </div>
             </div>
             <div>
-              <DialogTitle className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+              <DialogTitle className="text-lg leading-6 font-medium text-foreground">
                 {t("subscribers.blockTitle")}
               </DialogTitle>
             </div>
           </div>
           <DialogDescription className="mt-2">
-            <p className="text-sm text-gray-500 dark:text-gray-300">
+            <p className="text-sm text-muted-foreground">
               {t("subscribers.blockConfirmation")}
             </p>
             {subscriber && (
-              <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-md">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              <div className="mt-3 p-3 bg-muted rounded-md">
+                <p className="text-sm font-medium text-foreground">
                   {subscriber.name}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{subscriber.email}</p>
+                <p className="text-sm text-muted-foreground">{subscriber.email}</p>
               </div>
             )}
           </DialogDescription>

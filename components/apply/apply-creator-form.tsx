@@ -274,13 +274,13 @@ export default function ApplyCreatorForm() {
   if (!mounted) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-gray-100"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   return (
-    <Card className="bg-white dark:bg-gray-900 w-full my-8">
+    <Card className="w-full my-8">
       <CardHeader>
         <CardTitle>{t("apply.title", "Apply to be a Creator")}</CardTitle>
         <CardDescription>
@@ -301,7 +301,7 @@ export default function ApplyCreatorForm() {
         >
           {/* Basic Information */}
           <section>
-            <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
+            <h2 className="text-xl font-semibold mb-6 text-foreground">
               {t("apply.basicInfo.title", "Basic Information")}
             </h2>
             <div className="space-y-6">
@@ -425,8 +425,8 @@ export default function ApplyCreatorForm() {
           </section>
 
           {/* Social Media */}
-          <section className="pt-8 border-t border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
+          <section className="pt-8 border-t border-border">
+            <h2 className="text-xl font-semibold mb-6 text-foreground">
               {t("apply.social.title", "Social Media")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -483,13 +483,13 @@ export default function ApplyCreatorForm() {
           </section>
 
           {/* Pricing Section */}
-          <section className="pt-8 border-t border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
+          <section className="pt-8 border-t border-border">
+            <h2 className="text-xl font-semibold mb-6 text-foreground">
               {t("apply.pricing.title", "Pricing")}
             </h2>
             <div className="space-y-6">
               <div className="mb-8">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+                <h3 className="text-lg font-semibold text-muted-foreground mb-4">
                   {t(
                     "apply.pricing.monthlySubscription",
                     "Monthly Subscription"
@@ -528,7 +528,7 @@ export default function ApplyCreatorForm() {
                 />
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              <h3 className="text-lg font-semibold text-foreground">
                 {t("apply.pricing.subscriptionPlans", "Subscription Plans")}
               </h3>
               {isLoadingPreferences && (
@@ -539,14 +539,14 @@ export default function ApplyCreatorForm() {
                   ([cycle, cyclePrefs]) => (
                     <div
                       key={cycle}
-                      className="p-4 border rounded-lg dark:border-gray-600 bg-white dark:bg-gray-700 shadow-sm"
+                      className="p-4 border border-border rounded-lg bg-card shadow-sm"
                     >
                       <div className="flex md:items-center justify-between flex-col md:flex-row mb-3">
                         <div>
-                          <h4 className="font-medium text-gray-800 dark:text-gray-200">
+                          <h4 className="font-medium text-foreground">
                             {t(`apply.pricing.${cycle}Plan`, `${cycle} Plan`)}
                           </h4>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                          <p className="text-sm text-muted-foreground">
                             {t(
                               `apply.pricing.${cycle}Description`,
                               `Discount for ${cycle} subscription.`
@@ -570,7 +570,7 @@ export default function ApplyCreatorForm() {
                                 );
                               }}
                             >
-                              <SelectTrigger className="border rounded-md px-3 py-1 text-sm bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white">
+                              <SelectTrigger className="border border-border rounded-md px-3 py-1 text-sm bg-card text-foreground">
                                 <SelectValue
                                   placeholder={t("common.select", "Select")}
                                 />
@@ -604,7 +604,7 @@ export default function ApplyCreatorForm() {
                             t("apply.pricing.calculating", "Calculating...")
                           }
                           readOnly
-                          className="mt-1 bg-gray-100 dark:bg-gray-800"
+                          className="mt-1 bg-muted"
                         />
                       </div>
                     </div>
@@ -615,7 +615,7 @@ export default function ApplyCreatorForm() {
           </section>
 
           {/* Legal Section */}
-          <section className="pt-8 border-t border-gray-200 dark:border-gray-700">
+          <section className="pt-8 border-t border-border">
             <form.Field
               name="acceptTerms"
               children={(field) => (
@@ -628,13 +628,13 @@ export default function ApplyCreatorForm() {
                         field.handleChange(Boolean(checked))
                       }
                       onBlur={field.handleBlur}
-                      className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                      className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
                     />
                   </div>
                   <div className="ml-3 text-sm">
                     <Label
                       htmlFor="accept-terms"
-                      className="font-medium text-gray-700 dark:text-gray-300"
+                      className="font-medium text-foreground"
                     >
                       {t(
                         "apply.legal.acceptTerms",
@@ -659,13 +659,13 @@ export default function ApplyCreatorForm() {
                         field.handleChange(Boolean(checked))
                       }
                       onBlur={field.handleBlur}
-                      className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                      className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
                     />
                   </div>
                   <div className="ml-3 text-sm">
                     <Label
                       htmlFor="confirm-age"
-                      className="font-medium text-gray-700 dark:text-gray-300"
+                      className="font-medium text-foreground"
                     >
                       {t(
                         "apply.legal.confirmAge",
@@ -689,9 +689,9 @@ export default function ApplyCreatorForm() {
           {formSuccess && (
             <Alert
               variant="default"
-              className="bg-green-100 dark:bg-green-900 border-green-300 dark:border-green-700"
+              className="bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800"
             >
-              <AlertCircle className="h-4 w-4 text-green-700 dark:text-green-300" />
+              <AlertCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
               <AlertTitle className="text-green-800 dark:text-green-200">
                 {t("common.success", "Success")}
               </AlertTitle>

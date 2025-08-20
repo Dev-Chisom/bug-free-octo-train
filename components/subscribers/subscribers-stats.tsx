@@ -101,7 +101,7 @@ export function SubscribersStats({ stats }: SubscribersStatsProps) {
         const textColorClass = getColorClasses(stat.color, "text")
 
         return (
-          <Card key={index} className="bg-white dark:bg-gray-900 overflow-hidden shadow-sm rounded-lg">
+          <Card key={index} className="overflow-hidden shadow-sm rounded-lg">
             <CardContent className="p-5">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -111,11 +111,11 @@ export function SubscribersStats({ stats }: SubscribersStatsProps) {
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
-                    <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
+                    <dt className="text-sm font-medium text-muted-foreground truncate">
                       {t(stat.name)}
                     </dt>
                     <dd>
-                      <div className="text-lg font-medium text-gray-900 dark:text-gray-100">{stat.value}</div>
+                      <div className="text-lg font-medium text-foreground">{stat.value}</div>
                     </dd>
                   </dl>
                 </div>
@@ -134,7 +134,7 @@ export function SubscribersStats({ stats }: SubscribersStatsProps) {
                   >
                     {Math.abs(stat.trend)}%
                   </span>
-                  <span className="ml-2 text-gray-500 dark:text-gray-400">
+                  <span className="ml-2 text-muted-foreground">
                     {t("subscribers.stats.fromLastMonth")}
                   </span>
                 </div>

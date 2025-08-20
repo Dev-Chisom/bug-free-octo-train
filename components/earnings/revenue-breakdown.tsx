@@ -17,12 +17,12 @@ interface RevenueBreakdownProps {
 }
 
 const colorMap: Record<string, string> = {
-  primary: "bg-primary-500",
-  secondary: "bg-secondary-500",
-  accent: "bg-accent-500",
-  success: "bg-success-500",
-  warning: "bg-warning-500",
-  error: "bg-error-500",
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  accent: "bg-accent",
+  success: "bg-green-500",
+  warning: "bg-yellow-500",
+  error: "bg-destructive",
 }
 
 export function RevenueBreakdown({ title, items, type }: RevenueBreakdownProps) {
@@ -30,15 +30,15 @@ export function RevenueBreakdown({ title, items, type }: RevenueBreakdownProps) 
 
   return (
     <div>
-      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">{title}</h3>
+      <h3 className="text-sm font-medium text-muted-foreground mb-4">{title}</h3>
 
       <div className="space-y-4">
         {items.map((item) => {
-          const colorClass = colorMap[item.color] || "bg-gray-500"
+          const colorClass = colorMap[item.color] || "bg-muted-foreground"
 
           return (
             <div key={item.name} className="flex items-center sm:flex-col md:flex-row">
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div className="w-full bg-muted rounded-full h-2.5">
                 <div
                   className={`h-2.5 rounded-full ${colorClass}`}
                   style={{ width: `${item.percentage}%` }}
@@ -46,12 +46,12 @@ export function RevenueBreakdown({ title, items, type }: RevenueBreakdownProps) 
               </div>
 
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <p className="text-sm font-medium text-foreground">
                   {t(item.name)}
                 </p>
               </div>
 
-              <p className="ml-4 text-sm font-medium text-gray-900 dark:text-gray-100">
+              <p className="ml-4 text-sm font-medium text-foreground">
                 ${item.amount.toFixed(2)}
               </p>
             </div>

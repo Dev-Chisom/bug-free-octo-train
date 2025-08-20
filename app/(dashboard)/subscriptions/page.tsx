@@ -30,7 +30,7 @@ export default function SubscriptionsPage() {
     return (
       <div className="container mx-auto max-w-6xl p-6">
         <div className="text-center py-12">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-xl font-semibold text-foreground mb-4">
             Please log in to view your subscriptions
           </h2>
           <Button onClick={() => (window.location.href = "/auth")}>Go to Login</Button>
@@ -72,7 +72,7 @@ export default function SubscriptionsPage() {
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((_, i) => (
-                <Card key={i} className="bg-white dark:bg-gray-900">
+                <Card key={i}>
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
                       <Skeleton className="h-16 w-16 rounded-full" />
@@ -109,7 +109,7 @@ export default function SubscriptionsPage() {
     return (
       <div className="container mx-auto max-w-6xl p-6">
         <div className="text-center py-12">
-          <h2 className="text-xl font-semibold text-red-600 mb-4">Failed to load subscriptions</h2>
+          <h2 className="text-xl font-semibold text-destructive mb-4">Failed to load subscriptions</h2>
           <Button onClick={() => window.location.reload()}>Retry</Button>
         </div>
       </div>
@@ -125,13 +125,13 @@ export default function SubscriptionsPage() {
         <div className="mb-8">
           <h2 className="text-lg font-semibold mb-4">{t("subscriptions.activeSubscriptions")}</h2>
           {activeSubscriptions.length === 0 ? (
-            <Card className="bg-white dark:bg-gray-900 rounded-lg shadow-sm">
+            <Card className="rounded-lg shadow-sm">
               <CardContent className="p-8 text-center">
-                <Icons.user className="h-12 w-12 mx-auto text-gray-400" />
-                <h3 className="mt-2 text-lg font-medium text-gray-900 dark:text-gray-100">
+                <Icons.user className="h-12 w-12 mx-auto text-muted-foreground" />
+                <h3 className="mt-2 text-lg font-medium text-foreground">
                   {t("subscriptions.noActiveSubscriptions.title")}
                 </h3>
-                <p className="mt-1 text-gray-500 dark:text-gray-200">
+                <p className="mt-1 text-muted-foreground">
                   {t("subscriptions.noActiveSubscriptions.description")}
                 </p>
                 <Link href="/explore">
@@ -142,7 +142,7 @@ export default function SubscriptionsPage() {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {activeSubscriptions.map((subscription) => (
-                <Card key={subscription.id} className="bg-white dark:bg-gray-900 rounded-lg shadow-sm overflow-hidden">
+                <Card key={subscription.id} className="rounded-lg shadow-sm overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
                       <div className="h-16 w-16 rounded-full overflow-hidden">
@@ -155,36 +155,36 @@ export default function SubscriptionsPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center">
                           <h3 className="text-lg font-semibold truncate">{subscription.creator.displayName}</h3>
-                          {subscription.creator.isVerified && <Icons.check className="ml-1 h-4 w-4 text-primary-500" />}
+                          {subscription.creator.isVerified && <Icons.check className="ml-1 h-4 w-4 text-primary" />}
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-gray-200">@{subscription.creator.username}</p>
+                        <p className="text-sm text-muted-foreground">@{subscription.creator.username}</p>
                       </div>
                     </div>
 
                     <div className="mt-4 space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-500 dark:text-gray-200">{t("subscriptions.plan")}</span>
+                        <span className="text-muted-foreground">{t("subscriptions.plan")}</span>
                         <span className="font-medium">
                           {subscription.plan === "monthly" ? t("common.monthly") : t("common.yearly")}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-500 dark:text-gray-200">{t("subscriptions.price")}</span>
+                        <span className="text-muted-foreground">{t("subscriptions.price")}</span>
                         <span className="font-medium">
                           ${subscription.price}/{subscription.plan === "monthly" ? t("common.month") : t("common.year")}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-500 dark:text-gray-200">{t("subscriptions.nextBillingDate")}</span>
+                        <span className="text-muted-foreground">{t("subscriptions.nextBillingDate")}</span>
                         <span className="font-medium">{formatDate(subscription.endDate)}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-500 dark:text-gray-200">{t("subscriptions.autoRenew")}</span>
+                        <span className="text-muted-foreground">{t("subscriptions.autoRenew")}</span>
                         <span
                           className={
                             subscription.autoRenew
                               ? "text-green-600 dark:text-green-400"
-                              : "text-red-600 dark:text-red-400"
+                              : "text-destructive"
                           }
                         >
                           {subscription.autoRenew ? t("subscriptions.enabled") : t("subscriptions.disabled")}
@@ -201,7 +201,7 @@ export default function SubscriptionsPage() {
                       {subscription.autoRenew && (
                         <Button
                           variant="outline"
-                          className="text-red-600 hover:bg-red-50 hover:border-red-600 dark:text-red-400 dark:hover:bg-red-900/20 bg-transparent"
+                          className="text-destructive hover:bg-destructive/10 hover:border-destructive bg-transparent"
                           onClick={() => handleCancelSubscription(subscription.id)}
                           disabled={cancelMutation.isPending}
                         >
@@ -228,7 +228,7 @@ export default function SubscriptionsPage() {
               {expiredSubscriptions.map((subscription) => (
                 <Card
                   key={subscription.id}
-                  className="bg-white dark:bg-gray-900 rounded-lg shadow-sm overflow-hidden opacity-75"
+                  className="rounded-lg shadow-sm overflow-hidden opacity-75"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
@@ -242,14 +242,14 @@ export default function SubscriptionsPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center">
                           <h3 className="text-lg font-semibold truncate">{subscription.creator.displayName}</h3>
-                          {subscription.creator.isVerified && <Icons.check className="ml-1 h-4 w-4 text-primary-500" />}
+                          {subscription.creator.isVerified && <Icons.check className="ml-1 h-4 w-4 text-primary" />}
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-gray-200">@{subscription.creator.username}</p>
+                        <p className="text-sm text-muted-foreground">@{subscription.creator.username}</p>
                       </div>
                     </div>
 
                     <div className="mt-4">
-                      <p className="text-sm text-gray-500 dark:text-gray-200">
+                      <p className="text-sm text-muted-foreground">
                         {t("subscriptions.expiredOn")} {formatDate(subscription.endDate)}
                       </p>
                     </div>
