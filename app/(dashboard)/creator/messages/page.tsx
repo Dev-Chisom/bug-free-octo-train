@@ -72,22 +72,7 @@ export default function CreatorMessagesPage() {
   const { t } = useTranslation()
   const [isClient, setIsClient] = useState(false)
 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  // Don't render anything until client-side hydration is complete
-  if (!isClient) {
-    return (
-      <div className="max-w-6xl mx-auto p-6">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-          <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
-        </div>
-      </div>
-    )
-  }
-
+  // All hooks must be called before any conditional returns
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [mediaPreview, setMediaPreview] = useState<MediaPreview[]>([])
@@ -110,7 +95,6 @@ export default function CreatorMessagesPage() {
 
   const audioRefs = useRef<Record<string, HTMLAudioElement>>({})
   const currentUser = { id: "currentUser", name: "You" }
-  const allCommentsForModal: Message[] = []
 
   // Quick reactions
   const quickReactions = ["👍", "❤️", "😂", "😮", "😢"]
@@ -210,7 +194,7 @@ export default function CreatorMessagesPage() {
           id: "4",
           content: "",
           timestamp: new Date(Date.now() - 3 * 60 * 1000),
-          isSelf: false,
+          isSelf: true,
           isRead: false,
           isDelivered: true,
           type: "video",
@@ -268,6 +252,10 @@ export default function CreatorMessagesPage() {
       ],
     },
   ])
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Handle URL parameters for direct messaging from subscribers
   useEffect(() => {
@@ -594,25 +582,25 @@ export default function CreatorMessagesPage() {
     return (
       <div className="container mx-auto max-w-6xl p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white">Messages</h2>
+          <h2 className="text-xl font-bold text-foreground">Messages</h2>
         </div>
         <div className="animate-pulse">
-          <div className="grid grid-cols-1 lg:grid-cols-4 h-[800px] bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="lg:col-span-1 border-r border-gray-200 dark:border-gray-700 p-4">
-              <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-4 h-[800px] bg-card rounded-lg shadow-sm border border-border">
+            <div className="lg:col-span-1 border-r border-border p-4">
+              <div className="h-8 bg-muted rounded mb-4"></div>
               <div className="space-y-4">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                    <div className="w-12 h-12 bg-muted rounded-full"></div>
                     <div className="flex-1">
-                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                      <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-muted rounded w-1/2"></div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="lg:col-span-3 bg-gray-50 dark:bg-gray-900"></div>
+            <div className="lg:col-span-3 bg-muted"></div>
           </div>
         </div>
       </div>
@@ -622,9 +610,9 @@ export default function CreatorMessagesPage() {
   return (
     <div className="container mx-auto max-w-6xl">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Messages</h2>
+        <h2 className="text-xl font-bold text-foreground">Messages</h2>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 flex-1 h-[800px] bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+      <div className="grid grid-cols-1 lg:grid-cols-4 flex-1 h-[800px] bg-card rounded-lg shadow-sm border border-border">
         {/* Chat List */}
         <ChatList
           searchQuery={searchQuery}
@@ -689,7 +677,7 @@ export default function CreatorMessagesPage() {
         isOpen={mediaModal.isOpen}
         mediaItems={mediaModal.mediaItems}
         currentIndex={mediaModal.currentIndex}
-        messages={allCommentsForModal}
+        messages={[]}
         currentUser={currentUser}
         onClose={closeMediaPreview}
         onUpdateCurrentIndex={updateMediaIndex}
