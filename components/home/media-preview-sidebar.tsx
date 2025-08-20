@@ -106,12 +106,12 @@ export default function MediaPreviewSidebar({
   }
 
   return (
-    <div className="w-100 md:w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-l border-white/20 flex flex-col h-full">
+    <div className="w-100 md:w-80 bg-white/95 dark:bg-card/95 backdrop-blur-sm border-l border-white/20 flex flex-col h-full">
       {/* Header */}
       <div className="p-4 border-b border-white/10">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm md:text-base text-gray-900 dark:text-white">{title}</h3>
-          {!showComments && <div className="text-sm text-gray-500 dark:text-gray-400">{currentIndex + 1} of 1</div>}
+          <h3 className="text-sm md:text-base text-foreground dark:text-white">{title}</h3>
+          {!showComments && <div className="text-sm text-muted-foreground dark:text-gray-400">{currentIndex + 1} of 1</div>}
         </div>
       </div>
 
@@ -122,23 +122,23 @@ export default function MediaPreviewSidebar({
           {/* File Information */}
           {!showComments && (
             <div className="p-4 border-b border-white/10">
-              <h4 className="font-medium text-gray-900 dark:text-white mb-3 text-xs md:text-sm">File Information</h4>
+              <h4 className="font-medium text-foreground dark:text-white mb-3 text-xs md:text-sm">File Information</h4>
               <div className="space-y-2 text-[11px] md:text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Name:</span>
-                  <span className="text-gray-900 dark:text-white font-medium truncate ml-2">{currentMedia?.name}</span>
+                  <span className="text-muted-foreground dark:text-gray-400">Name:</span>
+                  <span className="text-foreground dark:text-white font-medium truncate ml-2">{currentMedia?.name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Type:</span>
-                  <span className="text-gray-900 dark:text-white flex items-center space-x-1">
+                  <span className="text-muted-foreground dark:text-gray-400">Type:</span>
+                  <span className="text-foreground dark:text-white flex items-center space-x-1">
                     {currentMedia?.type === "image" ? <ImageIcon className="w-4 h-4" /> : <Video className="w-4 h-4" />}
                     <span>{currentMedia?.type}</span>
                   </span>
                 </div>
                 {currentMedia?.size && (
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Size:</span>
-                    <span className="text-gray-900 dark:text-white">{formatFileSize(currentMedia.size)}</span>
+                    <span className="text-muted-foreground dark:text-gray-400">Size:</span>
+                    <span className="text-foreground dark:text-white">{formatFileSize(currentMedia.size)}</span>
                   </div>
                 )}
               </div>
@@ -148,8 +148,8 @@ export default function MediaPreviewSidebar({
           {/* Video Cover Selection */}
           {enableVideoEdit && currentMedia?.type === "video" && (
             <div className="p-4 border-b border-white/10">
-              <h4 className="font-medium text-gray-900 dark:text-white mb-3">Cover Photo</h4>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+              <h4 className="font-medium text-foreground dark:text-white mb-3">Cover Photo</h4>
+              <p className="text-sm text-muted-foreground dark:text-gray-400 mb-3">
                 Select a thumbnail to use as the cover photo
               </p>
 
@@ -163,7 +163,7 @@ export default function MediaPreviewSidebar({
                       className={`relative aspect-video rounded border-2 overflow-hidden transition-all duration-200 hover:scale-105 cursor-pointer ${
                         i === selectedCoverIndex && !customCover
                           ? "border-primary-500 ring-1 ring-primary-500/20"
-                          : "border-gray-200 dark:border-gray-600 hover:border-primary-300"
+                          : "border-border dark:border-border hover:border-primary-300"
                       }`}
                       onClick={(e) => handleThumbnailClick(e, i)}
                     >
@@ -205,7 +205,7 @@ export default function MediaPreviewSidebar({
                 /* Loading State */
                 <div className="grid grid-cols-3 gap-2 mb-3">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="aspect-video bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
+                    <div key={i} className="aspect-video bg-muted animate-pulse rounded"></div>
                   ))}
                 </div>
               )}
@@ -215,7 +215,7 @@ export default function MediaPreviewSidebar({
                 {selectedCoverIndex !== null || customCover ? (
                   <button
                     type="button"
-                    className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors cursor-pointer"
+                    className="text-sm text-muted-foreground hover:text-foreground dark:text-gray-400 dark:hover:text-gray-200 transition-colors cursor-pointer"
                     onClick={handleClearCover}
                   >
                     Clear cover
@@ -248,16 +248,16 @@ export default function MediaPreviewSidebar({
                     alt={message.user.name}
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
-                      <p className="font-medium text-sm text-gray-900 dark:text-white">{message.user.name}</p>
-                      <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">{message.text}</p>
+                    <div className="bg-muted rounded-lg p-3">
+                      <p className="font-medium text-sm text-foreground dark:text-white">{message.user.name}</p>
+                      <p className="text-sm text-foreground dark:text-muted-foreground mt-1">{message.text}</p>
                     </div>
-                    <div className="flex items-center mt-2 space-x-4 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center mt-2 space-x-4 text-xs text-muted-foreground dark:text-gray-400">
                       <span>{formatTimeAgo(message.timestamp)}</span>
-                      <button type="button" className="hover:text-gray-700 dark:hover:text-gray-300">
+                      <button type="button" className="hover:text-foreground dark:hover:text-muted-foreground">
                         Reply
                       </button>
-                      <button type="button" className="hover:text-gray-700 dark:hover:text-gray-300">
+                      <button type="button" className="hover:text-foreground dark:hover:text-muted-foreground">
                         Like
                       </button>
                     </div>
@@ -270,7 +270,7 @@ export default function MediaPreviewSidebar({
 
         {/* Fixed Comment Input (only shown when showComments is true) */}
         {showComments && (
-          <div className="sticky bottom-4 md:bottom-0 p-4 border-t border-white/10 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm">
+          <div className="sticky bottom-4 md:bottom-0 p-4 border-t border-white/10 bg-white/95 dark:bg-card/95 backdrop-blur-sm">
             <div className="flex items-center space-x-3">
               <img
                 src={currentUser.avatar || "/placeholder.svg"}
@@ -282,7 +282,7 @@ export default function MediaPreviewSidebar({
                 onChange={(e) => setNewComment(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Add a comment..."
-                className="flex-1 bg-gray-100 dark:bg-gray-800 rounded-full py-2 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary-500"
+                className="flex-1 bg-muted rounded-full py-2 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary-500"
               />
               <Button
                 className="text-primary-500 hover:text-primary-600 font-medium text-sm disabled:opacity-50 transition-colors"

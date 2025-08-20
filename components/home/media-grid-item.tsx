@@ -51,7 +51,7 @@ export default function MediaGridItem({ media, selected, onToggleSelect }: Media
       onClick={onToggleSelect}
     >
       {/* Media Content */}
-      <div className="w-full h-full bg-gray-100 dark:bg-gray-800">
+      <div className="w-full h-full bg-muted">
         {media?.type === "image" ? (
           <img
             src={media?.thumbnailUrl || media?.url}
@@ -88,7 +88,7 @@ export default function MediaGridItem({ media, selected, onToggleSelect }: Media
               style={(media as any)?.coverUrl || (media as any)?.thumbnailUrl ? { backgroundImage: `url('${(media as any).coverUrl || (media as any).thumbnailUrl}')` } : undefined}
             >
               <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition-transform">
-                <Play className="w-6 h-6 text-gray-800" />
+                <Play className="w-6 h-6 text-foreground" />
               </div>
             </div>
             {/* Duration Badge */}

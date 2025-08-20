@@ -81,23 +81,23 @@ export function ChatList({
   getLastMessagePreview,
 }: ChatListProps) {
   return (
-    <div className="lg:col-span-1 border-r border-gray-200 dark:border-gray-700">
+    <div className="lg:col-span-1 border-r border-border">
       {/* Chat List Header */}
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-4 border-b border-border">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search conversations..."
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-card text-foreground focus:ring-1 focus:ring-primary focus:border-transparent"
           />
         </div>
       </div>
 
       {/* Recently Active - Horizontal Scroll */}
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-        <h3 className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-3">Recently Active</h3>
+      <div className="p-4 border-b border-border">
+        <h3 className="text-sm font-normal text-muted-foreground mb-3">Recently Active</h3>
         <div className="flex space-x-3 overflow-x-auto pb-2" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {recentChats.map((chat) => (
             <div
@@ -114,10 +114,10 @@ export function ChatList({
                   <AvatarFallback>{chat.user.name.split(" ").map((n) => n[0]).join("")}</AvatarFallback>
                 </Avatar>
                 {chat.user.isOnline && (
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-900 rounded-full"></div>
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-card rounded-full"></div>
                 )}
               </div>
-              <span className="text-xs text-gray-500 dark:text-gray-400 max-w-[60px] truncate">
+              <span className="text-xs text-muted-foreground max-w-[60px] truncate">
                 {chat.user.name.split(" ")[0]}
               </span>
             </div>
@@ -131,8 +131,8 @@ export function ChatList({
           <div
             key={chat.id}
             onClick={() => onSelectChat(chat)}
-            className={`p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer border-b border-gray-100 dark:border-gray-700 ${
-              selectedChat?.id === chat.id ? "bg-blue-50 dark:bg-blue-900/20" : ""
+            className={`p-4 hover:bg-muted cursor-pointer border-b border-border ${
+              selectedChat?.id === chat.id ? "bg-primary/10" : ""
             }`}
           >
             <div className="flex items-center space-x-3">
@@ -142,20 +142,20 @@ export function ChatList({
                   <AvatarFallback>{chat.user.name.split(" ").map((n) => n[0]).join("")}</AvatarFallback>
                 </Avatar>
                 {chat.user.isOnline && (
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-900 rounded-full"></div>
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-card rounded-full"></div>
                 )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-medium text-xs text-gray-900 dark:text-white truncate">{chat.user.name}</h3>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">{formatTime(chat.lastMessage.timestamp)}</span>
+                  <h3 className="font-medium text-xs text-foreground truncate">{chat.user.name}</h3>
+                  <span className="text-xs text-muted-foreground">{formatTime(chat.lastMessage.timestamp)}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-1">
-                    {chat.lastMessage.type === "voice" && <Mic className="w-3 h-3 text-gray-400" />}
-                    {chat.lastMessage.type === "image" && <Image className="w-3 h-3 text-gray-400" />}
-                    {chat.lastMessage.type === "video" && <Video className="w-3 h-3 text-gray-400" />}
-                    <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                    {chat.lastMessage.type === "voice" && <Mic className="w-3 h-3 text-muted-foreground" />}
+                    {chat.lastMessage.type === "image" && <Image className="w-3 h-3 text-muted-foreground" />}
+                    {chat.lastMessage.type === "video" && <Video className="w-3 h-3 text-muted-foreground" />}
+                    <p className="text-xs text-muted-foreground truncate">
                       {getLastMessagePreview(chat.lastMessage)}
                     </p>
                   </div>
@@ -163,14 +163,14 @@ export function ChatList({
                     {chat.lastMessage.isSelf && chat.lastMessage.isDelivered && (
                       <>
                         {chat.lastMessage.isRead ? (
-                          <CheckCheck className="w-3 h-3 text-blue-500" />
+                          <CheckCheck className="w-3 h-3 text-primary" />
                         ) : (
-                          <Check className="w-3 h-3 text-gray-400" />
+                          <Check className="w-3 h-3 text-muted-foreground" />
                         )}
                       </>
                     )}
                     {chat.unreadCount > 0 && (
-                      <div className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full min-w-[20px] text-center">
+                      <div className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full min-w-[20px] text-center">
                         {chat.unreadCount > 99 ? "99+" : chat.unreadCount}
                       </div>
                     )}

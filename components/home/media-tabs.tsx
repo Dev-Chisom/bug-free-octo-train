@@ -18,7 +18,7 @@ interface MediaTabsProps {
 
 export default function MediaTabs({ activeTab, tabs, onUpdateActiveTab }: MediaTabsProps) {
   return (
-    <div className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+    <div className="border-b border-border bg-muted">
       <div className="flex">
         {tabs.map((tab) => (
           <button
@@ -27,8 +27,8 @@ export default function MediaTabs({ activeTab, tabs, onUpdateActiveTab }: MediaT
             className={cn(
               "flex-1 flex items-center justify-center space-x-2 py-4 px-6 font-medium transition-all duration-200 cursor-pointer",
               activeTab === tab.key
-                ? "bg-white dark:bg-gray-900 text-primary-400 border-b-2 border-primary-400 shadow-sm"
-                : "text-gray-600 dark:text-gray-400 hover:text-primary-600",
+                ? "bg-card text-primary border-b-2 border-primary shadow-sm"
+                : "text-muted-foreground hover:text-primary",
             )}
             onClick={() => onUpdateActiveTab(tab.key)}
           >

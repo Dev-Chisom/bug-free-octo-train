@@ -394,10 +394,10 @@ export default function MediaPreviewModal({
         {/* Desktop Close Button */}
         <button
           type="button"
-          className="hidden md:block absolute top-2 right-6 z-50 w-12 h-12 bg-white/10 dark:bg-gray-900/10 hover:bg-white/20 dark:hover:bg-gray-900/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+          className="hidden md:block absolute top-2 right-6 z-50 w-12 h-12 bg-white/10 dark:bg-card/10 hover:bg-white/20 dark:hover:bg-card/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
           onClick={handleClose}
         >
-          <X className="w-6 h-6 text-gray-900 dark:text-white" />
+          <X className="w-6 h-6 text-foreground dark:text-white" />
         </button>
 
         {/* Desktop Add Media Button */}
@@ -443,10 +443,10 @@ export default function MediaPreviewModal({
 
           {/* Sidebar - Mobile: Bottom Sheet, Desktop: Right Sidebar */}
           {(showSidebar || (enableVideoEdit && currentMedia?.type === "video")) && (
-            <div className="w-full md:w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-t md:border-l md:border-t-0 border-white/20 flex flex-col max-h-[40vh] md:max-h-none">
+            <div className="w-full md:w-80 bg-white/95 dark:bg-card/95 backdrop-blur-sm border-t md:border-l md:border-t-0 border-white/20 flex flex-col max-h-[40vh] md:max-h-none">
               {/* Mobile Sidebar Handle */}
               <div className="md:hidden flex justify-center py-2 border-b border-white/10">
-                <div className="w-12 h-1 bg-gray-400 rounded-full"></div>
+                <div className="w-12 h-1 bg-muted-foreground rounded-full"></div>
               </div>
 
               <MediaPreviewSidebar

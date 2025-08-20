@@ -76,7 +76,7 @@ export default function MediaLibraryTab({
           {index % 3 === 0 && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="bg-black/50 dark:bg-white/20 rounded-full p-3">
-                <div className="w-6 h-6 bg-white/80 dark:bg-gray-800 rounded-full" />
+                <div className="w-6 h-6 bg-white/80 dark:bg-muted rounded-full" />
               </div>
             </div>
           )}
@@ -101,25 +101,25 @@ export default function MediaLibraryTab({
   return (
     <div className="h-full flex flex-col">
       {/* Search and Filter Bar */}
-      <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+      <div className="px-4 py-2 border-b border-border">
         <div className="flex items-center justify-between space-x-4">
           {/* Search Input */}
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search your media..."
-              className="w-full pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-800 border-0 rounded-xl focus:ring-1 focus:ring-primary-500 focus:bg-white dark:focus:bg-gray-700 transition-all"
+              className="w-full pl-10 pr-4 py-2 bg-muted border-0 rounded-xl focus:ring-1 focus:ring-primary-500 focus:bg-card dark:focus:bg-muted/80 transition-all"
             />
           </div>
 
           {/* Media Type Dropdown */}
           <div className="relative">
             <Select value={activeMediaTab} onValueChange={onUpdateActiveMediaTab}>
-              <SelectTrigger className="appearance-none bg-gray-100 dark:bg-gray-800 border-0 rounded-xl px-4 py-2 pr-10 focus:ring-1 focus:ring-primary-500 cursor-pointer w-40">
+              <SelectTrigger className="appearance-none bg-muted border-0 rounded-xl px-4 py-2 pr-10 focus:ring-1 focus:ring-primary-500 cursor-pointer w-40">
                 <SelectValue />
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="images">📸 Images</SelectItem>
@@ -136,7 +136,7 @@ export default function MediaLibraryTab({
         {loading ? (
           <SkeletonGrid />
         ) : filteredMedia.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-gray-500 dark:text-gray-400">
+          <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
             <ImageOff className="w-16 h-16 mb-4 opacity-50" />
             <h3 className="text-base font-medium mb-2">No media found</h3>
             <p className="text-sm text-center">Try adjusting your search or upload some content</p>

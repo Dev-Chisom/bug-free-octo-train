@@ -26,22 +26,22 @@ export default function SelectedFileItem({ file, onRemove }: SelectedFileItemPro
   }
 
   return (
-    <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+    <div className="flex items-center space-x-3 p-3 bg-muted rounded-xl hover:bg-muted/80 transition-colors">
       {/* File Preview */}
-      <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
+      <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-muted">
         {file.type === "image" ? (
           <img src={file.url || "/placeholder.svg"} alt={file.name} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <Video className="w-6 h-6 text-gray-500" />
+            <Video className="w-6 h-6 text-muted-foreground" />
           </div>
         )}
       </div>
 
       {/* File Info */}
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{file.name}</p>
-        <p className="text-xs text-gray-500 dark:text-gray-400">{file.size ? formatFileSize(file.size) : 'Unknown size'}</p>
+        <p className="text-sm font-medium text-foreground dark:text-white truncate">{file.name}</p>
+        <p className="text-xs text-muted-foreground">{file.size ? formatFileSize(file.size) : 'Unknown size'}</p>
       </div>
 
       {/* Remove Button */}

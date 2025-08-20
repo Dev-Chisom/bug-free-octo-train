@@ -184,15 +184,15 @@ export function ChatWindow({
 
   if (!selectedChat) {
     return (
-      <div className="lg:col-span-3 flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="lg:col-span-3 flex-1 flex items-center justify-center bg-muted">
         <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 text-gray-400">
+          <div className="w-16 h-16 mx-auto mb-4 text-muted-foreground">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M12 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
           </div>
-          <h3 className="text-xl font-medium text-gray-600 dark:text-gray-300 mb-2">No chat selected</h3>
-          <p className="text-gray-500 dark:text-gray-400">Choose a conversation to start messaging</p>
+          <h3 className="text-xl font-medium text-foreground mb-2">No chat selected</h3>
+          <p className="text-muted-foreground">Choose a conversation to start messaging</p>
         </div>
       </div>
     )
@@ -201,7 +201,7 @@ export function ChatWindow({
   return (
     <div className="lg:col-span-3 flex flex-col flex-1 overflow-x-hidden overflow-y-hidden">
       {/* Chat Header */}
-      <div className="p-4 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between sticky top-0 z-10">
+      <div className="p-4 bg-muted border-b border-border flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center space-x-3">
           {/* Mobile back button */}
           <Button
@@ -210,15 +210,15 @@ export function ChatWindow({
             className="lg:hidden mr-2"
             onClick={() => setSelectedChat(null)}
           >
-            <ArrowLeft className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+            <ArrowLeft className="w-6 h-6 text-muted-foreground" />
           </Button>
           <Avatar className="w-10 h-10">
             <AvatarImage src={selectedChat.user.avatar} alt={selectedChat.user.name} />
             <AvatarFallback>{selectedChat.user.name.split(" ").map((n) => n[0]).join("")}</AvatarFallback>
           </Avatar>
           <div>
-            <h2 className="font-medium text-sm text-gray-900 dark:text-white">{selectedChat.user.name}</h2>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <h2 className="font-medium text-sm text-foreground">{selectedChat.user.name}</h2>
+            <p className="text-xs text-muted-foreground">
               {selectedChat.isTyping ? (
                 "Typing..."
               ) : selectedChat.user.isOnline ? (
@@ -233,7 +233,7 @@ export function ChatWindow({
         <DropdownMenu open={showChatMenu} onOpenChange={setShowChatMenu}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
-              <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <MoreVertical className="w-5 h-5 text-muted-foreground" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -248,7 +248,7 @@ export function ChatWindow({
       {/* Messages */}
       <div
         ref={messagesContainerRef}
-        className="flex-1 overflow-x-hidden overflow-y-scroll p-4 space-y-4 bg-gray-50 dark:bg-gray-900 rounded-b-lg"
+        className="flex-1 overflow-x-hidden overflow-y-scroll p-4 space-y-4 bg-muted rounded-b-lg"
       >
         {selectedChat.messages.map((message) => (
           <div
@@ -258,19 +258,19 @@ export function ChatWindow({
             <div className="max-w-[70%] group">
               {/* Reply indicator */}
               {message.replyTo && (
-                <div className="mb-1 p-2 bg-gray-200 dark:bg-gray-700 rounded-t-lg border-l-4 border-blue-500">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                <div className="mb-1 p-2 bg-muted rounded-t-lg border-l-4 border-primary">
+                  <p className="text-xs text-muted-foreground">
                     Replying to {message.replyTo.senderName}
                   </p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 truncate">{message.replyTo.content}</p>
+                  <p className="text-sm text-foreground truncate">{message.replyTo.content}</p>
                 </div>
               )}
 
               <div
                 className={`rounded-md px-4 py-2 relative ${
                   message.isSelf
-                    ? "bg-blue-500 text-white"
-                    : "bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-card text-card-foreground border border-border"
                 } ${message.replyTo ? "rounded-t-none" : ""}`}
               >
                 {/* Voice message */}
@@ -292,7 +292,7 @@ export function ChatWindow({
                       size="icon"
                       onClick={() => toggleVoicePlayback(message)}
                       className={`flex-shrink-0 ${
-                        message.isSelf ? "bg-white/20" : "bg-blue-100 dark:bg-blue-900"
+                        message.isSelf ? "bg-white/20" : "bg-primary text-primary-foreground"
                       }`}
                     >
                       {message.isPlaying ? (
@@ -303,9 +303,9 @@ export function ChatWindow({
                     </Button>
                     <div className="flex-1">
                       <div className="flex items-center space-x-2">
-                        <div className="flex-1 h-2 bg-white/30 dark:bg-gray-600 rounded-full overflow-hidden">
+                        <div className="flex-1 h-2 bg-white/30 dark:bg-muted rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-white dark:bg-blue-500 transition-all duration-300"
+                            className="h-full bg-white dark:bg-primary transition-all duration-300"
                             style={{ width: `${message.voiceProgress || 0}%` }}
                           ></div>
                         </div>
@@ -315,7 +315,7 @@ export function ChatWindow({
                         {Array.from({ length: 25 }).map((_, i) => (
                           <div
                             key={i}
-                            className="w-0.5 bg-white/40 dark:bg-gray-500 rounded-full"
+                            className="w-0.5 bg-white/40 dark:bg-muted-foreground rounded-full"
                             style={{ height: `${Math.random() * 16 + 4}px` }}
                           ></div>
                         ))}
@@ -384,7 +384,7 @@ export function ChatWindow({
                   {message.isSelf && (
                     <>
                       {message.isRead ? (
-                        <div className="w-3 h-3 text-blue-300">
+                        <div className="w-3 h-3 text-primary">
                           <svg fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
@@ -402,11 +402,11 @@ export function ChatWindow({
                 </div>
 
                 {/* Message actions */}
-                <div className="absolute -right-12 top-0 opacity-0 group-hover:opacity-100 transition-opacity bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 flex z-10">
+                <div className="absolute -right-12 top-0 opacity-0 group-hover:opacity-100 transition-opacity bg-card rounded-lg shadow-lg border border-border flex z-10">
                   <DropdownMenu open={showReactionPicker === message.id} onOpenChange={(open) => setShowReactionPicker(open ? message.id : null)}>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="icon" className="p-1">
-                        <Smile className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <Smile className="w-4 h-4 text-muted-foreground" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
@@ -426,11 +426,11 @@ export function ChatWindow({
                     </DropdownMenuContent>
                   </DropdownMenu>
                   <Button variant="ghost" size="icon" className="p-1" onClick={() => replyToMessage(message)}>
-                    <Reply className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                    <Reply className="w-4 h-4 text-muted-foreground" />
                   </Button>
                   {message.isSelf && (
                     <Button variant="ghost" size="icon" className="p-1" onClick={() => editMessage(message)}>
-                      <Edit className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                      <Edit className="w-4 h-4 text-muted-foreground" />
                     </Button>
                   )}
                   <Button variant="ghost" size="icon" className="p-1 text-red-500" onClick={() => deleteMessage(message)}>
@@ -444,11 +444,11 @@ export function ChatWindow({
 
         {/* Typing indicator */}
         {selectedChat.isTyping && (
-          <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+          <div className="flex items-center space-x-2 text-muted-foreground">
             <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
+              <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
+              <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+              <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
             </div>
             <span className="text-sm">{selectedChat.user.name} is typing...</span>
           </div>
@@ -456,13 +456,13 @@ export function ChatWindow({
       </div>
 
       {/* Message Input */}
-      <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 sticky bottom-0">
+      <div className="p-4 bg-card border-t border-border sticky bottom-0">
         {/* Reply preview */}
         {replyingTo && (
-          <div className="mb-3 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg border-l-4 border-blue-500 flex items-center justify-between">
+          <div className="mb-3 p-3 bg-muted rounded-lg border-l-4 border-primary flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Replying to {replyingTo.senderName}</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 truncate">{replyingTo.content}</p>
+              <p className="text-xs text-muted-foreground">Replying to {replyingTo.senderName}</p>
+              <p className="text-sm text-foreground truncate">{replyingTo.content}</p>
             </div>
             <Button variant="ghost" size="icon" onClick={cancelReply}>
               <X className="w-4 h-4" />
@@ -482,9 +482,9 @@ export function ChatWindow({
                   <video src={media.preview} className="h-20 w-20 object-cover rounded-lg" />
                 )}
                 {media.type === "voice" && (
-                  <div className="h-20 w-32 bg-blue-100 dark:bg-blue-900 rounded-lg flex flex-col items-center justify-center">
-                    <Mic className="w-6 h-6 mb-1 text-blue-600 dark:text-blue-400" />
-                    <span className="text-xs text-blue-600 dark:text-blue-400">{media.duration}</span>
+                  <div className="h-20 w-32 bg-primary/10 rounded-lg flex flex-col items-center justify-center">
+                    <Mic className="w-6 h-6 mb-1 text-primary" />
+                    <span className="text-xs text-primary">{media.duration}</span>
                   </div>
                 )}
                 <Button
@@ -506,7 +506,7 @@ export function ChatWindow({
               value={newMessage}
               onChange={(e) => { setNewMessage(e.target.value); handleTyping(); }}
               placeholder="Type a message..."
-              className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-full border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none pr-12"
+              className="w-full px-4 py-3 bg-muted text-foreground rounded-full border border-border focus:border-primary focus:outline-none pr-12"
             />
           </div>
           {/* Unified media button */}
@@ -544,7 +544,7 @@ export function ChatWindow({
           <Button
             type="submit"
             disabled={!canSendMessage}
-            className="px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Send className="w-5 h-5" />
           </Button>
@@ -552,8 +552,8 @@ export function ChatWindow({
 
         {/* Recording indicator */}
         {isRecording && (
-          <div className="mt-2 flex items-center justify-center space-x-2 text-red-500">
-            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+          <div className="mt-2 flex items-center justify-center space-x-2 text-destructive">
+            <div className="w-3 h-3 bg-destructive rounded-full animate-pulse"></div>
             <span className="text-sm font-medium">Recording... Release to send</span>
             <span className="text-sm">{recordingDuration}s</span>
           </div>

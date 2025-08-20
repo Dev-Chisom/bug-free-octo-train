@@ -77,7 +77,7 @@ export default function DeviceUploadTab({
           className={`relative border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-200 ${
             isDragging
               ? "border-pink-500 bg-pink-50 dark:bg-pink-900/20"
-              : "border-gray-300 dark:border-gray-600 hover:border-pink-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+              : "border-border dark:border-border hover:border-pink-400 hover:bg-muted dark:hover:bg-muted"
           }`}
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
@@ -98,8 +98,8 @@ export default function DeviceUploadTab({
             </div>
 
             <div>
-              <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Drop your files here</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">or click to browse from your device</p>
+              <h3 className="text-base font-semibold text-foreground dark:text-white mb-2">Drop your files here</h3>
+              <p className="text-muted-foreground dark:text-gray-400 mb-4">or click to browse from your device</p>
 
               <Button
                 type="button"
@@ -111,7 +111,7 @@ export default function DeviceUploadTab({
               </Button>
             </div>
 
-            <div className="text-sm text-gray-500 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground dark:text-gray-400">
               <p>Maximum {maxFiles} files • Images and videos supported</p>
               <p>Up to 100MB per file</p>
             </div>
@@ -122,12 +122,12 @@ export default function DeviceUploadTab({
         {selectedFiles.length > 0 && (
           <div className="mt-6">
             <div className="flex items-center justify-between mb-4">
-              <h4 className="text-base font-semibold text-gray-900 dark:text-white">
+              <h4 className="text-base font-semibold text-foreground dark:text-white">
                 Selected Files ({selectedFiles.length}/{maxFiles})
               </h4>
               <button
                 type="button"
-                className="text-sm text-gray-500 hover:text-red-500 transition-colors cursor-pointer"
+                className="text-sm text-muted-foreground hover:text-destructive transition-colors cursor-pointer"
                 onClick={clearAllFiles}
               >
                 Clear All

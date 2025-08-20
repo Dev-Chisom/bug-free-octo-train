@@ -87,7 +87,7 @@ export default function MediaCarousel({
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/20 hover:bg-black/40 text-white rounded-full"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40 text-white dark:text-foreground rounded-full"
             onClick={goToPrevious}
             disabled={currentIndex === 0}
           >
@@ -97,7 +97,7 @@ export default function MediaCarousel({
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/20 hover:bg-black/40 text-white rounded-full"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40 text-white dark:text-foreground rounded-full"
             onClick={goToNext}
             disabled={currentIndex === mediaItems.length - 1}
           >
@@ -153,7 +153,7 @@ export default function MediaCarousel({
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full w-16 h-16"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40 text-white dark:text-foreground rounded-full w-16 h-16"
                 onClick={togglePlayPause}
               >
                 {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8" />}
@@ -165,7 +165,7 @@ export default function MediaCarousel({
 
       {/* Media Counter */}
       {mediaItems.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 dark:bg-white/80 text-white dark:text-foreground px-3 py-1 rounded-full text-sm">
           {currentIndex + 1} / {mediaItems.length}
         </div>
       )}
