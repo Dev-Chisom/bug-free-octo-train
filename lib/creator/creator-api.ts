@@ -52,7 +52,7 @@ export const creatorApi = {
   }) => api.get<MediaFilesResponse>("/media-files", { params }),
 
   uploadMediaFile: (payload: { files: Array<{ uuid: string; fileName: string; fileType: string; size: number; coverName?: string }> }) =>
-    api.post<Array<{ uploadUrl: string; fileKey: string; fileUrl: string; mediaFileId: string; status: string; coverUploadUrl?: string }>>("/media-files", payload),
+    api.post<MediaUploadResponse[]>("/media-files", payload),
 
   uploadMedia: (data: MediaUploadRequest) => api.post<MediaUploadResponse>("/media-files", data),
 

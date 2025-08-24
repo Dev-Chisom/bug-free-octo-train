@@ -24,13 +24,13 @@ export const contentKeys = {
 const contentApi = createContentApi()
 
 // Transform API response to match existing interface
-const transformContent = (apiContent: Content): Content & { id: string } => ({
+const transformContent = (apiContent: Content, transformMediaFiles = true): Content & { id: string } => ({
   ...apiContent,
   id: apiContent._id,
   status: apiContent.status as "published" | "draft" | "scheduled",
   visibility: apiContent.visibility,
-  // Transform mediaFiles to just IDs if they're objects
-  mediaFiles: Array.isArray(apiContent.mediaFiles) 
+  // Transform mediaFiles to just IDs if they're objects (only for list views)
+  mediaFiles: transformMediaFiles && Array.isArray(apiContent.mediaFiles) 
     ? apiContent.mediaFiles.map((file: any) => typeof file === 'string' ? file : file._id)
     : apiContent.mediaFiles || [],
 })
@@ -44,7 +44,7 @@ export function useContent(params?: ContentListParams) {
     queryFn: async (): Promise<(Content & { id: string })[]> => {
       const response = await contentApi.getAllPosts(params)
       if (response.success && response.data?.posts) {
-        return response.data.posts.map(transformContent)
+        return response.data.posts.map(post => transformContent(post, true))
       }
       throw new Error(response.message || "Failed to fetch content")
     },
@@ -75,7 +75,7 @@ export function useContentById(id: string) {
 
       const response = await contentApi.getPostById(id)
       if (response.success && response.data?.post) {
-        return transformContent(response.data.post)
+        return transformContent(response.data.post, false) // Don't transform mediaFiles for editing
       }
       // If it's a 404, return null instead of throwing
       if (response.message?.includes("not found") || response.message?.includes("404")) {

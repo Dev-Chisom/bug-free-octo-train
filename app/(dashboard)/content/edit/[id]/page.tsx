@@ -147,15 +147,15 @@ export default function EditContentPage() {
       : "public") as "public" | "subscribers" | "pay-to-view",
     price: contentData?.price || 4.99,
     mediaUrls: contentData?.mediaFiles
-      ? contentData?.mediaFiles.map((fileId: string) => ({
-          id: fileId,
-          url: "",
-          type: "image" as const,
-          name: "",
-          thumbnailUrl: "",
-          cover: "",
-          duration: 0,
-          size: 0,
+      ? contentData?.mediaFiles.map((mediaFile: any) => ({
+          id: mediaFile._id || mediaFile.id,
+          url: mediaFile.url || "",
+          type: (mediaFile.type || "image") as "image" | "video",
+          name: mediaFile.url ? mediaFile.url.split('/').pop() || 'media' : 'media',
+          thumbnailUrl: mediaFile.thumbnailUrl || mediaFile.url || "",
+          cover: mediaFile.coverUrl || "",
+          duration: mediaFile.duration || 0,
+          size: mediaFile.size || 0,
         }))
       : [],
   }
@@ -172,7 +172,9 @@ export default function EditContentPage() {
         <p className="mt-1 text-sm text-muted-foreground">{t("content.edit.description")}</p>
       </div>
 
-              <div className="bg-card shadow-sm rounded-lg overflow-hidden border border-border">
+        
+
+      <div className="bg-card shadow-sm rounded-lg overflow-hidden border border-border">
         <PostForm
           initialValues={initialValues}
           loading={updateMutation.isPending}

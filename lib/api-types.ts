@@ -91,16 +91,21 @@ export interface MediaFilesResponse {
 export interface MediaUploadRequest {
   files: {
     uuid: string
-    filename: string
+    fileName: string
     fileType: string
     size: number
+    coverName?: string
   }[]
 }
 
 export interface MediaUploadResponse {
-  mediaField: string
   uploadUrl: string
   fileKey: string
+  fileUrl: string
+  mediaFileId: string
+  status: string
+  uuid: string
+  coverUploadUrl?: string
 }
 
 // Creator types

@@ -21,7 +21,7 @@ const transformMediaFile = (apiFile: any) => ({
   name: apiFile.url.split('/').pop() || 'media',
   type: apiFile.type,
   size: apiFile.size,
-  duration: apiFile.duration,
+  duration: apiFile.duration || 0,
   // Include api.video ID if it exists (for viewing only)
   apiVideoId: apiFile.apiVideoId,
   coverUrl: apiFile.coverUrl,
@@ -43,12 +43,12 @@ export function useMediaFiles(params?: {
     queryFn: async () => {
       const response = await creatorApi.getMediaFiles(params)
       
-      // The response should be MediaFilesResponse directly
-      const mediaFiles = (response.mediaFiles || []).map(transformMediaFile)
+      // The API service unwraps response.data, but we need response.data.mediaFiles
+      const mediaFiles = (response?.data?.mediaFiles || response.data?.mediaFiles || []).map(transformMediaFile)
       
       return {
         mediaFiles,
-        pagination: response.pagination || { page: 1, limit: 12, total: 0, pages: 1 }
+        pagination: response?.data?.pagination || response.data?.pagination || { page: 1, limit: 12, total: 0, pages: 1 }
       }
     },
     enabled: isAuthenticated && typeof window !== "undefined" && typeof document !== "undefined",
@@ -72,7 +72,17 @@ export function useUploadMediaFiles() {
   return useMutation({
     mutationFn: async (payload: { files: Array<{ uuid: string; fileName: string; fileType: string; size: number; coverName?: string }> }) => {
       const response = await creatorApi.uploadMediaFile(payload)
-      return response
+      
+      // Handle both direct response and wrapped response
+      if (Array.isArray(response)) {
+        return response
+      } else if (response?.data && Array.isArray(response.data)) {
+        return response.data
+      } else if (response?.success && response?.data && Array.isArray(response.data)) {
+        return response.data
+      }
+      
+      throw new Error('Invalid response format from upload API')
     },
     onSuccess: () => {
       // Invalidate all media queries to refetch

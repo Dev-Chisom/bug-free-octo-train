@@ -192,8 +192,6 @@ export function PostForm({
     },
   });
 
-
-
   useEffect(() => {
     setUploadedMediaFiles(initialValues.mediaUrls || []);
     setIsScheduled(!!initialValues.scheduledDate);
@@ -244,8 +242,6 @@ export function PostForm({
     // Update form field
     const mediaFileIds = newFiles.map((m) => m.id).filter(Boolean) as string[];
     form.setFieldValue("mediaFiles", mediaFileIds);
-
-
   };
 
   const addMediaFromGallery = (selectedMedia: MediaFile[]) => {
@@ -259,15 +255,17 @@ export function PostForm({
     const allMedia = [...uploadedMediaFiles, ...validMedia];
     const mediaFileIds = allMedia.map((m) => m.id).filter(Boolean) as string[];
     form.setFieldValue("mediaFiles", mediaFileIds);
-
-
   };
 
   const handleUploadComplete = (results: any[]) => {
+    console.log('handleUploadComplete called with:', results) // Debug log
+    
     // Filter out any results with blob URLs
     const validResults = results.filter(
       (result) => !isBlobUrl(result.url || result.fileUrl || "")
     );
+    
+    console.log('Valid results after filtering:', validResults) // Debug log
 
     // Find the temp objects that match the new uploads
     const tempObjects = uploadedMediaFiles.filter((m) =>
@@ -281,15 +279,16 @@ export function PostForm({
       );
 
       return {
-        id: result.mediaFileId || result._id,
+        id: result.id || result.mediaFileId || result._id,
         name: result.name || (match && match.name),
         type: result.type,
-        url: result.fileUrl || result.url,
+        url: result.url,
         thumbnailUrl:
           result.type === "image"
-            ? result.fileUrl || result.url
+            ? result.url
             : result.thumbnailUrl,
         coverUrl: result.type === "video" ? result.coverUrl : undefined,
+        size: result.size,
         ...result,
       };
     });
@@ -306,12 +305,13 @@ export function PostForm({
         (item, index, self) => index === self.findIndex((t) => t.id === item.id)
       );
 
+    console.log('Final merged media files:', merged) // Debug log
+    
     setUploadedMediaFiles(merged);
 
     const ids = merged.map((r) => r.id).filter(Boolean) as string[];
+    console.log('Media file IDs for form:', ids) // Debug log
     form.setFieldValue("mediaFiles", ids);
-
-
   };
 
   const openMediaPreview = (index: number) => {
@@ -359,17 +359,17 @@ export function PostForm({
   }, [form.state.values.title, form.state.values.content]);
 
   // Reactive button state
-  const buttonDisabled = 
-    !form.state.values.title?.trim() || 
-    !form.state.values.content?.trim() || 
+  const buttonDisabled =
+    !form.state.values.title?.trim() ||
+    !form.state.values.content?.trim() ||
     (isScheduled && !form.state.values.scheduledDate?.trim()) ||
     loading;
-    
-  const buttonClassName = 
-    (!form.state.values.title?.trim() || 
-     !form.state.values.content?.trim() ||
-     (isScheduled && !form.state.values.scheduledDate?.trim())) 
-      ? "opacity-50 cursor-not-allowed" 
+
+  const buttonClassName =
+    !form.state.values.title?.trim() ||
+    !form.state.values.content?.trim() ||
+    (isScheduled && !form.state.values.scheduledDate?.trim())
+      ? "opacity-50 cursor-not-allowed"
       : "";
 
   // Force re-render when form values change
@@ -377,10 +377,6 @@ export function PostForm({
     // This effect will run every time formUpdateTrigger changes
     // which happens when title or content fields change
   }, [formUpdateTrigger]);
-
-
-
-
 
   // Clean up blob URLs on unmount
   useEffect(() => {
@@ -436,7 +432,7 @@ export function PostForm({
                   onBlur={field.handleBlur}
                   onChange={(e) => {
                     field.handleChange(e.target.value);
-                    setFormUpdateTrigger(prev => prev + 1);
+                    setFormUpdateTrigger((prev) => prev + 1);
                   }}
                   placeholder={t("enterPostTitle")}
                   className="mt-1"
@@ -464,7 +460,7 @@ export function PostForm({
                   onBlur={field.handleBlur}
                   onChange={(e) => {
                     field.handleChange(e.target.value);
-                    setFormUpdateTrigger(prev => prev + 1);
+                    setFormUpdateTrigger((prev) => prev + 1);
                   }}
                   rows={5}
                   placeholder={t("writePostContent")}
@@ -484,18 +480,18 @@ export function PostForm({
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <Label>{t("mediaFiles") || "Media Files"}</Label>
-                                    <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowMediaGallery(true);
-                  }}
-                  className="text-primary-600 dark:text-primary-400"
-                >
-                  {t("addMore") || "Add More"}
-                </Button>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setShowMediaGallery(true);
+                      }}
+                      className="text-primary-600 dark:text-primary-400"
+                    >
+                      {t("addMore") || "Add More"}
+                    </Button>
                   </div>
 
                   {/* Media Grid */}
@@ -602,7 +598,7 @@ export function PostForm({
                 <Button
                   type="button"
                   variant="ghost"
-                  className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border px-6 py-10 text-center cursor-pointer hover:border-primary transition-colors h-auto p-6"
+                  className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border px-6 py-10 text-center cursor-pointer hover:border-primary transition-colors h-auto p-6 w-full"
                   onClick={(e) => {
                     e.stopPropagation();
                     setShowMediaGallery(true);
@@ -771,7 +767,7 @@ export function PostForm({
                     checked={isScheduled}
                     onCheckedChange={(checked) => {
                       setIsScheduled(Boolean(checked));
-                      setFormUpdateTrigger(prev => prev + 1);
+                      setFormUpdateTrigger((prev) => prev + 1);
                     }}
                     className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
                   />
@@ -808,7 +804,7 @@ export function PostForm({
                           onBlur={field.handleBlur}
                           onChange={(e) => {
                             field.handleChange(e.target.value);
-                            setFormUpdateTrigger(prev => prev + 1);
+                            setFormUpdateTrigger((prev) => prev + 1);
                           }}
                           min={minScheduleDate}
                           className="mt-1"
@@ -828,14 +824,14 @@ export function PostForm({
           <Button type="button" variant="outline" onClick={onCancel}>
             Cancel
           </Button>
-                     <Button
-             type="submit"
-             disabled={buttonDisabled}
-             className={buttonClassName}
-           >
-             {loading && <Loader2 className="animate-spin h-4 w-4 mr-2" />}
-             {getSubmitButtonText()}
-           </Button>
+          <Button
+            type="submit"
+            disabled={buttonDisabled}
+            className={buttonClassName}
+          >
+            {loading && <Loader2 className="animate-spin h-4 w-4 mr-2" />}
+            {getSubmitButtonText()}
+          </Button>
         </div>
       </form>
 

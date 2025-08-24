@@ -124,7 +124,17 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 				]
 
 				const response = await uploadMediaMutation.mutateAsync({ files: filesPayload })
+				console.log('Upload API Response:', response) // Debug log
+				
+				if (!response || !Array.isArray(response) || response.length === 0) {
+					throw new Error('Invalid response from upload API')
+				}
+				
 				const { uploadUrl, fileKey, mediaFileId, coverUploadUrl } = response[0]
+				
+				if (!uploadUrl) {
+					throw new Error('No upload URL received from API')
+				}
 
 				// Upload main file
 				await fetch(uploadUrl, {
@@ -366,13 +376,22 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 
 			const emittedResults = results.map((r, index) => {
 				const original = mediaData[index]
+				
+				// Construct the final file URL from the fileKey
+				// This assumes your backend serves files from a specific path
+				const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+				const finalFileUrl = `${baseUrl}/media/${r.fileKey}`
+				
 				return {
 					id: r.mediaFileId,
 					name: original?.name,
 					type: original?.type,
-					                                        url: r.fileUrl,
-					                                        thumbnailUrl: original?.type === 'image' ? r.fileUrl : undefined,
-					                                        coverUrl: original?.type === 'video' ? r.coverUploadUrl : undefined,
+					url: finalFileUrl,
+					thumbnailUrl: original?.type === 'image' ? finalFileUrl : undefined,
+					coverUrl: original?.type === 'video' ? r.coverUploadUrl : undefined,
+					// Include additional metadata
+					size: original?.size,
+					fileKey: r.fileKey,
 				}
 			})
 
@@ -465,7 +484,9 @@ export default function MediaGallery({ isOpen, onClose, onSelect, onUploadComple
 									totalPages={totalPages}
 									totalItems={totalItems}
 									activeMediaTab={activeMediaTab}
-									onUpdateActiveMediaTab={(tab: string) => setActiveMediaTab(tab as "all" | "videos" | "images")}
+									onUpdateActiveMediaTab={(tab: string) => {
+										setActiveMediaTab(tab as "all" | "videos" | "images")
+									}}
 									onUpdateCurrentPage={setCurrentPage}
 									onUpdatePerPage={setPerPage}
 									onToggleSelect={toggleSelect}
